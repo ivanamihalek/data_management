@@ -1,10 +1,9 @@
 #!/usr/bin/python
 
+
 import os
 
 from data_mgmt_utils import *
-
-
 import dropbox
 
 ####################################
@@ -15,7 +14,7 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 
 ####################################
-def upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
+def upload_with_timestamp checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
 
     subdir = subfolder
     local_file_path = "/".join([local_dir, subdir, file_to_move])
@@ -24,7 +23,7 @@ def upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, fi
     print('Local file path:', local_file_path)
     # check file exists in Dbx already
     if check_dbx_path(dbx, dbx_path):
-        print dbx_path + "   found"
+        print dbx_path + "   found - check timestamp"
     else:
         print dbx_path + "   not found - uploading"
         upload(dbx, local_file_path, dbx_path)
