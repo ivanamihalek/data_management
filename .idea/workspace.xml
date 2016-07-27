@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/03_dropbox_uploader.py" afterPath="$PROJECT_DIR$/03_dropbox_uploader.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/04_archiver.py" afterPath="$PROJECT_DIR$/04_archiver.py" />
     </list>
     <ignored path="data_management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,7 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="03_dropbox_uploader.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="03_dropbox_uploader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
@@ -31,6 +31,16 @@
               <folding>
                 <element signature="e#19#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="04_archiver.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/04_archiver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -44,6 +54,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/03_dropbox_uploader.py" />
+        <option value="$PROJECT_DIR$/04_archiver.py" />
       </list>
     </option>
   </component>
@@ -157,6 +168,14 @@
           <folding>
             <element signature="e#19#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04_archiver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
