@@ -13,11 +13,10 @@
 # delete the original and the file in the scratch
 
 
-import dropbox
-
 from  data_mgmt_utils.generic_utils import *
 from  data_mgmt_utils.dropbox_utils import *
 
+import dropbox
 
 
 ####################################
