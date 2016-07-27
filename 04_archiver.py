@@ -34,7 +34,7 @@ def main():
     scratch_dir   = "/home/ivana/scratch"
 
     if not check_local_path(local_dir): exit(1)
-    if not check_dbx_path (dropbox_folder): exit(1)
+    if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
     subdir = ""
 
