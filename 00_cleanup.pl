@@ -1,15 +1,25 @@
 #!/usr/bin/perl
 use strict;
-
 sub recursive_clean (@_);
 
 
-my $fromdir = "/mnt/bodamer01";
+@ARGV==1 || die "Usage: $0 <fromdir>\n";
+my $fromdir = $ARGV[0];
+
+if ($fromdir eq  "/mnt/bodamer02") {
+} elsif ($fromdir eq  "/mnt/bodamer01"){
+} else {
+    die "Unexpected fromdir: $fromdir\n";
+}
+
+
+
+
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
 
-my $TEST_DRIVE = 0;
+my $TEST_DRIVE = 1;
 
 my @listing_level_1 = split "\n", `ls $fromdir`;
 
@@ -35,24 +45,30 @@ sub recursive_clean (@_) {
         my $thing_no_space = $thing;
         $thing_no_space =~ s/([\s\(\)])/\\$1/g;
         my @subs = split "\n", `ls $thing_no_space`;
-        foreach my $subdir (@subs) {
-            (-d "$thing/$subdir") || next;
-            recursive_clean ("$thing/$subdir");
-            my $new_name = $subdir;
+        
+        foreach my $subthing (@subs) {
+            if ($subthing =~ /copy/) {
+                print "$subthing\n";
+            }
+            my $new_name = $subthing;
             $new_name =~ s/ File/ file/g;
             $new_name =~ s/\s+/_/g;
             $new_name =~ s/[\(\)]/_/g;
             $new_name =~ s/__/_/g;
-            if ($new_name ne $subdir) {
+            if ($new_name ne $subthing) {
                 my $path_no_space = $thing;   $path_no_space =~ s/([\s\(\)])/\\$1/g;
-                my $subdir_no_space = $subdir;  $subdir_no_space =~ s/([\s\(\)])/\\$1/g;
-                my $cmd = "mv $path_no_space/$subdir_no_space $path_no_space/$new_name";
+                my $subthing_no_space = $subthing;  $subthing_no_space =~ s/([\s\(\)])/\\$1/g;
+                my $cmd = "mv $path_no_space/$subthing_no_space $path_no_space/$new_name";
                 if ($TEST_DRIVE) {
                     print "$cmd\n";
                 } else {
+                    $cmd =~ /copy/ && print "$cmd\n";
                     system ($cmd) && die "error running $cmd\n";
                 }
             }
+            # if the sub-thing is a directory, descend
+            (-d "$thing/$subthing") && recursive_clean ("$thing/$subthing");
+
     	}
     }
 

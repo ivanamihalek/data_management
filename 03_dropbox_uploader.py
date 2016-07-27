@@ -1,17 +1,16 @@
 #!/usr/bin/python
 
 import os
-
-from data_mgmt_utils import *
-
-
 import dropbox
+
+from data_mgmt_utils.utils import *
+from data_mgmt_utils.dropbox import *
+
 
 ####################################
 DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
 
 dbx = dropbox.Dropbox(DROPBOX_TOKEN)
-
 
 
 ####################################

@@ -14,6 +14,18 @@ def check_dbx_path(dbx, dbx_path):
         return False
 
 ####################################
+def download(dbx, scratch_path, dbx_path):
+    with open(scratch_path, "w") as f:
+        try:
+            metadata, res = dbx.files_download(path=dbx_path)
+        except dropbox.exceptions.ApiError as err:
+            print "Download failure:", err
+            print "Not sure what that means, so I'll exit."
+            exit(1)
+        f.write(res.content)
+    f.close()
+
+####################################
 def upload(dbx, local_file_path, dbx_path):
     f = open(local_file_path)
     file_size = os.path.getsize(local_file_path)

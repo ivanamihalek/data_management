@@ -2,13 +2,22 @@
 
 # spce handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
+@ARGV==1 || die "Usage: $0 <fromdir>\n";
+my $fromdir = $ARGV[0];
+
+
 %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center", "bai"=>"alignments/by_seq_center",
 		 "fastq" => "reads", "txt" => "reads");
 
 
-#$fromdir = "/mnt/usb"; todir = "/home/ivana/scratch/move_exercise";
-#$fromdir = "/mnt/bodamer02"; $todir = "/data01";
-$fromdir = "/mnt/bodamer01"; $todir = "/data02";
+if ($fromdir eq  "/mnt/bodamer02") {
+    $todir = "/data01";
+} elsif ($fromdir eq  "/mnt/bodamer01"){
+    $todir = "/data02";
+} else {
+    die "Unexpected fromdir: $fromdir\n";
+}
+
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
@@ -57,8 +66,11 @@ for $case (@cases) {
     undef $individual;
     ($bo, $year, $caseno, $individual) = split "-", $case_id;
 
+    (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
+    $caseno = "0".$caseno;
+
     $case_boid = $bo.$year.$caseno;
-    length $case_boid == 8 || die "bad BOID:  $bo   $year $caseno \n";
+    length $case_boid == 9 || die "bad BOID:  $bo   $year $caseno \n";
     print " $year   $caseno   $case_boid    $project \n";
 
     $project =~ s/201402006.ACE/FilaminC/g;
@@ -71,9 +83,9 @@ for $case (@cases) {
     } else {
 	    $seen{$casedir} = 1;
     }
-    `mkdir -p $todir/$year/$caseno`;
+    (-e $casedir) || `mkdir -p $casedir`;
 
-    `echo $project > $todir/$year/$caseno/PROJECT`;
+    `echo $project > $casedir/PROJECT`;
 
     @resolved_files = ();
 
@@ -130,14 +142,15 @@ sub check_for_leftovers (@_) {
 
 #########################################################
 sub get_md5sum (@_) {
-    my $ext_file = $_[0];
+    my $check_old_md5 = $_[0];
+    my $ext_file = $_[1];
     my @aux = split '\/', $ext_file;
     my $filename = pop @aux;
     my $dirpath = join "/", @aux;
     $dirpath .= "/md5sums";
     ( -d $dirpath) || `mkdir $dirpath`;
     my $md5sum_file = "$dirpath/$filename.md5";
-    ( -e $md5sum_file && ! -z $md5sum_file) || `md5sum $ext_file | cut -d' ' -f 1 > $md5sum_file`;
+    ($check_old_md5 && -e $md5sum_file && ! -z $md5sum_file) || `md5sum $ext_file | cut -d' ' -f 1 > $md5sum_file`;
     push @resolved_files, $md5sum_file; #this is our md5sum, we will not copy it as "other files from seq center"
 
     my $md5  = "" || `cat $md5sum_file  | cut -d' ' -f 1`; chomp $md5;
@@ -164,6 +177,8 @@ sub process_extension (@_) {
             next;
         }
         ($year2, $caseno2, $individual2) = split "-", $1;
+        (length($caseno2)==2)  || die  "Unexpected BOid format: $1\n";
+        $caseno2 = "0".$caseno2;
         $orig_file = $2;
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
@@ -199,7 +214,7 @@ sub process_extension (@_) {
         }
 	
         ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
-            (defined $individual &&  $individual ne $individual2)  && die "** label mismatch for $case:\n$ext_file\n";
+        (defined $individual &&  $individual ne $individual2)  && die "** label mismatch for $case:\n$ext_file\n";
 
         if ($individual2 =~ /III/) {
             $individual2 =~ s/III/3/;
@@ -211,7 +226,7 @@ sub process_extension (@_) {
             $individual2 =~ s/I/1/;
         }
 
-        $boid = $bo.(substr $year, 2, 2)."0".$caseno.$individual2;
+        $boid = $bo.(substr $year, 2, 2).$caseno.$individual2;
 
 
         $boiddir = "$casedir/$boid";
@@ -234,20 +249,24 @@ sub process_extension (@_) {
             print "$ext_file\n";
             $newfile = "$extdir/$boid\_$new_name";
             $need_to_copy = 1;
+            my $check_old_md5 = 1;
             if ( -e  $newfile && ! -z $newfile) {
                 print "\t $newfile found\n";
+                $check_old_md5 = 1;
                 # have we calculated the md5 sum already?
-                my $md5orig = get_md5sum ($ext_file);
-                my $md5new  = get_md5sum ($newfile);
+                # always check for the old md5 in the "from" directory
+                my $md5orig = get_md5sum (1, $ext_file);
+                my $md5new  = get_md5sum ($check_old_md5, $newfile);
                 print "\t $md5orig\n";
                 print "\t $md5new\n";
                 $md5orig == $md5new && ($need_to_copy = 0);
             }
             if ($need_to_copy) {
                 print "\t copying to $newfile \n";
+                $check_old_md5 = 0; # in case we have a leftover
                 `cp $ext_file $newfile`;
-                my $md5orig = get_md5sum ($ext_file);
-                my $md5new  = get_md5sum ($newfile);
+                my $md5orig = get_md5sum (1, $ext_file);
+                my $md5new  = get_md5sum ($check_old_md5, $newfile);
                 print "\t $md5orig\n";
                 print "\t $md5new\n";
                 $md5orig == $md5new || die "md5 sum mismatch\n";
