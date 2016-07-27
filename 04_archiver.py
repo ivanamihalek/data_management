@@ -16,15 +16,20 @@
 from  data_mgmt_utils.generic_utils import *
 from  data_mgmt_utils.dropbox_utils import *
 
-import dropbox
 
 
 ####################################
 DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
-CHUNK_SIZE    = 10 * 1024 * 1024
-MAX_RETRIES   = 20
 
 dbx = dropbox.Dropbox(DROPBOX_TOKEN)
+
+
+####################################
+def store_archived (local_dir, subfolder):
+    archived_file = "/".join([local_dir, subfolder, "ARCHIVED"])
+    if not os.path.exists(archived_file):  # read and append this name if not present
+    else:  # create new file and write the name to it
+
 
 ####################################
 def main():
@@ -44,8 +49,13 @@ def main():
             # for bams, fastqs, and tarballs
             # #bams are binaries and compression does not further reduce ther size
             if not file[-3:] in ["bz2", ".bam"]: continue
+            # local version of the file and ints checksum
+            local_file_path = "/".join([local_dir, subfolder, file])
+            local_md5_path  = "/".join([local_dir, subfolder, "md5sums", file+".md5"])
+            md5sum_local = os.popen("cat %s | cut -d' ' -f 1" % local_md5_path).read().rstrip()
+            print "md5sum_local: ", md5sum_local
+
             # try finding in Dropbox
-            local_file_path = "/".join([local_dir, subdir, file])
             dbx_path = "/".join([dropbox_folder, subfolder, file])
             # if not found sound alarm and exit
             if not check_dbx_path(dbx, dbx_path):
@@ -54,20 +64,25 @@ def main():
                 exit(1)
             # if found in dropbox, download to scratch
             scratch_path = "%s/%s" % (scratch_dir, file)
+            time_start = time()
             print local_file_path
             print dbx_path
             print scratch_path
             print " ... "
             download (dbx, scratch_path, dbx_path)
-            print "done"
-            exit(1)
+            print "done in %.1fs" % (time() - time_start)
             # check if the md5sum is the same as the original
-
+            md5sum_scratch = os.popen("md5sum %s | cut -d' ' -f 1" % scratch_path).read()
+            print "md5sum_scratch: ", md5sum_scratch
             # if the sums are not ok:  sound alarm and exit
-
+            if md5sum_scratch != md5sum_local:
+                print "md5sum mismatch"
+                exit(1)
             # store the name of the file to ARCHIVED
+            store_archived (local_dir, subfolder)
 
             # delete the original and the file in the scratch
+            exit(1)
 
 
 ####################################

@@ -1,7 +1,8 @@
 
-import time, os, dropbox
+import os, dropbox
+from time import time
 
-CHUNK_SIZE    = 100 * 1024 * 1024
+CHUNK_SIZE    = 10 * 1024 * 1024
 MAX_RETRIES   = 20
 
 

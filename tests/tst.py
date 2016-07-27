@@ -1,16 +1,13 @@
 #!/usr/bin/python
 
-import os
 
-local_dir = "/Users/ivana/Dropbox/Olaf"
-print local_dir
-print(os.path.isdir(local_dir))
-for dirpath, dirs, files in os.walk(local_dir):
-    print dirpath
-    subfolder = dirpath[len(local_dir):].strip(os.path.sep)
-    print subfolder
-    for file in files:
-        print "\t\t" + file
-    print
+import dropbox, os
+DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
 
+dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
+try:
+    metadata, res = dbx.files_download(path='/some_nonexistent_crap')
+except dropbox.exceptions.ApiError as err:
+    print "Download failure:", err
+    print "Not sure what that means, so I'll exit."
