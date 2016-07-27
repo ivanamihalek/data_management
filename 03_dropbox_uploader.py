@@ -3,7 +3,11 @@
 import os
 import dropbox
 
-import data_mgmt_utils
+
+import dropbox
+
+from  data_mgmt_utils.generic_utils import *
+from  data_mgmt_utils.dropbox_utils import *
 
 
 ####################################
