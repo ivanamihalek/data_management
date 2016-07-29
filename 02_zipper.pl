@@ -2,7 +2,7 @@
 
 $TEST_DRIVE = 0;
 
-$fromdir = "/data02";
+$fromdir = "/data01";
 
 sub process_extension   (@_);
 
