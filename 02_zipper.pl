@@ -58,6 +58,5 @@ sub make_tarballs (@_) {
                #exit(1)
             }
         }
-        exit;
     }
 }
