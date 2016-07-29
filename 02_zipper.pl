@@ -49,7 +49,7 @@ sub make_tarballs (@_) {
         chdir $path;
         print `pwd`;
         #foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
-        foreach my $cmd  ("tar -cf $dirname.tar $dir", "bzip2 $dirname.tar") {
+        foreach my $cmd  ("tar -cf $dirname.tar $dirname", "bzip2 $dirname.tar") {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
