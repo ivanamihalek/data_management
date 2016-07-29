@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-use data_mgmt_utils_pm::md5
+use data_mgmt_utils_pl::md5;
 
 $TEST_DRIVE = 0;
 
@@ -32,7 +32,7 @@ sub process_extension (@_) {
            print "$cmd\n";
         } else {
            (system $cmd) && die "error running $cmd\n";
-           my $md5sum = get_md5sum (0, $ext_file);
+           my ($md5sum, $dummy) = get_md5sum (0, $ext_file);
            print "md5sum:   $md5sum\n";
         }
     }

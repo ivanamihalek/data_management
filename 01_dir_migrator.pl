@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-use data_mgmt_utils_pm::md5
+use data_mgmt_utils_pl::md5;
 
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
@@ -238,8 +238,9 @@ sub process_extension (@_) {
                 $check_old_md5 = 1;
                 # have we calculated the md5 sum already?
                 # always check for the old md5 in the "from" directory
-                my $md5orig = get_md5sum (1, $ext_file);
-                my $md5new  = get_md5sum ($check_old_md5, $newfile);
+                my ($md5orig, $md5sum_file) = get_md5sum (1, $ext_file);
+                push @resolved_files, $md5sum_file; #this is our md5sum, we will not copy it as "other files from seq center"
+                my  ($md5new, $dummy) = get_md5sum ($check_old_md5, $newfile);
                 print "\t $md5orig\n";
                 print "\t $md5new\n";
                 $md5orig == $md5new && ($need_to_copy = 0);
@@ -248,8 +249,9 @@ sub process_extension (@_) {
                 print "\t copying to $newfile \n";
                 $check_old_md5 = 0; # in case we have a leftover
                 `cp $ext_file $newfile`;
-                my $md5orig = get_md5sum (1, $ext_file);
-                my $md5new  = get_md5sum ($check_old_md5, $newfile);
+                my ($md5orig, $md5sum_file) = get_md5sum (1, $ext_file);
+                push @resolved_files, $md5sum_file; #this is our md5sum, we will not copy it as "other files from seq center"
+                my ($md5new, $dummy) = get_md5sum ($check_old_md5, $newfile);
                 print "\t $md5orig\n";
                 print "\t $md5new\n";
                 $md5orig == $md5new || die "md5 sum mismatch\n";
