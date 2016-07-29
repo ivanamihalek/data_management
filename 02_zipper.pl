@@ -8,7 +8,9 @@ sub process_extension   (@_);
 
 ############### main ##################
 make_tarballs ("from_seq_center");
+exit;
 # find all files that end in tar, fastq, bam and bzip2 them
+process_extension("tar");
 process_extension("bam");
 process_extension("fastq");
 
@@ -48,11 +50,11 @@ sub make_tarballs (@_) {
         print "$path\n";
         chdir $path;
         #foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
-        foreach my $cmd  ("tar -cf $dirname.tar $dirname", "bzip2 $dirname.tar") {
+        foreach my $cmd  ("tar -cf $dirname.tar $dirname") {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
-                print "$cmd ", (system $cmd)
+                print "$cmd   ", (system $cmd), "\n";
                # (system $cmd) && die "error running $cmd\n";
                #exit(1)
             }

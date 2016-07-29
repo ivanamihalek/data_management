@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="" />
+    <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_zipper.pl" afterPath="$PROJECT_DIR$/02_zipper.pl" />
+    </list>
     <ignored path="data_management.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +36,8 @@
       <file leaf-file-name="02_zipper.pl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/02_zipper.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            <state relative-caret-position="774">
+              <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -421,8 +423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/02_zipper.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        <state relative-caret-position="774">
+          <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
           <folding />
         </state>
       </provider>
