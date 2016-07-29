@@ -1,4 +1,3 @@
-package md5;
 use strict;
 use warnings;
 
