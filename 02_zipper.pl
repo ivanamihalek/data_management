@@ -3,7 +3,7 @@ use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
 $TEST_DRIVE = 0;
 
-$fromdir = "/data01";
+$fromdir = "/data02";
 
 sub process_extension   (@_);
 
