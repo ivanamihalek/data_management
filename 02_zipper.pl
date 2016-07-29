@@ -31,7 +31,7 @@ sub process_extension (@_) {
         if ($TEST_DRIVE) {
            print "$cmd\n";
         } else {
-           system $cmd && die "error running $cmd\n";
+           (system $cmd) && die "error running $cmd\n";
         }
     }
 }
