@@ -47,7 +47,7 @@ sub make_tarballs (@_) {
         my @aux = split '/', $dir;
         my $dirname = pop @aux; # should be "from_seq_center" in this case
         my $path = join '/', @aux;
-        print "$path\n";
+        print "\n$path\n";
         chdir $path;
         foreach my $cmd  ("tar -cf $dirname.tar $dirname", "rm -r $dirname") {
             if ($TEST_DRIVE) {
