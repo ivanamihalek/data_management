@@ -54,8 +54,8 @@ sub make_tarballs (@_) {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
-                print "$cmd   ", (system $cmd), "\n";
-               # (system $cmd) && die "error running $cmd\n";
+                print "$cmd  \n";
+               (system $cmd) && die "error running $cmd\n";
                #exit(1)
             }
         }
