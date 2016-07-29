@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-$TEST_DRIVE = 1;
+$TEST_DRIVE = 0;
 
 $fromdir = "/data02";
 
@@ -41,7 +41,8 @@ sub make_tarballs (@_) {
     foreach my $dir (@dirs_to_compress) {
         chomp $dir;
         print "$dir\n";
-        foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
+        #foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
+        foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar") {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
