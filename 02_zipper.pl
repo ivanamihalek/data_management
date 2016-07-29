@@ -42,9 +42,9 @@ sub make_tarballs (@_) {
     foreach my $dir (@dirs_to_compress) {
         chomp $dir;
         chdir $home;
-        my @aux = split '\/', $dir;
+        my @aux = split '/', $dir;
         my $dirname = pop @aux; # should be "from_seq_center" in this case
-        my $path = join '\/', @aux;
+        my $path = join '/', @aux;
         print "$path\n";
         chdir $path;
         print `pwd`;
