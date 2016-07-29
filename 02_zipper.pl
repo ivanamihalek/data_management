@@ -33,7 +33,7 @@ sub process_extension (@_) {
     }
 }
 
-# the directory of "other" files from the seqeunceing center:
+# the directory of "other" files from the sequencing center:
 # make tarball and compress
 sub make_tarballs (@_) {
     my $dirname = $_[0];
@@ -48,5 +48,6 @@ sub make_tarballs (@_) {
                #exit(1)
             }
         }
+        exit;
     }
 }
