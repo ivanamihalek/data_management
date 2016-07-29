@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_zipper.pl" afterPath="$PROJECT_DIR$/02_zipper.pl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm" afterPath="$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/tst.pl" afterPath="$PROJECT_DIR$/tests/tst.pl" />
     </list>
     <ignored path="data_management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,8 +36,8 @@
       <file leaf-file-name="02_zipper.pl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/02_zipper.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="558">
+              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -58,8 +56,8 @@
       <file leaf-file-name="03_dropbox_uploader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="40" column="65" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
+            <state relative-caret-position="216">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#20#67#0" expanded="true" />
               </folding>
@@ -477,16 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="40" column="65" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
-          <folding>
-            <element signature="e#20#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/05_updater.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -511,10 +499,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#20#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/02_zipper.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="558">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
           <folding />
         </state>
       </provider>
