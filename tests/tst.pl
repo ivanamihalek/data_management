@@ -1,20 +1,5 @@
  #!/usr/bin/perl
-
- $ext_file = "/mnt/bodamer02/BO-2012-03_MR/fastq\ Files/BO-2012-03-IA_MR_201306686-05_S_6_1.txt.bz2";
-  my @aux = split '/', $ext_file;
-  print join "     ", @aux;
-  print "\n";
-exit;
-
-    my $filename = pop @aux;
-    print "$filename\n";
-    my $dirpath = join "/", @aux;
-    $dirpath .= "/md5sums";
-    print $dirpath, "\n";
-
-
-    #(-e $dirpath) || `mkdir $dirpath`;
-    my $md5sum_file = "$dirpath/$filename.md5";
-
-    print "$ext_file\n";
-    print "$md5sum_file\n";
+use data_mgmt_utils_pl::md5 qw(get_md5sum);
+$ext_file = "/home/ivana/scratch/1568419.jv.vcf.bz2";
+($md5sum, $dummy) = get_md5sum (0, $ext_file);
+print "$md5sum\n$dummy\n";

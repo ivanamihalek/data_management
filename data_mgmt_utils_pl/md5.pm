@@ -1,4 +1,8 @@
 package data_mgmt_utils_pl::md5;
+require Exporter;
+our @ISA = ("Exporter");
+our @EXPORT_OK = qw(get_md5sum);
+
 use strict;
 use warnings;
 
