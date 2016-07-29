@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data_mgmt_utils_py/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data_mgmt_utils/__init__.py" afterPath="$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data_mgmt_utils/dropbox_utils.py" afterPath="$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data_mgmt_utils/generic_utils.py" afterPath="$PROJECT_DIR$/data_mgmt_utils_py/generic_utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/01_dir_migrator.pl" afterPath="$PROJECT_DIR$/01_dir_migrator.pl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_zipper.pl" afterPath="$PROJECT_DIR$/02_zipper.pl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/03_dropbox_uploader.py" afterPath="$PROJECT_DIR$/03_dropbox_uploader.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/04_archiver.py" afterPath="$PROJECT_DIR$/04_archiver.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/05_updater.py" afterPath="$PROJECT_DIR$/05_updater.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/tst.pl" afterPath="$PROJECT_DIR$/tests/tst.pl" />
     </list>
     <ignored path="data_management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="03_dropbox_uploader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
+      <file leaf-file-name="01_dir_migrator.pl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+            <state relative-caret-position="702">
+              <caret line="240" column="56" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -36,9 +46,21 @@
       <file leaf-file-name="02_zipper.pl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/02_zipper.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            <state relative-caret-position="702">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="03_dropbox_uploader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="40" column="65" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
+              <folding>
+                <element signature="e#20#67#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,30 +68,30 @@
       <file leaf-file-name="04_archiver.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/04_archiver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="73" column="61" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python2.7/dist-packages/dropbox/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="765">
+              <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#353#400#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dropbox_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_mgmt_utils/dropbox_utils.py">
+      <file leaf-file-name="05_updater.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/05_updater.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="md5.pm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,16 +106,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/04_archiver.py" />
+        <option value="$PROJECT_DIR$/tests/tst.pl" />
+        <option value="$PROJECT_DIR$/05_updater.py" />
         <option value="$PROJECT_DIR$/03_dropbox_uploader.py" />
+        <option value="$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm" />
+        <option value="$PROJECT_DIR$/01_dir_migrator.pl" />
         <option value="$PROJECT_DIR$/02_zipper.pl" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="729" />
-    <option name="y" value="80" />
-    <option name="width" value="1577" />
-    <option name="height" value="1261" />
+    <option name="x" value="1009" />
+    <option name="y" value="22" />
+    <option name="width" value="1465" />
+    <option name="height" value="1281" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -149,7 +175,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data_mgmt_utils" />
+              <option name="myItemId" value="data_mgmt_utils_pl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -315,10 +341,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="729" y="80" width="1577" height="1261" extended-state="0" />
+    <frame x="1009" y="22" width="1465" height="1281" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24856961" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20054758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -357,7 +383,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-          <folding />
+          <folding>
+            <element signature="e#20#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -365,7 +393,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#353#400#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -374,12 +404,12 @@
         <state relative-caret-position="72">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_mgmt_utils/dropbox_utils.py">
+    <entry file="file://$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1062">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
@@ -387,44 +417,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/dropbox/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="126">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_mgmt_utils/dropbox_utils.py">
+    <entry file="file://$PROJECT_DIR$/tests/tst.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/tst.pl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05_updater.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/04_archiver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="73" column="61" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
+        <state relative-caret-position="765">
+          <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+          <folding>
+            <element signature="e#353#400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="240" column="56" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/03_dropbox_uploader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="720">
+          <caret line="40" column="65" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
+          <folding>
+            <element signature="e#20#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/02_zipper.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="702">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>

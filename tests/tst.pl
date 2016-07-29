@@ -1,9 +1,10 @@
  #!/usr/bin/perl
 
  $ext_file = "/mnt/bodamer02/BO-2012-03_MR/fastq\ Files/BO-2012-03-IA_MR_201306686-05_S_6_1.txt.bz2";
-  my @aux = split '\/', $ext_file;
+  my @aux = split '/', $ext_file;
   print join "     ", @aux;
   print "\n";
+exit;
 
     my $filename = pop @aux;
     print "$filename\n";

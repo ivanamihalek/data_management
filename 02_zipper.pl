@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+use data_mgmt_utils_pm::md5
 
 $TEST_DRIVE = 0;
 
@@ -17,7 +18,6 @@ process_extension("fastq");
 
 
 #######################################
-# recalculate the md5sum
 sub process_extension (@_) {
 
     my $ext = $_[0];
@@ -32,9 +32,12 @@ sub process_extension (@_) {
            print "$cmd\n";
         } else {
            (system $cmd) && die "error running $cmd\n";
+           my $md5sum = get_md5sum (0, $ext_file);
+           print "md5sum:   $md5sum\n";
         }
     }
 }
+
 #######################################
 # the directory of "other" files from the sequencing center:
 # make tarball and compress

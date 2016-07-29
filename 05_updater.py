@@ -3,7 +3,10 @@
 
 import os
 
-from data_mgmt_utils import *
+from  data_mgmt_utils_py.generic_utils import *
+from  data_mgmt_utils_py.dropbox_utils import *
+
+
 import dropbox
 
 ####################################
@@ -14,7 +17,7 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 
 ####################################
-def upload_with_timestamp checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
+def upload_with_timestamp_checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
 
     subdir = subfolder
     local_file_path = "/".join([local_dir, subdir, file_to_move])
