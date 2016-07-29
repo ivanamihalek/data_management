@@ -38,11 +38,18 @@ sub process_extension (@_) {
 sub make_tarballs (@_) {
     my $dirname = $_[0];
     my @dirs_to_compress = `find $fromdir  -name $dirname`;
+    my $home = `pwd`; chomp $home;
     foreach my $dir (@dirs_to_compress) {
         chomp $dir;
-        print "$dir\n";
+        chdir $home;
+        my @aux = split '\/', $dir;
+        my $dirname = pop @aux; # should be "from_seq_center" in this case
+        my $path = join '\/', @aux;
+        print "$path\n";
+        chdir $path;
+        print `pwd`;
         #foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
-        foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar") {
+        foreach my $cmd  ("tar -cf $dirname.tar $dir", "bzip2 $dirname.tar") {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
