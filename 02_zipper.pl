@@ -39,8 +39,9 @@ sub make_tarballs (@_) {
     my $dirname = $_[0];
     my @dirs_to_compress = `find $fromdir  -name $dirname`;
     foreach my $dir (@dirs_to_compress) {
+        chomp $dir;
         print "$dir\n";
-        foreach my $cmd  ("tar -cf $mydir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
+        foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
