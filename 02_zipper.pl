@@ -2,15 +2,16 @@
 
 $TEST_DRIVE = 0;
 
-$fromdir = "/data01";
+$fromdir = "/data02";
 
 sub process_extension   (@_);
 
 ############### main ##################
-make_tarballs ("from_seq_center");
-exit;
+#make_tarballs ("from_seq_center");
+#exit;
 # find all files that end in tar, fastq, bam and bzip2 them
 process_extension("tar");
+exit;
 process_extension("bam");
 process_extension("fastq");
 
@@ -25,16 +26,16 @@ sub process_extension (@_) {
     foreach $ext_file (@ext_files) {
         chomp $ext_file;
         print "$ext_file\n";
+        (-e "$ext_file.bz2") && `rm $ext_file.bz2`;
         $cmd = "bzip2 $ext_file";
         if ($TEST_DRIVE) {
            print "$cmd\n";
         } else {
-           #system $cmd && die "error running $cmd\n";
-           #exit(1)
+           system $cmd && die "error running $cmd\n";
         }
     }
 }
-
+#######################################
 # the directory of "other" files from the sequencing center:
 # make tarball and compress
 sub make_tarballs (@_) {
