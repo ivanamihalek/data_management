@@ -49,8 +49,7 @@ sub make_tarballs (@_) {
         my $path = join '/', @aux;
         print "$path\n";
         chdir $path;
-        #foreach my $cmd  ("tar -cf $dir.tar $dir", "bzip2 $dir.tar", "rm -r $dir") {
-        foreach my $cmd  ("tar -cf $dirname.tar $dirname") {
+        foreach my $cmd  ("tar -cf $dirname.tar $dirname", "rm -r $dirname") {
             if ($TEST_DRIVE) {
                print "$cmd\n";
             } else {
