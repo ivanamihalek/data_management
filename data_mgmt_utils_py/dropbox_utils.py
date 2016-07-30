@@ -85,9 +85,6 @@ def upload(dbx, local_file_path, dbx_path):
                     # if I get  error(104, 'Connection reset by peer'), I should probably go back to repoening the connection
                     print "Connection error", err
                     exit(1)
-                finally :
-                     print("Unexpected error:", sys.exc_info()[0])
-                     exit(1)
                 panic_ctr = 0
                 cursor.offset = f.tell()
                 chunk_counter += 1
