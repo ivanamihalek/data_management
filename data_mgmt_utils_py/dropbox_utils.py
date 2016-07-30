@@ -74,9 +74,16 @@ def upload(dbx, local_file_path, dbx_path):
                     dbx.files_upload_session_append(f.read(CHUNK_SIZE), cursor.session_id, cursor.offset)
                 except dropbox.exceptions.ApiError as err:
                     print "Chunk upload failure:", err
+                except requests.exceptions.ConnectionErroras as err:
+                    # if I get  error(104, 'Connection reset by peer'), I should probably go back to repoening the connection
+                    print "Connection error", err
+                    exit(1)
+                except :
+                     print("Unexpected error:", sys.exc_info()[0])
+                finally :
                     panic_ctr += 1
                     if panic_ctr > MAX_RETRIES:
-                        print "REached max number of retries. Bailing out."
+                        print "Reached max number of retries. Bailing out."
                         exit(1)
                     print "Will retry ..."
                     continue
