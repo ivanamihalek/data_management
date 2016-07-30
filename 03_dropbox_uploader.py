@@ -30,7 +30,7 @@ def upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, fi
 ####################################
 def main():
 
-    local_dir      = "/data01"
+    local_dir      = "/data02"
     dropbox_folder = "/raw_data"
 
     if not check_local_path(local_dir): exit(1)
