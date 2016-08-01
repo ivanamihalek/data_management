@@ -14,6 +14,8 @@ my $fromdir = $ARGV[0];
 
 if ($fromdir eq  "/mnt/bodamer02") {
     $todir = "/data01";
+} elsif ($fromdir eq  "/home/ivana/next_test_data"){
+    $todir = "/data01";
 } elsif ($fromdir eq  "/mnt/bodamer01"){
     $todir = "/data02";
 } else {
@@ -172,9 +174,9 @@ sub process_extension (@_) {
         if ( $ext eq "txt") {
             my $is_fastq = 0;
 
-            # it would take too long to unzip all fastq files, so I'll take the shorrtcut
-            # 1) the file with extenxion txt is fastq if it is in the fastq directory
-            # 2) the file with extenxion txt is fastq if it starts with @
+            # it would take too long to unzip all fastq files, so I'll take the shortcut
+            # 1) the file with extension txt is fastq if it is in the fastq directory
+            # 2) the file with extension txt is fastq if it starts with @
             # 3) only if the above two fail, go and unzip
             if ($ext_file =~ /fastq/i || $ext_file =~ /sequence/) {
                 $size  = `ls -l $ext_file | cut -d' ' -f 5`; chomp $size;
