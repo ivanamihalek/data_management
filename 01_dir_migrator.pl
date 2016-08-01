@@ -71,7 +71,7 @@ for $case (@cases) {
     ($case_id, $project) = split "_", $case;
     ($bo, $year, $caseno, $individual) = parse_case_id($case_id);
     $case_boid = $bo.$year.$caseno;
-    length $case_boid == 9 || die "bad BOID:  $bo   $year $caseno \n";
+    length $case_boid == 9 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
     print " $year   $caseno   $case_boid    $project \n";
     exit;
@@ -122,6 +122,7 @@ sub parse_case_id (@_){
 
 
     } elsif ($len==8) { # the new BOid format
+        $bo =  substr $case_id, 0, 2;
         $year   = substr $case_id, 2, 2;
         $caseno =  substr $case_id, 4, 2;
         $individual =  substr $case_id, 6, 2;
