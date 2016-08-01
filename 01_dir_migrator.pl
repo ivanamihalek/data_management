@@ -124,7 +124,7 @@ sub parse_case_id (@_){
     } elsif ($len==8) { # the new BOid format
         $bo         = substr $case_id, 0, 2;
         $year       = substr $case_id, 2, 2;
-        $casenov    = substr $case_id, 4, 2;
+        $caseno    = substr $case_id, 4, 2;
         $individual = substr $case_id, 6, 2;
 
     } else {
