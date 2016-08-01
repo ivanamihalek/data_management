@@ -78,7 +78,7 @@ for $case (@cases) {
     $project =~ s/201402006.ACE/FilaminC/g;
     $project =~ s/\-GeneDx//g;
 
-    $casedir = "$todir/$year/$caseno";
+    $casedir = "$todir/20$year/$caseno";
     
     if (defined $seen{$casedir}) {
 	    die "$casedir seen twice\n";
@@ -88,6 +88,7 @@ for $case (@cases) {
     (-e $casedir) || `mkdir -p $casedir`;
 
     `echo $project > $casedir/PROJECT`;
+    next;
 
     @resolved_files = ();
 
@@ -121,10 +122,10 @@ sub parse_case_id (@_){
 
 
     } elsif ($len==8) { # the new BOid format
-        $bo =  substr $case_id, 0, 2;
-        $year   = substr $case_id, 2, 2;
-        $caseno =  substr $case_id, 4, 2;
-        $individual =  substr $case_id, 6, 2;
+        $bo         = substr $case_id, 0, 2;
+        $year       = substr $case_id, 2, 2;
+        $casenov    = substr $case_id, 4, 2;
+        $individual = substr $case_id, 6, 2;
 
     } else {
         die  "Unexpected BOid format: $case_id\n";
