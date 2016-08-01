@@ -74,7 +74,6 @@ for $case (@cases) {
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
     print " $year   $caseno   $case_boid    $project \n";
-    exit;
 
     $project =~ s/201402006.ACE/FilaminC/g;
     $project =~ s/\-GeneDx//g;
