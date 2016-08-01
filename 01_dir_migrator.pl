@@ -14,7 +14,7 @@ my $fromdir = $ARGV[0];
 
 if ($fromdir eq  "/mnt/bodamer02") {
     $todir = "/data01";
-} elsif ($fromdir eq  "/home/ivana/next_test_data"){
+} elsif ($fromdir eq  "/home/ivana/next_test_data/2016/028"){
     $todir = "/data01";
 } elsif ($fromdir eq  "/mnt/bodamer01"){
     $todir = "/data02";
