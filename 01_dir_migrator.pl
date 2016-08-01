@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 use data_mgmt_utils_pl::md5;
-
+use strict;
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
@@ -8,10 +8,10 @@ use data_mgmt_utils_pl::md5;
 my $fromdir = $ARGV[0];
 
 
-%ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center", "bai"=>"alignments/by_seq_center",
+my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center", "bai"=>"alignments/by_seq_center",
 		 "fastq" => "reads", "txt" => "reads");
 
-
+my $todir;
 if ($fromdir eq  "/mnt/bodamer02") {
     $todir = "/data01";
 } elsif ($fromdir eq  "/home/ivana/next_test_data"){
@@ -35,11 +35,11 @@ sub process_extension   (@_);
 sub check_for_leftovers (@_);
 sub get_md5sum (@_);
 
-$TEST_DRIVE = 0;
+my $TEST_DRIVE = 1;
 
-@listing_level_1 = split "\n", `ls $fromdir`;
+my @listing_level_1 = split "\n", `ls $fromdir`;
 
-@cases  = ();
+my @cases  = ();
  
 foreach ( @listing_level_1 ) {
     if( -d "$fromdir/$_") {
@@ -47,17 +47,19 @@ foreach ( @listing_level_1 ) {
        /^BO/  && push @cases, $_;
     }
 }
-@cases || die "No cases labeled BO* found in $from_dir\n";
-%seen = {};
+@cases || die "No cases labeled BO* found in $fromdir\n";
+my %seen = {};
 
+my @resolved_files = ();
+my %resolved  = {};
 
-for $case (@cases) {
+for my $case (@cases) {
     
     print "\n$case\n";
-    @listing_level_2 = split "\n", `ls $fromdir/$case`;
+    my @listing_level_2 = split "\n", `ls $fromdir/$case`;
 
-    @dirs = ();
-    @files = ();
+    my @dirs = ();
+    my @files = ();
     foreach ( @listing_level_2 ) {
         if( -d "$fromdir/$case/$_") {
             push @dirs, $_;
@@ -67,17 +69,17 @@ for $case (@cases) {
             #print "\t file: $_\n";
         }
     }
-    ($case_id, $project) = split "_", $case;
-    ($bo, $year, $caseno) = parse_case_id($case_id);
-    $case_boid = $bo.$year.$caseno;
+    my ($case_id, $project) = split "_", $case;
+    my ($bo, $year, $caseno) = parse_case_id($case_id);
+    my $case_boid = $bo.$year.$caseno;
     print " $year   $caseno   $case_boid    $project \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
 
-    $project =~ s/201402006.ACE/FilaminC/g;
+    my $project =~ s/201402006.ACE/FilaminC/g;
     $project =~ s/\-GeneDx//g;
 
-    $casedir = "$todir/20$year/$caseno";
+    my $casedir = "$todir/20$year/$caseno";
     
     if (defined $seen{$casedir}) {
 	    die "$casedir seen twice\n";
@@ -87,15 +89,13 @@ for $case (@cases) {
     (-e $casedir) || `mkdir -p $casedir`;
 
     `echo $project > $casedir/PROJECT`;
-    next;
 
-    @resolved_files = ();
 
-    process_extension("txt");
-    process_extension("vcf");
-    process_extension("bam");
-    process_extension("bai");
-    process_extension("fastq");
+    process_extension($fromdir, $case,  $year, $caseno, $casedir , "txt");
+    process_extension($fromdir, $case,  $year, $caseno, $casedir, "vcf");
+    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bam");
+    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bai");
+    process_extension($fromdir, $case,  $year, $caseno, $casedir, "fastq");
 
     # turn to indicator hash:
     %resolved = map { $_ =>  1 } @resolved_files;
@@ -114,11 +114,9 @@ sub parse_case_id (@_){
 
     # old case id format
     if ($case_id =~ "-" ) {
-        undef $individual;
         ($bo, $year, $caseno) = split "-", $case_id;
         (length($year)==4)  && ($year = substr $year, 2,2);
         (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
-
 
     } elsif ($len==8) { # the new BOid format
         $bo         = substr $case_id, 0, 2;
@@ -132,7 +130,6 @@ sub parse_case_id (@_){
     ($caseno = "0".$caseno);
 
     return ($bo, $year, $caseno) ;
-
 }
 
 
@@ -147,10 +144,10 @@ sub check_for_leftovers (@_) {
 
         if (not defined $resolved{$thing_no_space} ) {
 
-            @path = split "/", $target_dir;
+            my @path = split "/", $target_dir;
             my $name = pop @path;
             $name =~ s/([\(\)])/\\$1/g;
-            $path = join "/", @path;
+            my $path = join "/", @path;
             $path =~ s/ /_/g;
             $path =~ s/([\(\)])/\\$1/g;
             (-e $path) || `mkdir -p $path`;
@@ -175,30 +172,50 @@ sub check_for_leftovers (@_) {
 ##################################################################################################
 sub process_extension (@_) {
 
-    my $ext = $_[0];
+    my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
     
     my @ext_files = `find $fromdir/$case  -name "*.$ext*"`;
 
-    $incomplete = 0;
-    foreach $ext_file (@ext_files) {
+    my $incomplete = 0;
+    foreach my $ext_file (@ext_files) {
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
-        $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_(.*\.$ext.*)/;
-        #defined $1 or die "boid could not be extracted:\n$ext_file\n";
-        if ( ! defined $1) {
-            #print "boid could not be extracted:\n$ext_file\n";
-            next;
+        my ($year2, $caseno2, $individual2);
+
+        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_(.*\.$ext.*)/ ) {
+            #defined $1 or die "boid could not be extracted:\n$ext_file\n";
+            if ( ! defined $1) {
+                #print "boid could not be extracted:\n$ext_file\n";
+                next;
+            }
+            ($year2, $caseno2, $individual2) = split "-", $1;
+            if ($individual2 =~ /III/) {
+                $individual2 =~ s/III/3/;
+
+            } elsif ($individual2 =~ /II/) {
+                $individual2 =~ s/II/2/;
+
+            }  elsif ($individual2 =~ /I/) {
+                $individual2 =~ s/I/1/;
+            }
+
+
+        } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_(.*\.$ext.*)/ ) {
+            $year2 = substr $1, 0, 2;
+            $caseno2 = substr $1, 2, 2;
+            $individual2 = substr $1, 5, 2;
         }
-        ($year2, $caseno2, $individual2) = split "-", $1;
+        ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
+
         (length($caseno2)==2)  || die  "Unexpected BOid format: $1\n";
         $caseno2 = "0".$caseno2;
-        $orig_file = $2;
+        my $boid = "BO".(substr $year, 2, 2).$caseno.$individual2;
+
+        my $orig_file = $2;
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
 
-
         # special for txt files that are actually fastq (...)
-
         if ( $ext eq "txt") {
             my $is_fastq = 0;
 
@@ -207,7 +224,7 @@ sub process_extension (@_) {
             # 2) the file with extension txt is fastq if it starts with @
             # 3) only if the above two fail, go and unzip
             if ($ext_file =~ /fastq/i || $ext_file =~ /sequence/) {
-                $size  = `ls -l $ext_file | cut -d' ' -f 5`; chomp $size;
+                my $size  = `ls -l $ext_file | cut -d' ' -f 5`; chomp $size;
                 $size /= 1024*1024;  $size = int $size;
                 $size > 0 and ($is_fastq = 1);
 
@@ -215,9 +232,9 @@ sub process_extension (@_) {
                 printf "need to unpack $ext_file\n";
                 exit;
             } else {
-                @lines = split "\n", `head -n 12 $ext_file`;
+                my @lines = split "\n", `head -n 12 $ext_file`;
 
-                foreach $line_ct (0 .. 9) {
+                foreach  my $line_ct (0 .. 9) {
                     $lines[$line_ct] =~ /^\@/ && $lines[$line_ct+2] =~ /^\+/ || next;
                     $is_fastq = 1;
                     last;
@@ -226,31 +243,15 @@ sub process_extension (@_) {
             $is_fastq || next;
         }
 	
-        ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
-        (defined $individual &&  $individual ne $individual2)  && die "** label mismatch for $case:\n$ext_file\n";
-
-        if ($individual2 =~ /III/) {
-            $individual2 =~ s/III/3/;
-
-        } elsif ($individual2 =~ /II/) {
-            $individual2 =~ s/II/2/;
-
-        }  elsif ($individual2 =~ /I/) {
-            $individual2 =~ s/I/1/;
-        }
-
-        $boid = $bo.(substr $year, 2, 2).$caseno.$individual2;
-
-
-        $boiddir = "$casedir/$boid";
+        my $boiddir = "$casedir/$boid";
         (-e $boiddir) || `mkdir $boiddir`;
 
-        $extdir = "$boiddir/wes/$ext2dirname{$ext}";
+        my $extdir = "$boiddir/wes/$ext2dirname{$ext}";
         (-e $extdir) || `mkdir -p  $extdir`;
 
         $incomplete && `echo some $ext files might be incomplete >> $extdir/NOTES`;
 
-        $new_name = $orig_file;
+        my $new_name = $orig_file;
         if ($ext eq  "txt") {
             $new_name =~ s/(.*)txt/$1fastq/;
         }
@@ -260,8 +261,8 @@ sub process_extension (@_) {
         } else {
 
             print "$ext_file\n";
-            $newfile = "$extdir/$boid\_$new_name";
-            $need_to_copy = 1;
+            my $newfile = "$extdir/$boid\_$new_name";
+            my $need_to_copy = 1;
             my $check_old_md5 = 1;
             if ( -e  $newfile && ! -z $newfile) {
                 print "\t $newfile found\n";
