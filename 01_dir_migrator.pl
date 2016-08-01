@@ -68,7 +68,7 @@ for $case (@cases) {
 	}
     }
     ($case_id, $project) = split "_", $case;
-    $bo, $year, $caseno, $individual) = parse_case_id($case_id);
+    ($bo, $year, $caseno, $individual) = parse_case_id($case_id);
     print " $year   $caseno   $case_boid    $project \n";
     exit;
 
@@ -109,8 +109,8 @@ $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extens
 ##################################################################################################
 sub parse_case_id (@_){
     my $case_id = $_[0];
-    my ($bo, $year, $caseno, $individual);
-    my len = length($case_id);
+    my ($bo, $year, $caseno, $individual) = ();
+    my $len = length($case_id);
 
     # old case id format
     if ($case_id =~ "_" ) {
@@ -120,7 +120,7 @@ sub parse_case_id (@_){
         (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
 
 
-    } elsif (len==8) { # the new BOid format
+    } elsif ($len==8) { # the new BOid format
         $year   = substr $case_id, 2, 2;
         $caseno =  substr $case_id, 4, 2;
         $individual =  substr $case_id, 6, 2;
