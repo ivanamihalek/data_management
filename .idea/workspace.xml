@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/01_dir_migrator.pl" afterPath="$PROJECT_DIR$/01_dir_migrator.pl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_zipper.pl" afterPath="$PROJECT_DIR$/02_zipper.pl" />
     </list>
     <ignored path="data_management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,11 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="01_dir_migrator.pl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="01_dir_migrator.pl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+            <state relative-caret-position="633">
+              <caret line="232" column="36" selection-start-line="232" selection-start-column="36" selection-end-line="232" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="02_zipper.pl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/02_zipper.pl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -67,10 +78,10 @@
         <option value="$PROJECT_DIR$/05_updater.py" />
         <option value="$PROJECT_DIR$/data_mgmt_utils_pl/md5.pm" />
         <option value="$PROJECT_DIR$/tests/tst.pl" />
-        <option value="$PROJECT_DIR$/02_zipper.pl" />
         <option value="$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py" />
         <option value="$PROJECT_DIR$/03_dropbox_uploader.py" />
         <option value="$PROJECT_DIR$/01_dir_migrator.pl" />
+        <option value="$PROJECT_DIR$/02_zipper.pl" />
       </list>
     </option>
   </component>
@@ -464,13 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_zipper.pl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="752">
@@ -491,8 +495,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+        <state relative-caret-position="633">
+          <caret line="232" column="36" selection-start-line="232" selection-start-column="36" selection-end-line="232" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_zipper.pl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding />
         </state>
       </provider>

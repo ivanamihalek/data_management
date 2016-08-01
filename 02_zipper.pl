@@ -13,6 +13,7 @@ sub process_extension   (@_);
 # find all files that end in tar, fastq, bam and bzip2 them
 process_extension("tar");
 process_extension("fastq");
+process_extension("gatk.vcf");
 
 
 #######################################
