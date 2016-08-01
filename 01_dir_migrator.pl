@@ -91,7 +91,7 @@ for my $case (@cases) {
     `echo $project > $casedir/PROJECT`;
 
 
-    process_extension($fromdir, $case,  $year, $caseno, $casedir , "txt");
+    process_extension($fromdir, $case,  $year, $caseno, $casedir, "txt");
     process_extension($fromdir, $case,  $year, $caseno, $casedir, "vcf");
     process_extension($fromdir, $case,  $year, $caseno, $casedir, "bam");
     process_extension($fromdir, $case,  $year, $caseno, $casedir, "bai");
@@ -189,6 +189,7 @@ sub process_extension (@_) {
                 next;
             }
             ($year2, $caseno2, $individual2) = split "-", $1;
+            $year2 = substr $year2, 2, 2;
             if ($individual2 =~ /III/) {
                 $individual2 =~ s/III/3/;
 
@@ -203,13 +204,13 @@ sub process_extension (@_) {
         } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_(.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
-            $individual2 = substr $1, 5, 2;
+            $individual2 = substr $1, 4, 2;
         }
         ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
 
         (length($caseno2)==2)  || die  "Unexpected BOid format: $1\n";
         $caseno2 = "0".$caseno2;
-        my $boid = "BO".(substr $year, 2, 2).$caseno.$individual2;
+        my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $2;
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
