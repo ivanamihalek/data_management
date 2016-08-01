@@ -45,8 +45,8 @@ foreach ( @listing_level_1 ) {
        /^BO/  && push @cases, $_;
     }
 }
-
-
+@cases || die "No cases labeled BO* found in $from_dir\n"
+;
 %seen = {};
 
 
