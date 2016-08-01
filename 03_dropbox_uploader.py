@@ -24,13 +24,12 @@ def upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, fi
         print dbx_path + "   found"
     else:
         print dbx_path + "   not found - uploading"
-        upload(dbx, local_file_path, dbx_path)
-
+        upload (dbx, local_file_path, dbx_path)
 
 ####################################
 def main():
 
-    local_dir      = "/data01"
+    local_dir      = "/data02"
     dropbox_folder = "/raw_data"
 
     if not check_local_path(local_dir): exit(1)
@@ -43,6 +42,7 @@ def main():
         for file in files:
             #if not file[-3:] in ["bz2", ".gz"]: continue
             if file[-3:] == "bam": continue
+            if file[-7:] == "bam.bz2": continue
             if file[-8:] == "gatk.vcf": continue
             print subfolder, file
             upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file)
