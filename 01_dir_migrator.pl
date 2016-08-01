@@ -35,7 +35,7 @@ sub process_extension   (@_);
 sub check_for_leftovers (@_);
 sub get_md5sum (@_);
 
-my $TEST_DRIVE = 1;
+my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
 my @listing_level_1 = split "\n", `ls $fromdir`;
 
