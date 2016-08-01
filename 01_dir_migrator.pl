@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-use data_mgmt_utils_pl::md5;
+use data_mgmt_utils_pl::md5 qw(get_md5sum);
 use strict;
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
