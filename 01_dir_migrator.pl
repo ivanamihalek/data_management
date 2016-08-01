@@ -47,8 +47,7 @@ foreach ( @listing_level_1 ) {
        /^BO/  && push @cases, $_;
     }
 }
-@cases || die "No cases labeled BO* found in $from_dir\n"
-;
+@cases || die "No cases labeled BO* found in $from_dir\n";
 %seen = {};
 
 
@@ -114,7 +113,7 @@ sub parse_case_id (@_){
     my $len = length($case_id);
 
     # old case id format
-    if ($case_id =~ "_" ) {
+    if ($case_id =~ "-" ) {
         undef $individual;
         ($bo, $year, $caseno) = split "-", $case_id;
         (length($year)==4)  && ($year = substr $year, 2,2);

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/02_zipper.pl" afterPath="$PROJECT_DIR$/02_zipper.pl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/01_dir_migrator.pl" afterPath="$PROJECT_DIR$/01_dir_migrator.pl" />
     </list>
     <ignored path="data_management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,21 +45,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="01_dir_migrator.pl" pinned="false" current-in-tab="false">
+      <file leaf-file-name="01_dir_migrator.pl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="232" column="36" selection-start-line="232" selection-start-column="36" selection-end-line="232" selection-end-column="36" />
+            <state relative-caret-position="828">
+              <caret line="115" column="22" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="02_zipper.pl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="02_zipper.pl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_zipper.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="648">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -79,8 +79,8 @@
         <option value="$PROJECT_DIR$/tests/tst.pl" />
         <option value="$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py" />
         <option value="$PROJECT_DIR$/03_dropbox_uploader.py" />
-        <option value="$PROJECT_DIR$/01_dir_migrator.pl" />
         <option value="$PROJECT_DIR$/02_zipper.pl" />
+        <option value="$PROJECT_DIR$/01_dir_migrator.pl" />
       </list>
     </option>
   </component>
@@ -492,18 +492,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
+    <entry file="file://$PROJECT_DIR$/02_zipper.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="232" column="36" selection-start-line="232" selection-start-column="36" selection-end-line="232" selection-end-column="36" />
+        <state relative-caret-position="648">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/02_zipper.pl">
+    <entry file="file://$PROJECT_DIR$/01_dir_migrator.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        <state relative-caret-position="828">
+          <caret line="115" column="22" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
           <folding />
         </state>
       </provider>
