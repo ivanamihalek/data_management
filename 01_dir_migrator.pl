@@ -14,7 +14,7 @@ my $fromdir = $ARGV[0];
 
 if ($fromdir eq  "/mnt/bodamer02") {
     $todir = "/data01";
-} elsif ($fromdir eq  "/home/ivana/next_test_data/2016/028"){
+} elsif ($fromdir eq  "/home/ivana/next_test_data"){
     $todir = "/data01";
 } elsif ($fromdir eq  "/mnt/bodamer01"){
     $todir = "/data02";
@@ -60,13 +60,13 @@ for $case (@cases) {
     @dirs = ();
     @files = ();
     foreach ( @listing_level_2 ) {
-	if( -d "$fromdir/$case/$_") {
-	    push @dirs, $_;
-	    #print "\t  dir: $_\n";
-	} else {
-	    push @files, $_;
-	    #print "\t file: $_\n";
-	}
+        if( -d "$fromdir/$case/$_") {
+            push @dirs, $_;
+            #print "\t  dir: $_\n";
+        } else {
+            push @files, $_;
+            #print "\t file: $_\n";
+        }
     }
     ($case_id, $project) = split "_", $case;
     ($bo, $year, $caseno, $individual) = parse_case_id($case_id);
