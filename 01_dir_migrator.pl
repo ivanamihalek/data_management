@@ -43,7 +43,7 @@ $TEST_DRIVE = 0;
  
 foreach ( @listing_level_1 ) {
     if( -d "$fromdir/$_") {
-       /^BO/  && push @cases, $_;
+       /^BO/  && push @cases, (chomp $_);
     }
 }
 @cases || die "No cases labeled BO* found in $from_dir\n"
