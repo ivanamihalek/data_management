@@ -70,11 +70,11 @@ for $case (@cases) {
     }
     ($case_id, $project) = split "_", $case;
     ($bo, $year, $caseno, $individual) = parse_case_id($case_id);
-    print " $year   $caseno   $case_boid    $project \n";
-    exit;
-
     $case_boid = $bo.$year.$caseno;
     length $case_boid == 9 || die "bad BOID:  $bo   $year $caseno \n";
+
+    print " $year   $caseno   $case_boid    $project \n";
+    exit;
 
     $project =~ s/201402006.ACE/FilaminC/g;
     $project =~ s/\-GeneDx//g;
