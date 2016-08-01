@@ -30,6 +30,7 @@ if ($fromdir eq  "/mnt/bodamer02") {
 -d $fromdir || die "$todir does not seem to be a directory.\n";
 
 
+sub parse_case_id (@_);
 sub process_extension   (@_);
 sub check_for_leftovers (@_);
 sub get_md5sum (@_);
@@ -67,15 +68,12 @@ for $case (@cases) {
 	}
     }
     ($case_id, $project) = split "_", $case;
-    undef $individual;
-    ($bo, $year, $caseno, $individual) = split "-", $case_id;
-
-    (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
-    $caseno = "0".$caseno;
+    $bo, $year, $caseno, $individual) = parse_case_id($case_id);
+    print " $year   $caseno   $case_boid    $project \n";
+    exit;
 
     $case_boid = $bo.$year.$caseno;
     length $case_boid == 9 || die "bad BOID:  $bo   $year $caseno \n";
-    print " $year   $caseno   $case_boid    $project \n";
 
     $project =~ s/201402006.ACE/FilaminC/g;
     $project =~ s/\-GeneDx//g;
@@ -106,6 +104,36 @@ for $case (@cases) {
 
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
 
+
+
+##################################################################################################
+sub parse_case_id (@_){
+    my $case_id = $_[0];
+    my ($bo, $year, $caseno, $individual);
+    my len = length($case_id);
+
+    # old case id format
+    if ($case_id =~ "_" ) {
+        undef $individual;
+        ($bo, $year, $caseno, $individual) = split "-", $case_id;
+
+        (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
+
+
+    } elsif (len==8) { # the new BOid format
+        $year   = substr $case_id, 2, 2;
+        $caseno =  substr $case_id, 4, 2;
+        $individual =  substr $case_id, 6, 2;
+
+    } else {
+        die  "Unexpected BOid format: $case_id\n";
+    }
+
+    ($caseno = "0".$caseno);
+
+    return ($bo, $year, $caseno, $individual) ;
+
+}
 
 
 ##################################################################################################
