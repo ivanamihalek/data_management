@@ -71,9 +71,9 @@ for $case (@cases) {
     ($case_id, $project) = split "_", $case;
     ($bo, $year, $caseno, $individual) = parse_case_id($case_id);
     $case_boid = $bo.$year.$caseno;
+    print " $year   $caseno   $case_boid    $project \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
-    print " $year   $caseno   $case_boid    $project \n";
 
     $project =~ s/201402006.ACE/FilaminC/g;
     $project =~ s/\-GeneDx//g;
