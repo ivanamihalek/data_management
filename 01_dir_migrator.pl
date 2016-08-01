@@ -73,7 +73,7 @@ for my $case (@cases) {
     my ($bo, $year, $caseno) = parse_case_id($case_id);
     my $case_boid = $bo.$year.$caseno;
     print " $year   $caseno   $case_boid    $project \n";
-    length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
+    length $case_boid == 6 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
 
     my $project =~ s/201402006.ACE/FilaminC/g;
