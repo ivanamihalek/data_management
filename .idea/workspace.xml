@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb2f6ce0-ce4a-4f0c-b131-42e659728447" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py" afterPath="$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py" />
     </list>
     <ignored path="data_management.iws" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="dropbox_utils.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+            <state relative-caret-position="90">
+              <caret line="76" column="10" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
               </folding>
@@ -529,8 +528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_mgmt_utils_py/dropbox_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+        <state relative-caret-position="90">
+          <caret line="76" column="10" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
           </folding>

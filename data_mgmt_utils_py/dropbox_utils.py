@@ -86,6 +86,12 @@ def upload(dbx, local_file_path, dbx_path):
                     print "Connection error", err
                     print "Moving on"
                     break
+                except Exception as err:
+                    print "Generic Exception", err
+                    break
+                except BaseException as err:
+                    print "BaseException", err
+                    break
                 panic_ctr = 0
                 cursor.offset = f.tell()
                 chunk_counter += 1
