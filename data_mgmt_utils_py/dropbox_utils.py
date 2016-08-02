@@ -73,7 +73,7 @@ def upload(dbx, local_file_path, dbx_path):
             else:
                 try :
                     dbx.files_upload_session_append(f.read(CHUNK_SIZE), cursor.session_id, cursor.offset)
-                except dropbox.exceptions.ApiError as err:
+                except (dropbox.exceptions.ApiError, dropbox.exceptions.InternalServerError) as err:
                     print "Chunk upload failure:", err
                     panic_ctr += 1
                     if panic_ctr > MAX_RETRIES:
