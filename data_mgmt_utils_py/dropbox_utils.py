@@ -81,10 +81,11 @@ def upload(dbx, local_file_path, dbx_path):
                         exit(1)
                     print "Will retry ..."
                     continue
-                except requests.exceptions.ConnectionErrors as err:
+                except requests.exceptions.ConnectionError as err:
                     # if I get  error(104, 'Connection reset by peer'), I should probably go back to repoening the connection
                     print "Connection error", err
-                    exit(1)
+                    print "Moving on"
+                    break
                 panic_ctr = 0
                 cursor.offset = f.tell()
                 chunk_counter += 1
