@@ -1,0 +1,406 @@
+2016/028 PROJECT
+('Dropbox path:', '/raw_data/2016/028/PROJECT')
+('Local file path:', '/data01/2016/028/PROJECT')
+/raw_data/2016/028/PROJECT   found
+2016/028/BO160282B/wes/variants/called_by_seq_center BO160282B_NPC1_1568419.vcf.gz
+('Dropbox path:', '/raw_data/2016/028/BO160282B/wes/variants/called_by_seq_center/BO160282B_NPC1_1568419.vcf.gz')
+('Local file path:', '/data01/2016/028/BO160282B/wes/variants/called_by_seq_center/BO160282B_NPC1_1568419.vcf.gz')
+/raw_data/2016/028/BO160282B/wes/variants/called_by_seq_center/BO160282B_NPC1_1568419.vcf.gz   found
+2016/028/BO160282B/wes/variants/called_by_seq_center/md5sums BO160282B_NPC1_1568419.vcf.gz.md5
+('Dropbox path:', '/raw_data/2016/028/BO160282B/wes/variants/called_by_seq_center/md5sums/BO160282B_NPC1_1568419.vcf.gz.md5')
+('Local file path:', '/data01/2016/028/BO160282B/wes/variants/called_by_seq_center/md5sums/BO160282B_NPC1_1568419.vcf.gz.md5')
+/raw_data/2016/028/BO160282B/wes/variants/called_by_seq_center/md5sums/BO160282B_NPC1_1568419.vcf.gz.md5   found
+2016/028/BO160282B/wes/alignments/by_seq_center BO160282B_NPC1_1568419.bai
+('Dropbox path:', '/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/BO160282B_NPC1_1568419.bai')
+('Local file path:', '/data01/2016/028/BO160282B/wes/alignments/by_seq_center/BO160282B_NPC1_1568419.bai')
+/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/BO160282B_NPC1_1568419.bai   found
+2016/028/BO160282B/wes/alignments/by_seq_center BO160282B_NPC1_1568419.bam
+('Dropbox path:', '/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/BO160282B_NPC1_1568419.bam')
+('Local file path:', '/data01/2016/028/BO160282B/wes/alignments/by_seq_center/BO160282B_NPC1_1568419.bam')
+/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/BO160282B_NPC1_1568419.bam   not found - uploading
+
+####################
+file size = 18479135496, CHUNK_SIZE = 10485760  ==> approx 1762 chunks to upload
+Uploaded 10 chunks in 50.3s. Estimated time remaining 146.8 min.
+Uploaded 20 chunks in 98.8s. Estimated time remaining 143.4 min.
+Uploaded 30 chunks in 142.8s. Estimated time remaining 137.4 min.
+Uploaded 40 chunks in 189.0s. Estimated time remaining 135.6 min.
+Uploaded 50 chunks in 232.6s. Estimated time remaining 132.8 min.
+Uploaded 60 chunks in 277.6s. Estimated time remaining 131.3 min.
+Uploaded 70 chunks in 323.3s. Estimated time remaining 130.3 min.
+Uploaded 80 chunks in 368.7s. Estimated time remaining 129.2 min.
+Uploaded 90 chunks in 412.0s. Estimated time remaining 127.6 min.
+Uploaded 100 chunks in 458.2s. Estimated time remaining 126.9 min.
+Uploaded 110 chunks in 499.4s. Estimated time remaining 125.0 min.
+Uploaded 120 chunks in 541.4s. Estimated time remaining 123.5 min.
+Uploaded 130 chunks in 584.2s. Estimated time remaining 122.2 min.
+Uploaded 140 chunks in 632.0s. Estimated time remaining 122.0 min.
+Uploaded 150 chunks in 674.8s. Estimated time remaining 120.9 min.
+Uploaded 160 chunks in 719.8s. Estimated time remaining 120.1 min.
+Uploaded 170 chunks in 765.8s. Estimated time remaining 119.5 min.
+Uploaded 180 chunks in 810.0s. Estimated time remaining 118.7 min.
+Uploaded 190 chunks in 853.1s. Estimated time remaining 117.6 min.
+Uploaded 200 chunks in 897.8s. Estimated time remaining 116.9 min.
+Uploaded 210 chunks in 943.4s. Estimated time remaining 116.2 min.
+Uploaded 220 chunks in 990.4s. Estimated time remaining 115.7 min.
+Uploaded 230 chunks in 1035.0s. Estimated time remaining 114.9 min.
+Uploaded 240 chunks in 1082.8s. Estimated time remaining 114.4 min.
+Uploaded 250 chunks in 1131.0s. Estimated time remaining 114.0 min.
+Uploaded 260 chunks in 1177.6s. Estimated time remaining 113.4 min.
+Uploaded 270 chunks in 1224.7s. Estimated time remaining 112.8 min.
+Uploaded 280 chunks in 1271.4s. Estimated time remaining 112.2 min.
+Uploaded 290 chunks in 1319.7s. Estimated time remaining 111.6 min.
+Uploaded 300 chunks in 1362.8s. Estimated time remaining 110.7 min.
+Uploaded 310 chunks in 1409.8s. Estimated time remaining 110.1 min.
+Uploaded 320 chunks in 1457.6s. Estimated time remaining 109.5 min.
+Uploaded 330 chunks in 1506.6s. Estimated time remaining 109.0 min.
+Uploaded 340 chunks in 1552.5s. Estimated time remaining 108.2 min.
+Uploaded 350 chunks in 1602.5s. Estimated time remaining 107.7 min.
+Uploaded 360 chunks in 1657.1s. Estimated time remaining 107.6 min.
+Uploaded 370 chunks in 1705.8s. Estimated time remaining 107.0 min.
+Uploaded 380 chunks in 1757.9s. Estimated time remaining 106.6 min.
+Uploaded 390 chunks in 1812.7s. Estimated time remaining 106.3 min.
+Uploaded 400 chunks in 1862.8s. Estimated time remaining 105.7 min.
+Uploaded 410 chunks in 1915.5s. Estimated time remaining 105.3 min.
+Uploaded 420 chunks in 1966.7s. Estimated time remaining 104.7 min.
+Uploaded 430 chunks in 2020.8s. Estimated time remaining 104.3 min.
+Uploaded 440 chunks in 2068.9s. Estimated time remaining 103.6 min.
+Uploaded 450 chunks in 2120.3s. Estimated time remaining 103.0 min.
+Uploaded 460 chunks in 2173.0s. Estimated time remaining 102.5 min.
+Uploaded 470 chunks in 2222.5s. Estimated time remaining 101.8 min.
+Uploaded 480 chunks in 2273.8s. Estimated time remaining 101.2 min.
+Uploaded 490 chunks in 2326.1s. Estimated time remaining 100.6 min.
+Uploaded 500 chunks in 2379.8s. Estimated time remaining 100.1 min.
+Uploaded 510 chunks in 2428.7s. Estimated time remaining 99.4 min.
+Uploaded 520 chunks in 2477.5s. Estimated time remaining 98.6 min.
+Uploaded 530 chunks in 2526.4s. Estimated time remaining 97.9 min.
+Uploaded 540 chunks in 2571.0s. Estimated time remaining 97.0 min.
+Uploaded 550 chunks in 2614.0s. Estimated time remaining 96.0 min.
+Uploaded 560 chunks in 2664.9s. Estimated time remaining 95.3 min.
+Uploaded 570 chunks in 2710.3s. Estimated time remaining 94.5 min.
+Uploaded 580 chunks in 2759.8s. Estimated time remaining 93.7 min.
+Uploaded 590 chunks in 2806.7s. Estimated time remaining 92.9 min.
+Uploaded 600 chunks in 2856.8s. Estimated time remaining 92.2 min.
+Uploaded 610 chunks in 2902.5s. Estimated time remaining 91.4 min.
+Uploaded 620 chunks in 2946.4s. Estimated time remaining 90.5 min.
+Uploaded 630 chunks in 2991.8s. Estimated time remaining 89.6 min.
+Uploaded 640 chunks in 3040.0s. Estimated time remaining 88.8 min.
+Uploaded 650 chunks in 3090.3s. Estimated time remaining 88.1 min.
+Uploaded 660 chunks in 3139.5s. Estimated time remaining 87.4 min.
+Uploaded 670 chunks in 3191.8s. Estimated time remaining 86.7 min.
+Uploaded 680 chunks in 3240.8s. Estimated time remaining 85.9 min.
+Uploaded 690 chunks in 3288.8s. Estimated time remaining 85.2 min.
+Uploaded 700 chunks in 3336.9s. Estimated time remaining 84.4 min.
+Uploaded 710 chunks in 3389.9s. Estimated time remaining 83.7 min.
+Uploaded 720 chunks in 3442.1s. Estimated time remaining 83.0 min.
+Uploaded 730 chunks in 3495.0s. Estimated time remaining 82.3 min.
+Uploaded 740 chunks in 3552.1s. Estimated time remaining 81.8 min.
+Uploaded 750 chunks in 3605.9s. Estimated time remaining 81.1 min.
+Uploaded 760 chunks in 3658.4s. Estimated time remaining 80.4 min.
+Uploaded 770 chunks in 3710.3s. Estimated time remaining 79.7 min.
+Uploaded 780 chunks in 3763.1s. Estimated time remaining 79.0 min.
+Uploaded 790 chunks in 3816.2s. Estimated time remaining 78.3 min.
+Uploaded 800 chunks in 3864.4s. Estimated time remaining 77.4 min.
+Uploaded 810 chunks in 3912.1s. Estimated time remaining 76.6 min.
+Uploaded 820 chunks in 3958.6s. Estimated time remaining 75.8 min.
+Uploaded 830 chunks in 4011.4s. Estimated time remaining 75.1 min.
+Uploaded 840 chunks in 4058.4s. Estimated time remaining 74.2 min.
+Uploaded 850 chunks in 4106.4s. Estimated time remaining 73.4 min.
+Uploaded 860 chunks in 4154.4s. Estimated time remaining 72.6 min.
+Uploaded 870 chunks in 4204.6s. Estimated time remaining 71.8 min.
+Uploaded 880 chunks in 4253.6s. Estimated time remaining 71.1 min.
+Uploaded 890 chunks in 4301.1s. Estimated time remaining 70.2 min.
+Uploaded 900 chunks in 4347.8s. Estimated time remaining 69.4 min.
+Uploaded 910 chunks in 4400.0s. Estimated time remaining 68.7 min.
+Uploaded 920 chunks in 4454.7s. Estimated time remaining 68.0 min.
+Uploaded 930 chunks in 4505.3s. Estimated time remaining 67.2 min.
+Uploaded 940 chunks in 4556.5s. Estimated time remaining 66.4 min.
+Uploaded 950 chunks in 4611.4s. Estimated time remaining 65.7 min.
+Uploaded 960 chunks in 4662.9s. Estimated time remaining 64.9 min.
+Uploaded 970 chunks in 4716.7s. Estimated time remaining 64.2 min.
+Uploaded 980 chunks in 4769.9s. Estimated time remaining 63.4 min.
+Uploaded 990 chunks in 4825.5s. Estimated time remaining 62.7 min.
+Uploaded 1000 chunks in 4876.8s. Estimated time remaining 61.9 min.
+Uploaded 1010 chunks in 4927.2s. Estimated time remaining 61.1 min.
+Uploaded 1020 chunks in 4973.7s. Estimated time remaining 60.3 min.
+Uploaded 1030 chunks in 5020.8s. Estimated time remaining 59.5 min.
+Uploaded 1040 chunks in 5074.4s. Estimated time remaining 58.7 min.
+Uploaded 1050 chunks in 5126.1s. Estimated time remaining 57.9 min.
+Uploaded 1060 chunks in 5181.6s. Estimated time remaining 57.2 min.
+Uploaded 1070 chunks in 5230.3s. Estimated time remaining 56.4 min.
+Uploaded 1080 chunks in 5284.4s. Estimated time remaining 55.6 min.
+Uploaded 1090 chunks in 5335.3s. Estimated time remaining 54.8 min.
+Uploaded 1100 chunks in 5387.6s. Estimated time remaining 54.0 min.
+Uploaded 1110 chunks in 5440.4s. Estimated time remaining 53.3 min.
+Uploaded 1120 chunks in 5490.4s. Estimated time remaining 52.5 min.
+Uploaded 1130 chunks in 5541.0s. Estimated time remaining 51.7 min.
+Uploaded 1140 chunks in 5589.8s. Estimated time remaining 50.8 min.
+Uploaded 1150 chunks in 5638.8s. Estimated time remaining 50.0 min.
+Uploaded 1160 chunks in 5686.3s. Estimated time remaining 49.2 min.
+Uploaded 1170 chunks in 5739.1s. Estimated time remaining 48.4 min.
+Uploaded 1180 chunks in 5789.1s. Estimated time remaining 47.6 min.
+Uploaded 1190 chunks in 5835.2s. Estimated time remaining 46.7 min.
+Uploaded 1200 chunks in 5888.4s. Estimated time remaining 46.0 min.
+Uploaded 1210 chunks in 5939.8s. Estimated time remaining 45.2 min.
+Uploaded 1220 chunks in 5991.4s. Estimated time remaining 44.4 min.
+Uploaded 1230 chunks in 6044.1s. Estimated time remaining 43.6 min.
+Uploaded 1240 chunks in 6093.6s. Estimated time remaining 42.8 min.
+Uploaded 1250 chunks in 6145.5s. Estimated time remaining 42.0 min.
+Uploaded 1260 chunks in 6202.2s. Estimated time remaining 41.2 min.
+Uploaded 1270 chunks in 6254.0s. Estimated time remaining 40.4 min.
+Uploaded 1280 chunks in 6307.2s. Estimated time remaining 39.6 min.
+Uploaded 1290 chunks in 6359.9s. Estimated time remaining 38.8 min.
+Uploaded 1300 chunks in 6418.1s. Estimated time remaining 38.0 min.
+Uploaded 1310 chunks in 6475.2s. Estimated time remaining 37.2 min.
+Uploaded 1320 chunks in 6524.1s. Estimated time remaining 36.4 min.
+Uploaded 1330 chunks in 6573.4s. Estimated time remaining 35.6 min.
+Uploaded 1340 chunks in 6620.1s. Estimated time remaining 34.7 min.
+Uploaded 1350 chunks in 6668.7s. Estimated time remaining 33.9 min.
+Uploaded 1360 chunks in 6713.0s. Estimated time remaining 33.1 min.
+Uploaded 1370 chunks in 6763.7s. Estimated time remaining 32.3 min.
+Uploaded 1380 chunks in 6815.9s. Estimated time remaining 31.4 min.
+Uploaded 1390 chunks in 6864.9s. Estimated time remaining 30.6 min.
+Uploaded 1400 chunks in 6913.1s. Estimated time remaining 29.8 min.
+Uploaded 1410 chunks in 6968.4s. Estimated time remaining 29.0 min.
+Uploaded 1420 chunks in 7018.0s. Estimated time remaining 28.2 min.
+Uploaded 1430 chunks in 7068.4s. Estimated time remaining 27.4 min.
+Uploaded 1440 chunks in 7115.4s. Estimated time remaining 26.5 min.
+Uploaded 1450 chunks in 7166.6s. Estimated time remaining 25.7 min.
+Uploaded 1460 chunks in 7219.6s. Estimated time remaining 24.9 min.
+Uploaded 1470 chunks in 7269.3s. Estimated time remaining 24.1 min.
+Uploaded 1480 chunks in 7324.5s. Estimated time remaining 23.3 min.
+Uploaded 1490 chunks in 7375.6s. Estimated time remaining 22.4 min.
+Uploaded 1500 chunks in 7426.9s. Estimated time remaining 21.6 min.
+Uploaded 1510 chunks in 7477.2s. Estimated time remaining 20.8 min.
+Uploaded 1520 chunks in 7529.5s. Estimated time remaining 20.0 min.
+Uploaded 1530 chunks in 7585.5s. Estimated time remaining 19.2 min.
+Uploaded 1540 chunks in 7635.4s. Estimated time remaining 18.3 min.
+Uploaded 1550 chunks in 7688.0s. Estimated time remaining 17.5 min.
+Uploaded 1560 chunks in 7740.6s. Estimated time remaining 16.7 min.
+Uploaded 1570 chunks in 7790.6s. Estimated time remaining 15.9 min.
+Uploaded 1580 chunks in 7844.7s. Estimated time remaining 15.1 min.
+Uploaded 1590 chunks in 7894.0s. Estimated time remaining 14.2 min.
+Uploaded 1600 chunks in 7946.4s. Estimated time remaining 13.4 min.
+Uploaded 1610 chunks in 7992.3s. Estimated time remaining 12.6 min.
+Uploaded 1620 chunks in 8040.4s. Estimated time remaining 11.7 min.
+Uploaded 1630 chunks in 8085.3s. Estimated time remaining 10.9 min.
+Uploaded 1640 chunks in 8131.5s. Estimated time remaining 10.1 min.
+Uploaded 1650 chunks in 8180.0s. Estimated time remaining 9.3 min.
+Uploaded 1660 chunks in 8229.4s. Estimated time remaining 8.4 min.
+Uploaded 1670 chunks in 8275.2s. Estimated time remaining 7.6 min.
+Uploaded 1680 chunks in 8322.7s. Estimated time remaining 6.8 min.
+Uploaded 1690 chunks in 8369.9s. Estimated time remaining 5.9 min.
+Uploaded 1700 chunks in 8422.7s. Estimated time remaining 5.1 min.
+Uploaded 1710 chunks in 8472.6s. Estimated time remaining 4.3 min.
+Uploaded 1720 chunks in 8519.7s. Estimated time remaining 3.5 min.
+Uploaded 1730 chunks in 8565.8s. Estimated time remaining 2.6 min.
+Uploaded 1740 chunks in 8615.0s. Estimated time remaining 1.8 min.
+Uploaded 1750 chunks in 8660.8s. Estimated time remaining 1.0 min.
+Uploaded 1760 chunks in 8707.1s. Estimated time remaining 0.2 min.
+Finished uploading in 8715.1 s.
+2016/028/BO160282B/wes/alignments/by_seq_center/md5sums BO160282B_NPC1_1568419.bam.md5
+('Dropbox path:', '/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/md5sums/BO160282B_NPC1_1568419.bam.md5')
+('Local file path:', '/data01/2016/028/BO160282B/wes/alignments/by_seq_center/md5sums/BO160282B_NPC1_1568419.bam.md5')
+/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/md5sums/BO160282B_NPC1_1568419.bam.md5   found
+2016/028/BO160282B/wes/alignments/by_seq_center/md5sums BO160282B_NPC1_1568419.bai.md5
+('Dropbox path:', '/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/md5sums/BO160282B_NPC1_1568419.bai.md5')
+('Local file path:', '/data01/2016/028/BO160282B/wes/alignments/by_seq_center/md5sums/BO160282B_NPC1_1568419.bai.md5')
+/raw_data/2016/028/BO160282B/wes/alignments/by_seq_center/md5sums/BO160282B_NPC1_1568419.bai.md5   found
+2016/028/BO160282A/wes/variants/called_by_seq_center BO160282A_NPC1_1568981.vcf.gz
+('Dropbox path:', '/raw_data/2016/028/BO160282A/wes/variants/called_by_seq_center/BO160282A_NPC1_1568981.vcf.gz')
+('Local file path:', '/data01/2016/028/BO160282A/wes/variants/called_by_seq_center/BO160282A_NPC1_1568981.vcf.gz')
+/raw_data/2016/028/BO160282A/wes/variants/called_by_seq_center/BO160282A_NPC1_1568981.vcf.gz   found
+2016/028/BO160282A/wes/variants/called_by_seq_center/md5sums BO160282A_NPC1_1568981.vcf.gz.md5
+('Dropbox path:', '/raw_data/2016/028/BO160282A/wes/variants/called_by_seq_center/md5sums/BO160282A_NPC1_1568981.vcf.gz.md5')
+('Local file path:', '/data01/2016/028/BO160282A/wes/variants/called_by_seq_center/md5sums/BO160282A_NPC1_1568981.vcf.gz.md5')
+/raw_data/2016/028/BO160282A/wes/variants/called_by_seq_center/md5sums/BO160282A_NPC1_1568981.vcf.gz.md5   found
+2016/028/BO160282A/wes/alignments/by_seq_center BO160282A_NPC1_1568981.bam
+('Dropbox path:', '/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/BO160282A_NPC1_1568981.bam')
+('Local file path:', '/data01/2016/028/BO160282A/wes/alignments/by_seq_center/BO160282A_NPC1_1568981.bam')
+/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/BO160282A_NPC1_1568981.bam   not found - uploading
+
+####################
+file size = 25040073310, CHUNK_SIZE = 10485760  ==> approx 2388 chunks to upload
+Uploaded 10 chunks in 52.3s. Estimated time remaining 207.3 min.
+Uploaded 20 chunks in 102.6s. Estimated time remaining 202.5 min.
+Uploaded 30 chunks in 152.7s. Estimated time remaining 200.1 min.
+Uploaded 40 chunks in 203.5s. Estimated time remaining 199.1 min.
+Uploaded 50 chunks in 253.9s. Estimated time remaining 197.9 min.
+Uploaded 60 chunks in 301.7s. Estimated time remaining 195.1 min.
+Uploaded 70 chunks in 352.1s. Estimated time remaining 194.3 min.
+Uploaded 80 chunks in 397.1s. Estimated time remaining 191.0 min.
+Uploaded 90 chunks in 444.9s. Estimated time remaining 189.3 min.
+Uploaded 100 chunks in 496.2s. Estimated time remaining 189.2 min.
+Uploaded 110 chunks in 545.9s. Estimated time remaining 188.4 min.
+Uploaded 120 chunks in 594.8s. Estimated time remaining 187.4 min.
+Uploaded 130 chunks in 650.8s. Estimated time remaining 188.4 min.
+Uploaded 140 chunks in 698.7s. Estimated time remaining 187.0 min.
+Uploaded 150 chunks in 745.2s. Estimated time remaining 185.3 min.
+Uploaded 160 chunks in 795.3s. Estimated time remaining 184.6 min.
+Uploaded 170 chunks in 842.4s. Estimated time remaining 183.2 min.
+Uploaded 180 chunks in 888.5s. Estimated time remaining 181.7 min.
+Uploaded 190 chunks in 935.4s. Estimated time remaining 180.3 min.
+Uploaded 200 chunks in 981.8s. Estimated time remaining 179.0 min.
+Uploaded 210 chunks in 1028.0s. Estimated time remaining 177.7 min.
+Uploaded 220 chunks in 1074.8s. Estimated time remaining 176.5 min.
+Uploaded 230 chunks in 1127.0s. Estimated time remaining 176.2 min.
+Uploaded 240 chunks in 1182.5s. Estimated time remaining 176.4 min.
+Uploaded 250 chunks in 1230.8s. Estimated time remaining 175.4 min.
+Uploaded 260 chunks in 1288.5s. Estimated time remaining 175.8 min.
+Uploaded 270 chunks in 1335.4s. Estimated time remaining 174.6 min.
+Uploaded 280 chunks in 1391.3s. Estimated time remaining 174.6 min.
+Uploaded 290 chunks in 1447.7s. Estimated time remaining 174.6 min.
+Uploaded 300 chunks in 1499.3s. Estimated time remaining 173.9 min.
+Uploaded 310 chunks in 1548.8s. Estimated time remaining 173.0 min.
+Uploaded 320 chunks in 1597.0s. Estimated time remaining 172.0 min.
+Uploaded 330 chunks in 1649.4s. Estimated time remaining 171.4 min.
+Uploaded 340 chunks in 1697.6s. Estimated time remaining 170.4 min.
+Uploaded 350 chunks in 1750.5s. Estimated time remaining 169.9 min.
+Uploaded 360 chunks in 1799.5s. Estimated time remaining 169.0 min.
+Uploaded 370 chunks in 1853.8s. Estimated time remaining 168.5 min.
+Uploaded 380 chunks in 1906.3s. Estimated time remaining 167.9 min.
+Uploaded 390 chunks in 1958.8s. Estimated time remaining 167.2 min.
+Uploaded 400 chunks in 2009.8s. Estimated time remaining 166.5 min.
+Uploaded 410 chunks in 2062.3s. Estimated time remaining 165.8 min.
+Uploaded 420 chunks in 2117.9s. Estimated time remaining 165.4 min.
+Uploaded 430 chunks in 2168.4s. Estimated time remaining 164.6 min.
+Uploaded 440 chunks in 2224.4s. Estimated time remaining 164.1 min.
+Uploaded 450 chunks in 2273.7s. Estimated time remaining 163.2 min.
+Uploaded 460 chunks in 2322.4s. Estimated time remaining 162.2 min.
+Uploaded 470 chunks in 2372.8s. Estimated time remaining 161.4 min.
+Uploaded 480 chunks in 2430.8s. Estimated time remaining 161.0 min.
+Uploaded 490 chunks in 2483.7s. Estimated time remaining 160.3 min.
+Uploaded 500 chunks in 2534.3s. Estimated time remaining 159.5 min.
+Uploaded 510 chunks in 2587.9s. Estimated time remaining 158.8 min.
+Uploaded 520 chunks in 2639.7s. Estimated time remaining 158.0 min.
+Uploaded 530 chunks in 2691.2s. Estimated time remaining 157.2 min.
+Uploaded 540 chunks in 2750.4s. Estimated time remaining 156.9 min.
+Uploaded 550 chunks in 2805.7s. Estimated time remaining 156.3 min.
+Uploaded 560 chunks in 2858.7s. Estimated time remaining 155.5 min.
+Uploaded 570 chunks in 2912.2s. Estimated time remaining 154.8 min.
+Uploaded 580 chunks in 2969.0s. Estimated time remaining 154.3 min.
+Uploaded 590 chunks in 3025.3s. Estimated time remaining 153.7 min.
+Uploaded 600 chunks in 3078.3s. Estimated time remaining 152.9 min.
+Uploaded 610 chunks in 3137.8s. Estimated time remaining 152.4 min.
+Uploaded 620 chunks in 3194.1s. Estimated time remaining 151.8 min.
+Uploaded 630 chunks in 3261.9s. Estimated time remaining 151.7 min.
+Uploaded 640 chunks in 3324.2s. Estimated time remaining 151.3 min.
+Uploaded 650 chunks in 3375.0s. Estimated time remaining 150.4 min.
+Uploaded 660 chunks in 3425.3s. Estimated time remaining 149.5 min.
+Uploaded 670 chunks in 3473.4s. Estimated time remaining 148.4 min.
+Uploaded 680 chunks in 3528.7s. Estimated time remaining 147.7 min.
+Uploaded 690 chunks in 3577.3s. Estimated time remaining 146.7 min.
+Uploaded 700 chunks in 3627.6s. Estimated time remaining 145.8 min.
+Uploaded 710 chunks in 3678.5s. Estimated time remaining 144.9 min.
+Uploaded 720 chunks in 3737.8s. Estimated time remaining 144.3 min.
+Uploaded 730 chunks in 3795.5s. Estimated time remaining 143.7 min.
+Uploaded 740 chunks in 3848.4s. Estimated time remaining 142.8 min.
+Uploaded 750 chunks in 3900.7s. Estimated time remaining 142.0 min.
+Uploaded 760 chunks in 3952.1s. Estimated time remaining 141.1 min.
+Uploaded 770 chunks in 4004.1s. Estimated time remaining 140.2 min.
+Uploaded 780 chunks in 4062.2s. Estimated time remaining 139.6 min.
+Uploaded 790 chunks in 4113.3s. Estimated time remaining 138.7 min.
+Uploaded 800 chunks in 4164.4s. Estimated time remaining 137.8 min.
+Uploaded 810 chunks in 4216.7s. Estimated time remaining 136.9 min.
+Uploaded 820 chunks in 4266.9s. Estimated time remaining 136.0 min.
+Uploaded 830 chunks in 4319.2s. Estimated time remaining 135.1 min.
+Uploaded 840 chunks in 4372.4s. Estimated time remaining 134.3 min.
+Uploaded 850 chunks in 4421.0s. Estimated time remaining 133.3 min.
+Uploaded 860 chunks in 4468.8s. Estimated time remaining 132.3 min.
+Uploaded 870 chunks in 4513.1s. Estimated time remaining 131.2 min.
+Uploaded 880 chunks in 4560.9s. Estimated time remaining 130.3 min.
+Uploaded 890 chunks in 4610.4s. Estimated time remaining 129.3 min.
+Uploaded 900 chunks in 4659.9s. Estimated time remaining 128.4 min.
+Uploaded 910 chunks in 4708.7s. Estimated time remaining 127.5 min.
+Uploaded 920 chunks in 4759.1s. Estimated time remaining 126.6 min.
+Uploaded 930 chunks in 4813.6s. Estimated time remaining 125.8 min.
+Uploaded 940 chunks in 4864.2s. Estimated time remaining 124.9 min.
+Uploaded 950 chunks in 4912.8s. Estimated time remaining 123.9 min.
+Uploaded 960 chunks in 4961.0s. Estimated time remaining 123.0 min.
+Uploaded 970 chunks in 5005.2s. Estimated time remaining 121.9 min.
+Uploaded 980 chunks in 5056.0s. Estimated time remaining 121.1 min.
+Uploaded 990 chunks in 5102.9s. Estimated time remaining 120.1 min.
+Uploaded 1000 chunks in 5154.3s. Estimated time remaining 119.2 min.
+Uploaded 1010 chunks in 5201.6s. Estimated time remaining 118.3 min.
+Uploaded 1020 chunks in 5250.1s. Estimated time remaining 117.4 min.
+Uploaded 1030 chunks in 5299.6s. Estimated time remaining 116.5 min.
+Uploaded 1040 chunks in 5349.5s. Estimated time remaining 115.6 min.
+Uploaded 1050 chunks in 5404.2s. Estimated time remaining 114.8 min.
+Uploaded 1060 chunks in 5455.9s. Estimated time remaining 113.9 min.
+Uploaded 1070 chunks in 5510.0s. Estimated time remaining 113.1 min.
+Uploaded 1080 chunks in 5564.3s. Estimated time remaining 112.3 min.
+Uploaded 1090 chunks in 5616.4s. Estimated time remaining 111.5 min.
+Uploaded 1100 chunks in 5666.3s. Estimated time remaining 110.6 min.
+Uploaded 1110 chunks in 5714.3s. Estimated time remaining 109.7 min.
+Uploaded 1120 chunks in 5764.8s. Estimated time remaining 108.8 min.
+Uploaded 1130 chunks in 5819.8s. Estimated time remaining 108.0 min.
+Uploaded 1140 chunks in 5871.3s. Estimated time remaining 107.1 min.
+Uploaded 1150 chunks in 5921.1s. Estimated time remaining 106.2 min.
+Uploaded 1160 chunks in 5972.0s. Estimated time remaining 105.4 min.
+Uploaded 1170 chunks in 6023.1s. Estimated time remaining 104.5 min.
+Uploaded 1180 chunks in 6074.1s. Estimated time remaining 103.6 min.
+Uploaded 1190 chunks in 6126.6s. Estimated time remaining 102.8 min.
+Uploaded 1200 chunks in 6180.1s. Estimated time remaining 102.0 min.
+Uploaded 1210 chunks in 6236.3s. Estimated time remaining 101.2 min.
+Uploaded 1220 chunks in 6288.4s. Estimated time remaining 100.3 min.
+Uploaded 1230 chunks in 6343.0s. Estimated time remaining 99.5 min.
+Uploaded 1240 chunks in 6395.0s. Estimated time remaining 98.7 min.
+Uploaded 1250 chunks in 6445.0s. Estimated time remaining 97.8 min.
+Uploaded 1260 chunks in 6493.9s. Estimated time remaining 96.9 min.
+Uploaded 1270 chunks in 6543.7s. Estimated time remaining 96.0 min.
+Uploaded 1280 chunks in 6592.4s. Estimated time remaining 95.1 min.
+Uploaded 1290 chunks in 6642.5s. Estimated time remaining 94.2 min.
+Uploaded 1300 chunks in 6687.6s. Estimated time remaining 93.3 min.
+Uploaded 1310 chunks in 6736.0s. Estimated time remaining 92.4 min.
+Uploaded 1320 chunks in 6782.1s. Estimated time remaining 91.5 min.
+Generic Exception ('ca9f58a76ed09641fc6bfb59159e0900', 500, u'')
+Finished uploading in 6883.5 s.
+2016/028/BO160282A/wes/alignments/by_seq_center BO160282A_NPC1_1568981.bai
+('Dropbox path:', '/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/BO160282A_NPC1_1568981.bai')
+('Local file path:', '/data01/2016/028/BO160282A/wes/alignments/by_seq_center/BO160282A_NPC1_1568981.bai')
+/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/BO160282A_NPC1_1568981.bai   found
+2016/028/BO160282A/wes/alignments/by_seq_center/md5sums BO160282A_NPC1_1568981.bam.md5
+('Dropbox path:', '/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/md5sums/BO160282A_NPC1_1568981.bam.md5')
+('Local file path:', '/data01/2016/028/BO160282A/wes/alignments/by_seq_center/md5sums/BO160282A_NPC1_1568981.bam.md5')
+/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/md5sums/BO160282A_NPC1_1568981.bam.md5   found
+2016/028/BO160282A/wes/alignments/by_seq_center/md5sums BO160282A_NPC1_1568981.bai.md5
+('Dropbox path:', '/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/md5sums/BO160282A_NPC1_1568981.bai.md5')
+('Local file path:', '/data01/2016/028/BO160282A/wes/alignments/by_seq_center/md5sums/BO160282A_NPC1_1568981.bai.md5')
+/raw_data/2016/028/BO160282A/wes/alignments/by_seq_center/md5sums/BO160282A_NPC1_1568981.bai.md5   found
+2016/028/BO160281A/wes/variants/called_by_seq_center BO160281A_NPC1_1568413.vcf
+('Dropbox path:', '/raw_data/2016/028/BO160281A/wes/variants/called_by_seq_center/BO160281A_NPC1_1568413.vcf')
+('Local file path:', '/data01/2016/028/BO160281A/wes/variants/called_by_seq_center/BO160281A_NPC1_1568413.vcf')
+/raw_data/2016/028/BO160281A/wes/variants/called_by_seq_center/BO160281A_NPC1_1568413.vcf   found
+2016/028/BO160281A/wes/variants/called_by_seq_center/md5sums BO160281A_NPC1_1568413.vcf.md5
+('Dropbox path:', '/raw_data/2016/028/BO160281A/wes/variants/called_by_seq_center/md5sums/BO160281A_NPC1_1568413.vcf.md5')
+('Local file path:', '/data01/2016/028/BO160281A/wes/variants/called_by_seq_center/md5sums/BO160281A_NPC1_1568413.vcf.md5')
+/raw_data/2016/028/BO160281A/wes/variants/called_by_seq_center/md5sums/BO160281A_NPC1_1568413.vcf.md5   found
+2016/028/BO160281A/wes/alignments/by_seq_center BO160281A_NPC1_1568413.bai
+('Dropbox path:', '/raw_data/2016/028/BO160281A/wes/alignments/by_seq_center/BO160281A_NPC1_1568413.bai')
+('Local file path:', '/data01/2016/028/BO160281A/wes/alignments/by_seq_center/BO160281A_NPC1_1568413.bai')
+/raw_data/2016/028/BO160281A/wes/alignments/by_seq_center/BO160281A_NPC1_1568413.bai   found
+2016/028/BO160281A/wes/alignments/by_seq_center BO160281A_NPC1_1568413.bam
+('Dropbox path:', '/raw_data/2016/028/BO160281A/wes/alignments/by_seq_center/BO160281A_NPC1_1568413.bam')
+('Local file path:', '/data01/2016/028/BO160281A/wes/alignments/by_seq_center/BO160281A_NPC1_1568413.bam')
+/raw_data/2016/028/BO160281A/wes/alignments/by_seq_center/BO160281A_NPC1_1568413.bam   not found - uploading
+
+####################
+file size = 21804130104, CHUNK_SIZE = 10485760  ==> approx 2079 chunks to upload
+Traceback (most recent call last):
+  File "./03_dropbox_uploader.py", line 53, in <module>
+    main()
+  File "./03_dropbox_uploader.py", line 48, in main
+    upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file)
+  File "./03_dropbox_uploader.py", line 27, in upload_with_existence_checking
+    upload (dbx, local_file_path, dbx_path)
+  File "/home/ivana/data_management/data_mgmt_utils_py/dropbox_utils.py", line 47, in upload
+    upload_session_start_result = dbx.files_upload_session_start(f.read(CHUNK_SIZE))
+  File "/home/ivana/.local/lib/python2.7/site-packages/dropbox/base.py", line 1145, in files_upload_session_start
+    f,
+  File "/home/ivana/.local/lib/python2.7/site-packages/dropbox/dropbox.py", line 214, in request
+    request_binary)
+  File "/home/ivana/.local/lib/python2.7/site-packages/dropbox/dropbox.py", line 297, in request_json_string_with_retry
+    request_binary)
+  File "/home/ivana/.local/lib/python2.7/site-packages/dropbox/dropbox.py", line 373, in request_json_string
+    raise InternalServerError(request_id, r.status_code, r.text)
+dropbox.exceptions.InternalServerError: ('31df0bb415422da9d8ac4af3e194b328', 500, u'')
