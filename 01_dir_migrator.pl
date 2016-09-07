@@ -183,7 +183,7 @@ sub process_extension (@_) {
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
 
-        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_(.*\.$ext.*)/ ) {
+        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_*.*\.$ext.*/ ) {
             #defined $1 or die "boid could not be extracted:\n$ext_file\n";
             if ( ! defined $1) {
                 #print "boid could not be extracted:\n$ext_file\n";
