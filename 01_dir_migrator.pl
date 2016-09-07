@@ -204,18 +204,21 @@ sub process_extension (@_) {
 
         } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_(.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
-            $caseno2 = "0". (substr $1, 2, 2);
+            $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})/ ) {
             $year2 = substr $1, 0, 2;
-            $caseno2 = "0". (substr $1, 2, 2);
+            $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
         }
+
+	while ( length($caseno2)<3 ) {
+	    $caseno2 = "0". $caseno2;
+	}
         ($year== $year2 &&   $caseno==$caseno2) ||
 	    die ">> label mismatch for $case:\n$ext_file\n yr:$year  yr2:$year2  caseno:$caseno  caseno2:$caseno2 \n";
 
-        (length($caseno2)==3)  || die  "Unexpected BOid format: $1 (canseno2:$caseno2) \n";
-        my $boid = "BO".$year.$caseno.$individual2;
+         my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $2;
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
