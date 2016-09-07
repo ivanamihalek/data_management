@@ -3,12 +3,12 @@ use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
 $TEST_DRIVE = 0;
 
-$fromdir = "/data02";
+$fromdir = "/data02/2015";
 
 sub process_extension   (@_);
 
 ############### main ##################
-#make_tarballs ("from_seq_center");
+make_tarballs ("from_seq_center");
 #exit;
 # find all files that end in tar, fastq, bam and bzip2 them
 process_extension("tar");
