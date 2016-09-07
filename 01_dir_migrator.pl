@@ -214,7 +214,7 @@ sub process_extension (@_) {
         ($year== $year2 &&   $caseno==$caseno2) ||
 	    die ">> label mismatch for $case:\n$ext_file\n yr:$year  yr2:$year2  caseno:$caseno  caseno2:$caseno2 \n";
 
-        (length($caseno2)==3)  || die  "Unexpected BOid format: $1\n";
+        (length($caseno2)==3)  || die  "Unexpected BOid format: $1 (canseno2:$caseno2) \n";
         my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $2;
