@@ -260,21 +260,22 @@ sub process_extension (@_) {
 
         $incomplete && `echo some $ext files might be incomplete >> $extdir/NOTES`;
 
-        my $new_name = $orig_file;
-	print " $new_name\n";
-	exit;
+        my $new_extension = $orig_file;
 
 	
         if ($ext eq  "txt") {
-            $new_name =~ s/(.*)txt/$1fastq/;
+            $new_extension =~ s/(.*)txt/$1fastq/;
         }
 
         if ($TEST_DRIVE) {
-            `touch $extdir/$boid\_$new_name`;
+            `touch $extdir/$boid\_$new_extension`;
         } else {
 
             print "$ext_file\n";
-            my $newfile = "$extdir/$boid\_$new_name";
+            my $newfile = "$extdir/$boid\_$new_extension";
+	    print " $newfile\n";
+	    exit;
+
             my $need_to_copy = 1;
             my $check_old_md5 = 1;
             if ( -e  $newfile && ! -z $newfile) {
