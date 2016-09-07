@@ -7,7 +7,7 @@ use strict;
 use warnings;
 
 #########################################################
-sub get_md5sum (@) {
+sub get_md5sum (@_) {
     my $check_old_md5 = $_[0];
     my $ext_file = $_[1];
     my @aux = split '/', $ext_file;

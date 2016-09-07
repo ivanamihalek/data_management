@@ -33,7 +33,6 @@ if ($fromdir eq  "/data01/result") {
 sub parse_case_id (@_);
 sub process_extension   (@_);
 sub check_for_leftovers (@_);
-sub get_md5sum (@_);
 
 
 my @listing_level_1 = split "\n", `ls $fromdir`;
@@ -206,7 +205,7 @@ sub process_extension (@_) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
-        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1}/ ) {
+        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})/ ) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
