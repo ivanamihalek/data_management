@@ -268,7 +268,7 @@ sub process_extension (@_) {
         }
 
         if ($TEST_DRIVE) {
-            `touch $extdir/$boid"."$new_extension`;
+            `touch $extdir/$boid.$new_extension`;
         } else {
 
             print "$ext_file\n";
