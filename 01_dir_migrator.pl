@@ -172,6 +172,7 @@ sub check_for_leftovers (@_) {
 ##################################################################################################
 sub process_extension (@_) {
 
+    printf "processing extension @_ \n";
     my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
     
     my @ext_files = `find $fromdir/$case  -name "*.$ext*"`;
@@ -210,7 +211,8 @@ sub process_extension (@_) {
             $caseno2 = "0". (substr $1, 2, 2);
             $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
         }
-        ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
+        ($year== $year2 &&   $caseno==$caseno2) ||
+	    die ">> label mismatch for $case:\n$ext_file\n yr:$year  yr2:$year2  caseno:$caseno  caseno2:$caseno2 \n";
 
         (length($caseno2)==3)  || die  "Unexpected BOid format: $1\n";
         my $boid = "BO".$year.$caseno.$individual2;
