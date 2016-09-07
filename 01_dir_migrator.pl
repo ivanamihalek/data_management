@@ -183,7 +183,7 @@ sub process_extension (@_) {
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
 
-        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_*(.*\.$ext.*)/ ) {
+        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})(_*.*\.$ext.*)/ ) {
             #defined $1 or die "boid could not be extracted:\n$ext_file\n";
             if ( ! defined $1) {
                 #print "boid could not be extracted:\n$ext_file\n";
@@ -202,11 +202,11 @@ sub process_extension (@_) {
             }
 
 
-        } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_*(.*\.$ext.*)/ ) {
+        } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
-        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})_*(.*\.$ext.*)/ ) {
+        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
@@ -268,13 +268,11 @@ sub process_extension (@_) {
         }
 
         if ($TEST_DRIVE) {
-            `touch $extdir/$boid\_$new_extension`;
+            `touch $extdir/$boid"."$new_extension`;
         } else {
 
             print "$ext_file\n";
-            my $newfile = "$extdir/$boid\_$new_extension";
-	    print " $newfile\n";
-	    exit;
+            my $newfile = "$extdir/$boid"."$new_extension";
 
             my $need_to_copy = 1;
             my $check_old_md5 = 1;
