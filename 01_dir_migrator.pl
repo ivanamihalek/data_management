@@ -12,10 +12,8 @@ my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/b
 		 "fastq" => "reads", "txt" => "reads");
 
 my $todir;
-if ($fromdir eq  "/mnt/bodamer02") {
-    $todir = "/data01";
-} elsif ($fromdir eq  "/home/ivana/next_test_data"){
-    $todir = "/data01";
+if ($fromdir eq  "/data01/result") {
+    $todir = "/data02";
 } elsif ($fromdir eq  "/mnt/bodamer01"){
     $todir = "/data02";
 } else {
@@ -53,6 +51,7 @@ my %seen = {};
 my @resolved_files = ();
 my %resolved  = {};
 
+####################################################
 for my $case (@cases) {
     
     print "\n$case\n";
@@ -75,9 +74,10 @@ for my $case (@cases) {
     print " $year   $caseno   $case_boid    $project \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
-
-    my $project =~ s/201402006.ACE/FilaminC/g;
-    $project =~ s/\-GeneDx//g;
+    if ( defined $project) {
+	$project =~ s/201402006.ACE/FilaminC/g;
+	$project =~ s/\-GeneDx//g;
+    }
 
     my $casedir = "$todir/20$year/$caseno";
     
@@ -88,7 +88,7 @@ for my $case (@cases) {
     }
     (-e $casedir) || `mkdir -p $casedir`;
 
-    `echo $project > $casedir/PROJECT`;
+    (defined $project) && `echo $project > $casedir/PROJECT`;
 
 
     process_extension($fromdir, $case,  $year, $caseno, $casedir, "txt");
@@ -118,10 +118,10 @@ sub parse_case_id (@_){
         (length($year)==4)  && ($year = substr $year, 2,2);
         (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
 
-    } elsif ($len==8) { # the new BOid format
+    } elsif ($len==6) { # the new BOid format
         $bo         = substr $case_id, 0, 2;
         $year       = substr $case_id, 2, 2;
-        $caseno    = substr $case_id, 4, 2;
+        $caseno     = substr $case_id, 4, 2;
 
     } else {
         die  "Unexpected BOid format: $case_id\n";
@@ -205,6 +205,10 @@ sub process_extension (@_) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
+        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1}/ ) {
+            $year2 = substr $1, 0, 2;
+            $caseno2 = substr $1, 2, 2;
+            $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
         }
         ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
 
