@@ -203,11 +203,11 @@ sub process_extension (@_) {
 
         } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_(.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
-            $caseno2 = substr $1, 2, 2;
+            $caseno2 = "0". (substr $1, 2, 2);
             $individual2 = substr $1, 4, 2;
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})/ ) {
             $year2 = substr $1, 0, 2;
-            $caseno2 = substr $1, 2, 2;
+            $caseno2 = "0". (substr $1, 2, 2);
             $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
         }
         ($year== $year2 &&   $caseno==$caseno2) || die ">> label mismatch for $case:\n$ext_file\n $year  $year2  $caseno  $caseno2 \n";
