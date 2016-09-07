@@ -268,8 +268,7 @@ sub process_extension (@_) {
         }
 
         my $newfile = "$extdir/$boid"."$new_extension";
-	print "$newfile\n";
-	exit;
+
         if ($TEST_DRIVE) {
             `touch $newfile`;
 	    
