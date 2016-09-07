@@ -2,6 +2,8 @@
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 use strict;
 
+my $TEST_DRIVE = 1;  # test drive will only create the target directory structure
+
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
 @ARGV==1 || die "Usage: $0 <fromdir>\n";
@@ -33,7 +35,6 @@ sub process_extension   (@_);
 sub check_for_leftovers (@_);
 sub get_md5sum (@_);
 
-my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
 my @listing_level_1 = split "\n", `ls $fromdir`;
 
