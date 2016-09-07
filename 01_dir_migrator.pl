@@ -183,7 +183,7 @@ sub process_extension (@_) {
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
 
-        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_*.*\.$ext.*/ ) {
+        if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})_*(.*\.$ext.*)/ ) {
             #defined $1 or die "boid could not be extracted:\n$ext_file\n";
             if ( ! defined $1) {
                 #print "boid could not be extracted:\n$ext_file\n";
@@ -202,11 +202,11 @@ sub process_extension (@_) {
             }
 
 
-        } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_(.*\.$ext.*)/ ) {
+        } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})_*(.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
-        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})/ ) {
+        } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})_*(.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
@@ -261,6 +261,10 @@ sub process_extension (@_) {
         $incomplete && `echo some $ext files might be incomplete >> $extdir/NOTES`;
 
         my $new_name = $orig_file;
+	print " $new_name\n";
+	exit;
+
+	
         if ($ext eq  "txt") {
             $new_name =~ s/(.*)txt/$1fastq/;
         }
