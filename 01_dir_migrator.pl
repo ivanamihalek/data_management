@@ -267,12 +267,13 @@ sub process_extension (@_) {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
 
+        my $newfile = "$extdir/$boid"."$new_extension";
+	print "$newfile\n";
+	exit;
         if ($TEST_DRIVE) {
-            `touch $extdir/$boid.$new_extension`;
+            `touch $newfile`;
+	    
         } else {
-
-            print "$ext_file\n";
-            my $newfile = "$extdir/$boid"."$new_extension";
 
             my $need_to_copy = 1;
             my $check_old_md5 = 1;
