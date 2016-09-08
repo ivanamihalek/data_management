@@ -62,14 +62,15 @@ def upload(dbx, local_file_path, dbx_path):
 
         chunk_counter = 0
         panic_ctr     = 0
-        while f.tell() < file_size:
+        corrupt_file = False
+        while f.tell() < file_size and not corrupt_file:
             if ((file_size - f.tell()) <= CHUNK_SIZE):
                 try:
                     dbx.files_upload_session_finish(f.read(CHUNK_SIZE), cursor, commit)
                 except dropbox.exceptions.ApiError as err:
                     print "Upload finish failure:", err
-                    print "Not sure what that means, so I'll exit."
-                    exit(1)
+                    print "Not sure what that means, so I'll move on."
+                    corrupt_file = True
             else:
                 try :
                     dbx.files_upload_session_append(f.read(CHUNK_SIZE), cursor.session_id, cursor.offset)
@@ -100,5 +101,6 @@ def upload(dbx, local_file_path, dbx_path):
                     estimated_speed = chunk_counter*1./time_elapsed
                     time_remaining  = (approx_number_of_chunks - chunk_counter)/estimated_speed/60;
                     print "Uploaded %d chunks in %.1fs. Estimated time remaining %.1f min." % (chunk_counter, time_elapsed, time_remaining)
+        
         print "Finished uploading in %.1f s." % (time() - t_start)
     f.close()
