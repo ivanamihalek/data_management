@@ -10,12 +10,15 @@ my $TEST_DRIVE = 0;  # test drive will only create the target directory structur
 my $fromdir = $ARGV[0];
 
 
-my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center", "bai"=>"alignments/by_seq_center",
-		 "fastq" => "reads", "txt" => "reads");
+#my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center", 
+#		   "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
+
+my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignments/by_seqmule_pipeline", 
+		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
 
 my $todir;
-if ($fromdir eq  "/data01/result") {
-    $todir = "/data02";
+if ($fromdir eq  "/Users/ivana/tray") {
+    $todir = "/data01";
 } elsif ($fromdir eq  "/mnt/bodamer01"){
     $todir = "/data02";
 } else {
