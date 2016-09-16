@@ -17,7 +17,7 @@ my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignm
 		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
 
 my $todir;
-if ($fromdir eq  "/Users/ivana/tray") {
+if ($fromdir eq  "/home/ivana/tray") {
     $todir = "/data01";
 } elsif ($fromdir eq  "/mnt/bodamer01"){
     $todir = "/data02";
