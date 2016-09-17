@@ -108,7 +108,6 @@ for my $case (@cases) {
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
 
 
-
 ##################################################################################################
 sub parse_case_id (@_){
     my $case_id = $_[0];
@@ -126,11 +125,22 @@ sub parse_case_id (@_){
         $year       = substr $case_id, 2, 2;
         $caseno     = substr $case_id, 4, 2;
 
+    } elsif ($len==7) { # the new new BOid format
+        $bo         = substr $case_id, 0, 2;
+        $year       = substr $case_id, 2, 2;
+        $caseno     = substr $case_id, 4, 3;
+
     } else {
         die  "Unexpected BOid format: $case_id\n";
     }
 
-    ($caseno = "0".$caseno);
+    if (length ($caseno) == 3) { 
+	
+    }  elsif (length ($caseno) == 2) { 
+	$caseno = "0".$caseno;
+    }  else {
+	die  "Unexpected BOid format: $case_id (case number $caseno ?)\n";
+    }	
 
     return ($bo, $year, $caseno) ;
 }
@@ -209,10 +219,15 @@ sub process_extension (@_) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
+
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
-            $caseno2 = substr $1, 2, 2;
-            $individual2 = substr $1, 5, 2; # Christina is sticking in an extra 0 	     
+	    if ($caseno ==  substr $1, 2, 3)  {
+		$caseno2 = substr $1, 2, 3;
+	    } else {
+		$caseno2 = substr $1, 2, 2; # Christina is adding in an extra 0 on the right
+ 	    } 	
+            $individual2 = substr $1, 5, 2; 	     
         }
 
 	while ( length($caseno2)<3 ) {
