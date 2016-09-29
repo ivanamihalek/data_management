@@ -34,7 +34,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
         except dropbox.files.DownloadError as err:
             print('*** download  error', err)
             exit(1)
-        print metadata
+        
 
 ####################################
 def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
