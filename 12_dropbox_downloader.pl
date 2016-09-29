@@ -10,9 +10,27 @@ DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
 
 dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
+####################################
+def download_with_existence_checking(dbx, dbx_path, local_file_path):
+
+    print('Dropbox path:',    dbx_path)
+    print('Local file path:', local_file_path)
+    exit(1)
+    # check file exists locally already
+    if check_local_path(local_file_path):
+        print local_file_path + "   found"
+    else:
+        print local_file_path + "   not found - downloading"   
+        try:
+            metadata, response = dbx.files_download_to_file (local_file_path, dbx_path)
+        except dropbox.files.DownloadError as err:
+            print('*** download  error', err)
+            exit(1)
+        print metadata
+    exit(1)
 
 ####################################
-def list_folder (dbx, dropbox_folder, subfolder):
+def scan_through_folder (dbx, dropbox_folder,  local_dir, subfolder):
 
     dbx_path =  "/".join([dropbox_folder, subfolder])
 
@@ -26,29 +44,8 @@ def list_folder (dbx, dropbox_folder, subfolder):
             print entry.name
             print entry.path_display
             print
-
-####################################
-def download_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
-
-    subdir = subfolder
-    local_file_path = "/".join([local_dir, subdir, file_to_move])
-    dbx_path =  "/".join([dropbox_folder, subfolder, file_to_move])
-    print('Dropbox path:',    dbx_path)
-    print('Local file path:', local_file_path)
-
-    # check file exists locally already
-    if check_local_path(local_file_path):
-        print local_file_path + "   found"
-    else:
-        print local_file_path + "   not found - downloading"
-    
-        try:
-            metadata, response = dbx.files_download_to_file (local_file_path, dbx_path)
-        except dropbox.files.DownloadError as err:
-            print('*** download  error', err)
-            exit(1)
-        print metadata
-    exit(1)
+            dbx_path = entry.path_display
+            local_path = dbx_path.replace(subfolder,local_dir)
 
  
 
