@@ -24,6 +24,8 @@ def list_folder (dbx, dropbox_folder, subfolder):
     else:
         for entry in response.entries:
             print entry.name
+            print entry
+            print
 
 ####################################
 def download_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
