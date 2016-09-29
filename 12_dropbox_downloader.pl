@@ -12,26 +12,43 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 
 ####################################
-def list_folder(dbx, folder, subfolder):
-    """List a folder.
-    Return a dict mapping unicode filenames to
-    FileMetadata|FolderMetadata entries.
-    """
-    path = '/%s/%s' % (folder, subfolder.replace(os.path.sep, '/'))
-    while '//' in path:
-        path = path.replace('//', '/')
-    path = path.rstrip('/')
+def list_folder (dbx, dropbox_folder, subfolder):
+
+    dbx_path =  "/".join([dropbox_folder, subfolder])
+
     try:
-        res = dbx.files_list_folder(path)
+        response = dbx.files_list_folder(dbx_path, recursive = True)
     except dropbox.exceptions.ApiError as err:
         print('Folder listing failed for', path, '-- assumped empty:', err)
-        return {}
+        exit(1)
     else:
-        rv = {}
-        for entry in res.entries:
-            rv[entry.name] = entry
+        for entry in response.entries:
             print entry.name
-        return rv
+
+####################################
+def download_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
+
+    subdir = subfolder
+    local_file_path = "/".join([local_dir, subdir, file_to_move])
+    dbx_path =  "/".join([dropbox_folder, subfolder, file_to_move])
+    print('Dropbox path:',    dbx_path)
+    print('Local file path:', local_file_path)
+
+    # check file exists locally already
+    if check_local_path(local_file_path):
+        print local_file_path + "   found"
+    else:
+        print local_file_path + "   not found - downloading"
+    
+        try:
+            metadata, response = dbx.files_download_to_file (local_file_path, dbx_path)
+        except dropbox.files.DownloadError as err:
+            print('*** download  error', err)
+            exit(1)
+        print metadata
+    exit(1)
+
+ 
 
 ####################################
 def main():
