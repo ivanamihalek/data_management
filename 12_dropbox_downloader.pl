@@ -15,7 +15,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
 
     print 'Dropbox path:',    dbx_path 
     print 'Local file path:', local_file_path
-    exit(1)
+
     # check file exists locally already
     if check_local_path(local_file_path):
         print local_file_path + "   found"
