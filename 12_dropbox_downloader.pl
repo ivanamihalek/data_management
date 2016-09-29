@@ -19,9 +19,10 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
 
     # check file exists locally already
     if check_local_path(local_file_path):
-        print local_file_path + "   found"
+        #print local_file_path + "   found"
+        pass
     elif "fastq" in dbx_path or ".bam." in dbx_path:
-        print local_file_path + "   skipping"
+        print dbx_path + "   skipping"
         
     else:
         print local_file_path + "   not found - downloading"   
@@ -33,7 +34,6 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
             print('*** download  error', err)
             exit(1)
         print metadata
-    exit(1)
 
 ####################################
 def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
