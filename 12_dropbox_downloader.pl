@@ -24,7 +24,7 @@ def list_folder (dbx, dropbox_folder, subfolder):
     else:
         for entry in response.entries:
             print entry.name
-            print entry
+            print entry.path_display
             print
 
 ####################################
