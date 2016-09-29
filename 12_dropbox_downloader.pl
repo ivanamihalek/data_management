@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os.path, os.makedirs
 
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
@@ -21,6 +22,8 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
         print local_file_path + "   found"
     else:
         print local_file_path + "   not found - downloading"   
+        dirpath = os.path.dirname(local_file_path)
+        if not os.path.exists(dirpath): os.makedirs(dirpath)
         try:
             metadata, response = dbx.files_download_to_file (local_file_path, dbx_path)
         except dropbox.files.DownloadError as err:
