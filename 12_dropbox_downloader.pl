@@ -44,10 +44,10 @@ def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
             print entry.name
             print entry.path_display
             print entry
-            exit(1)
-            dbx_path = entry.path_display
-            local_path = dbx_path.replace(subfolder,local_dir)
-            download_with_existence_checking(dbx, dbx_path, local_path)
+            #exit(1)
+            #dbx_path = entry.path_display
+            #local_path = dbx_path.replace(subfolder,local_dir)
+            #download_with_existence_checking(dbx, dbx_path, local_path)
  
 
 ####################################
