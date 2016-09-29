@@ -20,6 +20,9 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
     # check file exists locally already
     if check_local_path(local_file_path):
         print local_file_path + "   found"
+    elif "fastq" in dbx_path or ".bam." in dbx_path:
+        print local_file_path + "   skipping"
+        
     else:
         print local_file_path + "   not found - downloading"   
         dirpath = os.path.dirname(local_file_path)
