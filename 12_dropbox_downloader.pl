@@ -22,8 +22,7 @@ def list_folder(dbx, folder, subfolder):
         path = path.replace('//', '/')
     path = path.rstrip('/')
     try:
-        with stopwatch('list_folder'):
-            res = dbx.files_list_folder(path)
+        res = dbx.files_list_folder(path)
     except dropbox.exceptions.ApiError as err:
         print('Folder listing failed for', path, '-- assumped empty:', err)
         return {}
