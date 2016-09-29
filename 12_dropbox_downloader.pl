@@ -29,7 +29,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
         dirpath = os.path.dirname(local_file_path)
         if not os.path.exists(dirpath): os.makedirs(dirpath)
         try:
-            metadata, response = dbx.files_download_to_file (local_file_path, dbx_path)
+            dbx.files_download_to_file (local_file_path, dbx_path)
         except dropbox.files.DownloadError as err:
             print('*** download  error', err)
             exit(1)
@@ -47,7 +47,7 @@ def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
         exit(1)
     else:
         for entry in response.entries:
-            if type(entry)==dropbox.files.FolderMetadata: continue
+            if type(entry)==dropbox.files.FileMetadata: continue
             print entry.name
             print entry.path_display
             dbx_path = entry.path_display
