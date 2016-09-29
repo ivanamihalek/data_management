@@ -30,7 +30,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
     exit(1)
 
 ####################################
-def scan_through_folder (dbx, dropbox_folder,  local_dir, subfolder):
+def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
 
     dbx_path =  "/".join([dropbox_folder, subfolder])
 
@@ -60,7 +60,7 @@ def main():
 
     subfolder = "2012/007"
 
-    scan_through_folder(dbx, dropbox_folder, subfolder)
+    scan_through_folder(dbx, dropbox_folder, subfolder, local_dir)
 
 ####################################
 if __name__ == '__main__':
