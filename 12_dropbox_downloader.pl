@@ -21,7 +21,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
     if check_local_path(local_file_path):
         #print local_file_path + "   found"
         pass
-    elif "fastq" in dbx_path or ".bam." in dbx_path:
+    elif "fastq" in dbx_path or ".bam" in dbx_path:
         print dbx_path + "   skipping"
         
     else:
@@ -29,7 +29,9 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
         dirpath = os.path.dirname(local_file_path)
         if not os.path.exists(dirpath): os.makedirs(dirpath)
         try:
-            #tryTypeError: 'FileMetadata' object is not iterable
+            # trying to catch the return values (metadata, response)
+            # gave me TypeError: 'FileMetadata' object is not iterable
+            # no time to inveestigate
             dbx.files_download_to_file (local_file_path, dbx_path)
         except dropbox.files.DownloadError as err:
             print('*** download  error', err)
