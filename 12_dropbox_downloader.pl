@@ -60,7 +60,7 @@ def main():
 
     subfolder = "2012/007"
 
-    list_folder(dbx, dropbox_folder, subfolder)
+    scan_through_folder(dbx, dropbox_folder, subfolder)
 
 ####################################
 if __name__ == '__main__':
