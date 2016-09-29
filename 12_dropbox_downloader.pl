@@ -41,10 +41,10 @@ def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
         exit(1)
     else:
         for entry in response.entries:
-            if type(entry)==dropbox.files.FolderMetadata:
-                print entry.name
-                print entry.path_display
-                print 
+            if type(entry)!=dropbox.files.FileMetadata: continue
+            print entry.name
+            print entry.path_display
+            print 
             #exit(1)
             #dbx_path = entry.path_display
             #local_path = dbx_path.replace(subfolder,local_dir)
