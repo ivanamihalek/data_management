@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os.path, os.makedirs
+import os
 
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
