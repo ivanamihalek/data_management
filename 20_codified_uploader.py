@@ -17,7 +17,7 @@ def get_family_info (case_boid):
     db     = connect_to_mysql()
     cursor = db.cursor()
     switch_to_db (cursor, 'blimps_production')
-    qry = 'select * from individual where boid like "%s%" '% case_boid 
+    qry = 'select * from individual where boid like "%s%%" '% case_boid 
     rows  = search_db (cursor, qry)
     for row in rows:
         print row
