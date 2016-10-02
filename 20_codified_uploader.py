@@ -1,4 +1,3 @@
-bash> head 12_dropbox_downloader.pl 
 #!/usr/bin/python
 
 import os
