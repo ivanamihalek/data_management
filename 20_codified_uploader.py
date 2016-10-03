@@ -128,7 +128,7 @@ def main():
             # make family folder
             sftp.mkdir(case_boid)
         # move to family dir
-        sftp.cd(case_boid)
+        sftp.chdir(case_boid)
         print sftp.pwd
         #for each bmfile
         for boid, info in family_info.iteritems():
