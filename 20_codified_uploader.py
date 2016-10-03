@@ -48,6 +48,26 @@ def find_bamfile (topdir, year, boid, alignment_preference):
    return [bamfile, md5file]
 
 ####################################
+def md5check (bamfile, md5file):
+    
+    f =  open (md5file, "r")
+    md5sum = f.readline().rstrip()
+    f.close()
+    # check the md5sum
+    p = subprocess.Popen(['md5sum', bamfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    checkmdd5 =  out.split(' ')[0]
+    if md5sum==checkmdd5:
+        print "md5sum checks"
+        return md5sum
+    else:
+        print "md5sum check failed: "
+        print "in", md5file, md5sum
+        print "recalculated:", chckmd5
+        exit(1)
+    return None
+
+####################################
 def main():
 
     if len(sys.argv) < 3:
@@ -77,14 +97,7 @@ def main():
             exit(1)
         print bamfile
         print md5file
-        f =  open (md5file, "r")
-        md5sum = f.readline().rstrip()
-        f.close()
-        print md5sum
-        # check the md5sum
-        p = subprocess.Popen(['md5sum', bamfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out, err = p.communicate()
-        print out
+        md5check (bamfile, md5file)
         exit(1)
 
     
