@@ -44,7 +44,7 @@ def main():
 
     # find file in the directory structure
     year = "20"+case_boid[2:4]
-    for boid in family_info.keys:
+    for boid in family_info.keys():
         for topdir in ['data01','data02']:
             if not year in listdir(mypath): continue
             print  topdir, year
