@@ -126,7 +126,7 @@ def main():
             print "\t %s found" % case_boid
         else:
             # make family folder
-            sftp.mkdir(case_boid))
+            sftp.mkdir(case_boid)
        
         sftp.close()
     # upload the bam files - chek if exist
