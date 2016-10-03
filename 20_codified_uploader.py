@@ -2,7 +2,7 @@
 
 import os,sys
 import pysftp
-
+from os import listdir
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.mysqldb import *
 
@@ -43,6 +43,13 @@ def main():
     print family_info
 
     # find file in the directory structure
+    year = "20"+case_boid[2:4]
+    for boid in family_info.keys:
+        for topdir in ['data01','data02']:
+            if not year in listdir(mypath): continue
+            print  topdir, year
+            exit(1)
+            break
     # check md5 sums
     # add file name and md5sum info to family info table
     # output/save  family info table to csv file
