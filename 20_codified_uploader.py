@@ -108,7 +108,8 @@ def main():
     outf = open (case_boid + ".csv","w")
     print >>outf, "\t".join(["case id","sex","relationship", "affected", "md5 checksum","file name"])
     for boid, info in family_info.iteritems():
-        print >>outf, "\t".join([case_boid] +  [ info[1:-1] ] + [ info[-1].split("/")[-1] ] )
+        print [case_boid] +  [ info[1:-1] ] + [ info[-1].split("/")[-1] ]
+        #print >>outf, "\t".join( [case_boid] +  [ info[1:-1] ] + [ info[-1].split("/")[-1] ] )
     outf.close()
     # upload the bam files - chek if exist
     # establish sftp connection
