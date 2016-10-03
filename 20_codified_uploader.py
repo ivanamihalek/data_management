@@ -14,7 +14,7 @@ CODIFIED_TOKEN = os.environ['CODIFIED_PASS']
 
 ####################################
 def get_family_info (case_boid):
-    intfo  = {}
+    info  = {}
     db     = connect_to_mysql()
     cursor = db.cursor()
     switch_to_db (cursor, 'blimps_production')
