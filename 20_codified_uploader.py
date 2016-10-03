@@ -129,11 +129,12 @@ def main():
             sftp.mkdir(case_boid)
         # move to family dir
         sftp.cd(case_boid)
+        print sftp.pwd
         #for each bmfile
         for boid, info in family_info.iteritems():
             bamfile_name =  info[-1].split("/")[-1]
             # check exists
-            if sftp.exists(case_boid):
+            if sftp.exists(bamfile_name):
                 print "\t %s found" % bamfile_name
             else:
                 # upload
