@@ -97,13 +97,18 @@ def main():
             exit(1)
         print bamfile
         print md5file
-        md5check (bamfile, md5file)
-        exit(1)
+        md5sum = md5check (bamfile, md5file) # will die here if it doesn't check
+        # add file name and md5sum info to family info table
+        info[boid].append(md5sum)
+        info[boid].append(bamfile)
 
     
-        # add file name and md5sum info to family info table
     # output/save  family info table to csv file
-
+    outf = open (case_boid.".csv","r")
+    print >>outf, "\t".join(["case id","sex","relationship", "affected", "md5 checksum","file name"])
+    for boid in family_info.keys():
+        print >>outf, "\t".join([case_boid] +  [ info[boid][1:-1] ] + [ info[boid][-1].split("/")[-1] ] )
+    outf.close()
     # upload the bam files - chek if exist
     # establish sftp connection
     # make family folder
