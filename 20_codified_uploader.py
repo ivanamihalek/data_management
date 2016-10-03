@@ -47,6 +47,17 @@ def find_bamfile (topdir, year, boid, alignment_preference):
        if bamfile: break
    return [bamfile, md5file]
 
+
+####################################
+def  output_csv(case_boid, family_info):
+    csv_name = case_boid + ".csv"
+    outf = open (case_boid + ".csv","w")
+    print >>outf, "\t".join(["case id","relationship", "affected", "md5 checksum","file name"])
+    for boid, info in family_info.iteritems():
+        print >>outf, "\t".join( [case_boid] +  [str(d) for d in info[1:-1] ] + [ info[-1].split("/")[-1] ] )
+    outf.close()
+    return csv_name
+
 ####################################
 def md5check (bamfile, md5file):
     
@@ -105,16 +116,15 @@ def main():
 
     
     # output/save  family info table to csv file
-    outf = open (case_boid + ".csv","w")
-    print >>outf, "\t".join(["case id","relationship", "affected", "md5 checksum","file name"])
-    for boid, info in family_info.iteritems():
-        print >>outf, "\t".join( [case_boid] +  [str(d) for d in info[1:-1] ] + [ info[-1].split("/")[-1] ] )
-    outf.close()
-    # upload the bam files - chek if exist
+    csv_name = output_csv(case_boid, family_info)
+
     # establish sftp connection
+    with pysftp.Connection(CODIFED_HOSTNAME, username=CODIFIED_ID, password=CODIFIED_PASS) as sftp:
+        # check family folder exists
+        print sftp.get('pwd') 
+    # upload the bam files - chek if exist
     # make family folder
     # upload alignment files and the info file in csv format
-    #with pysftp.Connection(CODIFED_HOSTNAME, username=CODIFIED_ID, password=CODIFIED_PASS) as sftp:
     #    with sftp.cd('public'):             # temporarily chdir to public
             #sftp.put('/my/local/filename')  # upload file to public/ on remote
             #sftp.get('remote_file')         # get a remote file
