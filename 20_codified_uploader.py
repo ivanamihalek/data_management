@@ -14,6 +14,7 @@ CODIFIED_TOKEN = os.environ['CODIFIED_PASS']
 
 ####################################
 def get_family_info (case_boid):
+    intfo  = {}
     db     = connect_to_mysql()
     cursor = db.cursor()
     switch_to_db (cursor, 'blimps_production')
@@ -21,10 +22,11 @@ def get_family_info (case_boid):
     qry += 'where i.boid like "%s%%" and i.id=c.individual_id ' % case_boid 
     rows  = search_db (cursor, qry)
     for row in rows:
-        print row
+        [boid, gender, relationship, affected]  = row
+        info [boid]  = [gender, relationship, affected]
     cursor.close()
     db.close()
-    exit(1)
+    return info
     
 ####################################
 def main():
@@ -43,9 +45,12 @@ def main():
     # find file in the directory structure
     # check md5 sums
     # add file name and md5sum info to family info table
-    # output/save to file family info table
+    # output/save  family info table to csv file
 
-    # upload the bam files
+    # upload the bam files - chek if exist
+    # establish sftp connection
+    # make family folder
+    # upload alignment files and the info file in csv format
     #with pysftp.Connection(CODIFED_HOSTNAME, username=CODIFIED_ID, password=CODIFIED_PASS) as sftp:
     #    with sftp.cd('public'):             # temporarily chdir to public
             #sftp.put('/my/local/filename')  # upload file to public/ on remote
