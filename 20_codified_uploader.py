@@ -143,8 +143,13 @@ def main():
                 sftp.put(bamfile_path)
             
         # upload alignment files and the info file in csv format
-        
-       
+        if sftp.exists(csv_name):
+            print "\t %s found" % csv_name
+        else:
+            # upload if it  does not
+            print "\t uploading %s " % csv_name
+            sftp.put(csv_name)
+            
         sftp.close()
  
  
