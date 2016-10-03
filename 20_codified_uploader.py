@@ -63,7 +63,6 @@ def main():
             if not year in listdir(topdir): continue
             print  topdir, year
             bamfile  = find_bamfile (topdir, year, boid, alignment_preference)
-            exit(1)
             break
         if not bamfile:
             print "bamfile not foud for", boid
