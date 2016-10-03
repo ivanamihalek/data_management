@@ -127,14 +127,17 @@ def main():
         else:
             # make family folder
             sftp.mkdir(case_boid)
+        # move to family dir
+        sftp.cd(case_boid)
+        #for each bmfile
+        # check exists
+        # upload if does not
+
+        # upload alignment files and the info file in csv format
+        
        
         sftp.close()
-    # upload the bam files - chek if exist
-    # upload alignment files and the info file in csv format
-    #    with sftp.cd('public'):             # temporarily chdir to public
-            #sftp.put('/my/local/filename')  # upload file to public/ on remote
-            #sftp.get('remote_file')         # get a remote file
-
+ 
  
 ####################################
 if __name__ == '__main__':
