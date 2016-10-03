@@ -46,7 +46,7 @@ def main():
     year = "20"+case_boid[2:4]
     for boid in family_info.keys():
         for topdir in ['data01','data02']:
-            if not year in listdir(mypath): continue
+            if not year in listdir(topdir): continue
             print  topdir, year
             exit(1)
             break
