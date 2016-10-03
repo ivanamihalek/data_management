@@ -32,7 +32,7 @@ def get_family_info (case_boid):
 def find_bamfile (topdir, year, boid, alignment_preference):
    bamfile = None
    caseno = boid[4:7]
-   path   = "/".join([topdir, year, caseno/boid])
+   path   = '/'.join([topdir, year, caseno/boid])
    for root, dirs, files in os.walk(path):
        if not alignment_preference in root: continue
        for name in files:
