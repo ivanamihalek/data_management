@@ -122,7 +122,8 @@ def main():
     with pysftp.Connection(CODIFED_HOSTNAME, username=CODIFIED_ID, password=CODIFIED_PASS) as sftp:
         # check family folder exists
         print sftp
-        print sftp.lstat()
+        print sftp.pwd
+        sftp.close()
     # upload the bam files - chek if exist
     # make family folder
     # upload alignment files and the info file in csv format
