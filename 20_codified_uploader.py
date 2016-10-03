@@ -36,7 +36,7 @@ def find_bamfile (topdir, year, boid, alignment_preference):
    for root, dirs, files in os.walk(path):
        if not alignment_preference in root: continue
        for name in files:
-            if not ".bam" in name: continue
+            if name[-4:] != ".bam": continue
             bamfile  = name
             break
        if bamfile: break
