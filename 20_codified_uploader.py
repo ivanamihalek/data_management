@@ -53,6 +53,7 @@ def md5check (bamfile, md5file):
     f =  open (md5file, "r")
     md5sum = f.readline().rstrip()
     f.close()
+    return md5sum
     # check the md5sum
     p = subprocess.Popen(['md5sum', bamfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
