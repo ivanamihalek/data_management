@@ -3,6 +3,8 @@
 import os,sys
 import pysftp
 from os import listdir
+from subprocess 
+
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.mysqldb import *
 
@@ -79,9 +81,14 @@ def main():
         md5sum = f.readline().rstrip()
         f.close()
         print md5sum
-        
-    # check md5 sums
-    # add file name and md5sum info to family info table
+        # check the md5sum
+        p = subprocess.Popen(['md5sum', bamfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = p.communicate()
+        print out
+        exit(1)
+
+    
+        # add file name and md5sum info to family info table
     # output/save  family info table to csv file
 
     # upload the bam files - chek if exist
