@@ -120,12 +120,16 @@ def main():
 
     # establish sftp connection
     with pysftp.Connection(CODIFED_HOSTNAME, username=CODIFIED_ID, password=CODIFIED_PASS) as sftp:
-        # check family folder exists
-        print sftp
         print sftp.pwd
+        # check family folder exists
+        if sftp.exists(case_boid):
+            print "\t %s found" % case_boid
+        else:
+            # make family folder
+            sftp.mkdir(case_boid))
+       
         sftp.close()
     # upload the bam files - chek if exist
-    # make family folder
     # upload alignment files and the info file in csv format
     #    with sftp.cd('public'):             # temporarily chdir to public
             #sftp.put('/my/local/filename')  # upload file to public/ on remote
