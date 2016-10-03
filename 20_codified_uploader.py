@@ -104,7 +104,7 @@ def main():
 
     
     # output/save  family info table to csv file
-    outf = open (case_boid.".csv","r")
+    outf = open (case_boid + ".csv","r")
     print >>outf, "\t".join(["case id","sex","relationship", "affected", "md5 checksum","file name"])
     for boid in family_info.keys():
         print >>outf, "\t".join([case_boid] +  [ info[boid][1:-1] ] + [ info[boid][-1].split("/")[-1] ] )
