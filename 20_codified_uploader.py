@@ -12,7 +12,7 @@ from  data_mgmt_utils_py.mysqldb import *
 ###################################
 CODIFED_HOSTNAME  = "216.230.226.115"
 CODIFIED_ID    = os.environ['CODIFIED_ID']
-CODIFIED_TOKEN = os.environ['CODIFIED_PASS']
+CODIFIED_PASS  = os.environ['CODIFIED_PASS']
 
 ####################################
 def get_family_info (case_boid):
