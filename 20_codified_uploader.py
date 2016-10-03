@@ -132,17 +132,16 @@ def main():
         print sftp.pwd
         #for each bmfile
         for boid, info in family_info.iteritems():
-            bamfile_name =  info[-1].split("/")[-1]
+            bamfile_path =  info[-1]
+            bamfile_name =  bamfile_path.split("/")[-1]
             # check exists
             if sftp.exists(bamfile_name):
                 print "\t %s found" % bamfile_name
             else:
-                # upload
+                # upload if it  does not
                 print "\t uploading %s " % bamfile_name
-                #sftp.mkdir(case_boid)
+                sftp.put(bamfile_path)
             
-        # upload if does not
-
         # upload alignment files and the info file in csv format
         
        
