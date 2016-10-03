@@ -31,16 +31,19 @@ def get_family_info (case_boid):
 ####################################
 def find_bamfile (topdir, year, boid, alignment_preference):
    bamfile = None
+   md5file = None
    caseno = boid[4:7]
    path   = "/".join([topdir, year, caseno, boid])
    for root, dirs, files in os.walk(path):
        if not alignment_preference in root: continue
        for name in files:
             if name[-4:] != ".bam": continue
-            bamfile  = name
+            bamfile  =  "/".join([root,name])
+            md5file  =  "/".join([root+"/md5sums", name+".md5"])
+            if not os.path.isfile(md5file): md5file = None
             break
        if bamfile: break
-   return bamfile
+   return [bamfile, md5file]
 
 ####################################
 def main():
@@ -62,12 +65,21 @@ def main():
         for topdir in ['/data01','/data02']:
             if not year in listdir(topdir): continue
             print  topdir, year
-            bamfile  = find_bamfile (topdir, year, boid, alignment_preference)
+            [bamfile, md5file] = find_bamfile (topdir, year, boid, alignment_preference)
             break
         if not bamfile:
             print "bamfile not foud for", boid
             exit(1)
+        if not md5file: 
+            print "md5file not found  for", boid
+            exit(1)
         print bamfile
+        print md5file
+        f =  open (md5file, "r")
+        md5sum = .readline().rstrip()
+        f.close()
+        print md5sum
+        
     # check md5 sums
     # add file name and md5sum info to family info table
     # output/save  family info table to csv file
