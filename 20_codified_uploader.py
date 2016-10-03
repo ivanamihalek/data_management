@@ -76,7 +76,7 @@ def main():
         print bamfile
         print md5file
         f =  open (md5file, "r")
-        md5sum = .readline().rstrip()
+        md5sum = f.readline().rstrip()
         f.close()
         print md5sum
         
