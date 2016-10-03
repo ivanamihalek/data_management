@@ -29,6 +29,20 @@ def get_family_info (case_boid):
     return info
     
 ####################################
+def find_bamfile (topdir, year, boid, alignment_preference):
+   bamfile = None
+   caseno = boid[4:7]
+   path   = "/".join([topdir, year, caseno/boid])
+   for root, dirs, files in os.walk(path):
+       if not alignment_preference in root: continue
+       for name in files:
+            if not ".bam" in name: continue
+            bamfile  = name
+            break
+       if bamfile: break
+   return bamfile
+
+####################################
 def main():
 
     if len(sys.argv) < 3:
@@ -48,8 +62,13 @@ def main():
         for topdir in ['/data01','/data02']:
             if not year in listdir(topdir): continue
             print  topdir, year
+            bamfile  = find_bamfile (topdir, year, boid, alignment_preference)
             exit(1)
             break
+        if not bamfile:
+            print "bamfile not foud for", boid
+            exit(1)
+        print bamfile
     # check md5 sums
     # add file name and md5sum info to family info table
     # output/save  family info table to csv file
