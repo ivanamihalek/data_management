@@ -102,7 +102,9 @@ def main():
             break
         if not bamfile:
             print "bamfile not foud for", boid
-            exit(1)
+            print " ... removing ..."
+            del family_info[boid]
+            continue
         if not md5file: 
             print "md5file not found  for", boid
             exit(1)
