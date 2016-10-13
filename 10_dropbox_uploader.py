@@ -29,19 +29,19 @@ def upload_with_existence_checking(dbx, dropbox_folder, local_dir, subfolder, fi
 ####################################
 def main():
 
-    local_dir      = "/data01"
+    local_dir      = "/data02"
     dropbox_folder = "/raw_data"
 
     if not check_local_path(local_dir): exit(1)
     if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
-    subdir = "2012"
+    subdir = "2016/022"
 
     for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
         subfolder = dirpath[len(local_dir):].strip(os.path.sep)
         for file in files:
-            #if not file[-3:] in ["bz2", ".gz"]: continue
-            #if file[-3:] == "bam": continue
+            #if file[-3:] in ["bz2", ".gz"]: continue
+            if file[-3:] == "bam": continue
             #if file[-7:] == "bam.bz2": continue
             #if file[-8:] == "gatk.vcf": continue
             print subfolder, file
