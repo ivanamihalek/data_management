@@ -41,7 +41,7 @@ def main():
         subfolder = dirpath[len(local_dir):].strip(os.path.sep)
         for file in files:
             #if file[-3:] in ["bz2", ".gz"]: continue
-            if file[-3:] == "bam": continue
+            #if file[-3:] == "bam": continue
             #if file[-7:] == "bam.bz2": continue
             #if file[-8:] == "gatk.vcf": continue
             print subfolder, file
