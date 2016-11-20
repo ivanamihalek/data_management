@@ -82,7 +82,7 @@ def md5check (bamfile, md5file):
 def main():
 
     if len(sys.argv) < 3:
-        print  "usage: %s <case BOid> <seqmule/seqcenter> " % sys.argv[0]
+        print  "usage: %s <case BOid> <seqmule/seq_center> " % sys.argv[0]
         exit(1)
 
     [case_boid, alignment_preference]  = sys.argv[1:3]
