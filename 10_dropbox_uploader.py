@@ -7,7 +7,6 @@ from  data_mgmt_utils_py.dropbox_utils import *
 
 ####################################
 DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
-
 dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 
