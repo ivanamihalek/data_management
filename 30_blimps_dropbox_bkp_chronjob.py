@@ -22,6 +22,9 @@ def main():
     sql_dump_location = "/tmp/blimps_production.sql"
     dropbox_folder    = "/blimps_backup"
 
+    dbx_path = "/".join(dropbox_folder, backup_schedule, ".".join("blimps_production", time.strftime("%Y%b%d"), "sql") )
+    print "Uploading from %s to %s" % (sql_dump_location, dbx_path)
+    exit(1)
     # dump mysql using local credentials to /tmp/blimps_dump.sql
     cmd = ["mysqldump", "--login-path=blimps", "blimps_production"]
     errlog = sql_dump_location+".stderr"
