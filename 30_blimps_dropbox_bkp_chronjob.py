@@ -70,7 +70,7 @@ def main():
     zip_ext = compressed_db.split(".").pop()
     dbx_path = "/".join([dropbox_folder, backup_schedule, ".".join(["blimps_production", time.strftime("%Y%b%d"), "sql", zip_ext]) ])
     print "Uploading from %s to %s" % (compressed_db, dbx_path)
-    upload (dbx, sql_dump_location, dbx_path)
+    upload (dbx, compressed_db, dbx_path)
     # if chronjob is daily remove from Dropbox everyting older than 3 days
     # if monthly, remove older than 6 monthc
     # if yearly, keep all
