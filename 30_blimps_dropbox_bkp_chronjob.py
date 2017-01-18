@@ -3,7 +3,7 @@
 import os
 from  sys import argv
 import subprocess
-from  data_mgmt_utils_py.generic_utils import *
+import time
 from  data_mgmt_utils_py.dropbox_utils import *
 
 ####################################
@@ -19,11 +19,11 @@ def main():
         elif sys.argv[1] == "annual": backup_schedule ="annual"
     print backup_schedule
 
-    sql_dump_location = "/tmp/blimps_dump.sql"
+    sql_dump_location = "/tmp/blimps_production.sql"
     dropbox_folder    = "/blimps_backup"
 
     # dump mysql using local credentials to /tmp/blimps_dump.sql
-    cmd = ["mysqldump", "--login-path=cookiemonster", "blimps_development"]
+    cmd = ["mysqldump", "--login-path=blimps", "blimps_production"]
     errlog = sql_dump_location+".stderr"
     try:
         exit_code = subprocess.call(cmd, stdout = open(sql_dump_location, "w"), stderr= open(errlog,"w"))
@@ -39,8 +39,9 @@ def main():
         exit(1)
     print "going to upload"
     #  upload current version to dropbox
-    dbx_path = dropbox_folder+ "/" + backup_schedule
-    upload (dbx, sql_dump_location, dbx_path)
+    dbx_path = "/".join(dropbox_folder, backup_schedule, ".".join("blimps_production", time.strftime("%Y%b%d"), "sql") )
+    print "Uploading from %s to %s" % (sql_dump_location, dbx_path)
+    #upload (dbx, sql_dump_location, dbx_path)
     # if chronjob is daily remove from Dropbox everyting older than 3 days
     # if monthly, remove older than 6 monthc
     # if yearly, keep all
