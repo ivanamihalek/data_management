@@ -21,7 +21,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
     if check_local_path(local_file_path):
         #print local_file_path + "   found"
         pass
-    elif "fastq" in dbx_path or ".bam" in dbx_pathor or ".gatk.vcf" in dbx_path:
+    elif "fastq" in dbx_path or ".bam" in dbx_path or ".gatk.vcf" in dbx_path:
         print dbx_path + "   skipping"
         
     else:
