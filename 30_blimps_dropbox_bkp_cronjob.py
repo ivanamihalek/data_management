@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
-import os
-from  sys import argv
+
 from  data_mgmt_utils_py.dropbox_utils import *
-import subprocess
+import subprocess, os
 import time
 from datetime import datetime, timedelta
 
@@ -30,21 +29,26 @@ def dump_database(login_path, database, sql_dump_location):
         exit(1)
 
 ###############################
-def compress_database(sql_dump_location):
-    cmd = ["gzip", "-f", sql_dump_location]
-    try:
-        exit_code = subprocess.call(cmd)
-    except subprocess.CalledProcessError as e:
-        print "got error from mysql:"
-        print e.output
+def compress_database(sql_dump_location, zip_ext):
+
+    if zip_ext=="gz":
+        cmd = ["gzip", "-f", sql_dump_location]
+        try:
+            exit_code = subprocess.call(cmd)
+        except subprocess.CalledProcessError as e:
+            print "got error from mysql:"
+            print e.output
+            exit(1)
+        except OSError:
+            print cmd[0], "not found, or something like that (OSError)"
+            exit(1)
+        if not exit_code == 0:  # I don't understand why is subprocess.call not intercepting this ....
+            print "error gzipping"
+            exit(1)
+    else:
+        print "compression %s not implemented" % gz
         exit(1)
-    except OSError:
-        print cmd[0], "not found, or something like that (OSError)"
-        exit(1)
-    if not exit_code == 0:  # I don't understand why is subprocess.call not intercepting this ....
-        print "error gzipping"
-        exit(1)
-    return sql_dump_location+".gz"
+
 
 ###############################
 def remove_old(dropbox_folder, backup_schedule):
@@ -53,7 +57,7 @@ def remove_old(dropbox_folder, backup_schedule):
     if backup_schedule=="daily":
         cutoff_date = datetime.now() - timedelta(days=5)
     elif  backup_schedule=="monthly":
-        cutoff_date = datetime.now() - timedelta(months=6)
+        cutoff_date = datetime.now() - timedelta(days=6*30)
     else:
         return
     dbx_path =  "/".join([dropbox_folder, backup_schedule])
@@ -61,7 +65,7 @@ def remove_old(dropbox_folder, backup_schedule):
     try:
         response = dbx.files_list_folder(dbx_path, recursive = True)
     except dropbox.exceptions.ApiError as err:
-        print('Folder listing failed for', path, '-- assumped empty:', err)
+        print('Folder listing failed for', dbx_path, '-- assumped empty:', err)
         return # don't delete anything if unsure
 
     for entry in response.entries:
@@ -82,22 +86,36 @@ def main():
         elif sys.argv[1] == "annual": backup_schedule ="annual"
     print "backup schedule: %s" % backup_schedule
 
-    sql_dump_location = "/tmp/blimps_production.sql"
-    dropbox_folder    = "/blimps_backup"
+    zip_ext = "gz" # will dictate which compression program we use
 
-    # dump mysql using local credentials to /tmp/blimps_dump.sql
     hostname = os.popen("hostname").read().rstrip()
     if hostname=='pegasus':
-        dump_database(login_path="cookiemonster", database="blimps_development", sql_dump_location=sql_dump_location)
+        database = "blimps_development"
+        login_path="cookiemonster"
     else:
-        dump_database(login_path="blimps", database="blimps_production", sql_dump_location=sql_dump_location)
-    compressed_db = compress_database(sql_dump_location)
+        database = "blimps_production"
+        login_path="blimps"
+
+    sql_dump = ".".join([database, time.strftime("%Y%b%d"), "sql"])
+    sql_dump_location = "/tmp/" + sql_dump
+    compressed_db = ".".join([sql_dump, zip_ext])
+    compressed_db_location = "/tmp/" + compressed_db
+
+    # dump mysql using local credentials to /tmp/blimps_dump.sql
+    if not os.path.isfile(compressed_db_location) or os.path.getsize(compressed_db_location)==0:
+        print "creating new", compressed_db
+        dump_database(login_path, database, sql_dump_location=sql_dump_location)
+        compress_database(sql_dump_location, zip_ext)
+        if not os.path.isfile(compressed_db_location) or os.path.getsize(compressed_db_location)==0:
+            print "failed to create and compress database for backup"
+            exit(1)
 
     #  upload current version to dropbox
-    zip_ext = compressed_db.split(".").pop()
-    dbx_path = "/".join([dropbox_folder, backup_schedule, ".".join(["blimps_production", time.strftime("%Y%b%d"), "sql", zip_ext]) ])
-    print "Uploading from %s to %s" % (compressed_db, dbx_path)
-    upload (dbx, compressed_db, dbx_path)
+    dropbox_folder = "/blimps_backup"
+    dbx_path = "/".join([dropbox_folder, backup_schedule, compressed_db])
+    print "Uploading from %s to %s" % (compressed_db_location, dbx_path)
+    if hostname=='pegasus':  exit(0)
+    upload (dbx, compressed_db_location, dbx_path)
     # if chronjob is daily remove from Dropbox everything older than 3 days
     # if monthly, remove older than 6 months
     # if yearly, keep all
