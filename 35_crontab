@@ -1,3 +1,7 @@
-0 18  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily
-20 16 19 * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   monthly
-30 16 19 1 *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   annual
+20 18  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /scratch/blimps_backup.log 2>&1
+25 18  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /scratch/blimps_backup.log 2>&1
+30 18  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /scratch/blimps_backup.log 2>&1
+35 18  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /scratch/blimps_backup.log 2>&1
+45 18  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /scratch/blimps_backup.log 2>&1
+20 16 19 * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   monthly >> /scratch/blimps_backup.log 2>&1
+30 16 19 1 *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   annual >> /scratch/blimps_backup.log 2>&1
