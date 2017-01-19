@@ -84,8 +84,6 @@ def main():
 
     sql_dump_location = "/tmp/blimps_production.sql"
     dropbox_folder    = "/blimps_backup"
-    remove_old(dropbox_folder, backup_schedule)
-    exit(1)
 
     # dump mysql using local credentials to /tmp/blimps_dump.sql
     hostname = os.popen("hostname").read().rstrip()
