@@ -5,9 +5,12 @@ use warnings;
 @ARGV==1 || die "Usage: $0 <cramfile>. Bamfile will be written to the same directory.\n";
 my $cramfile = $ARGV[0];
 
-# the tools we need
+# prerequisites
 my $samtools = "/usr/local/bin/samtools";
-(-e $samtools) || die "$samtools not found.\n";
+my $ref_assembly_dir = "/databases/human_genome/";
+for ($samtools, $ref_assembly_dir) {
+    -e $_ || die "$_ not found.\n";
+}
 
 # the only case that I know how to resolve
 # the header conaints @SQ linies with UR fields, all UR fields are the same, nad contain the path to
