@@ -20,13 +20,13 @@ for my $line (@lines) {
     my $assembly = pop(@aux);
     my @foo = grep($assembly, @assemblies);
     next if @foo>0;
-    @assemblies.push($assembly);
+    push @assemblies, $assembly;
 }
 
 @assemblies==0 && die "no candidate assembly found in the header of $cramfile\n";
-@assemblies>1 && die "I am not equipped to handle more than one assembly: @assemnlies\n";
+@assemblies>1 && die "I am not equipped to handle more than one assembly: @assemblies\n";
 
-my $reference_assembly = @assemblies[0];
+my $reference_assembly = $assemblies[0];
 
 print " reference assembly: $reference_assembly  \n";
 # do we have the assembly at the expected location?
