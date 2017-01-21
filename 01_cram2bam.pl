@@ -14,10 +14,10 @@ my $samtools = "/usr/local/bin/samtools";
 # a human assembly that I already have stored
 my @lines = split "\n", `$samtools view -H $cramfile`;
 for my $line (@lines) {
-    print $line,"\n";
     $line =~ /\"UR:"(\S+)\s|$/ || next;
-    my $assembly = (split "\/", $line).pop();
-    print $assembly , "\n";
+    print $line,"\n";
+    #my $assembly = (split "\/", $line).pop();
+    #print $assembly , "\n";
 }
 
 # we have found the assembly, is it indexed?
