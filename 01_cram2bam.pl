@@ -33,8 +33,13 @@ my $reference_assembly = $assemblies[0];
 
 print " reference assembly: $reference_assembly  \n";
 # do we have the assembly at the expected location?
+my $ref_fullpath = join("/",[$ref_assembly_dir, $reference_assembly]);
+(-e $ref_fullpath) || die "$reference_assembly not found in $ref_assembly_dir\n";
+(-z $ref_fullpath) &&  die "$ref_fullpath is empty\n";
 
 # we have found the assembly, is it indexed?
-
+my $ref_assembly_index = $ref_fullpath.".fai";
+(-e $ref_assembly_index  && ! -z $ref_assembly_index )  || `$samtools faidx $ref_fullpath`;
+(-e $ref_assembly_index  && ! -z $ref_assembly_index )  || die "failed to index $ref_fullpath\n";
 # if not, index
 
