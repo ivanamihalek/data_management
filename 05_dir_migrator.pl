@@ -10,11 +10,11 @@ my $TEST_DRIVE = 0;  # test drive will only create the target directory structur
 my $fromdir = $ARGV[0];
 
 
-#my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center", 
-#		   "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
+my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center",
+		   "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
 
-my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignments/by_seqmule_pipeline", 
-		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
+#my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignments/by_seqmule_pipeline",
+#		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
 
 my $todir;
 if ($fromdir eq  "/home/ivana/tray") {
