@@ -45,6 +45,6 @@ my $ref_assembly_index = $ref_fullpath.".fai";
 # finally, make the cramfile
 my $bamfile = $cramfile;
 $bamfile =~ s/cram$/bam/;
-$bamfile!=$cramfile || die "failed to create bamfile name (does cramfile have the extenion \"cram\"?)\n";
+$bamfile ne $cramfile || die "failed to create bamfile name (does cramfile have the extenion \"cram\"?)\n";
 my $cmd = "$samtools view $cramfile -T $ref_assembly_index -b -o $bamfile";
 print "running $cmd \n";
