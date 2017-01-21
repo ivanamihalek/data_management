@@ -13,7 +13,7 @@ for ($samtools, $ref_assembly_dir) {
 }
 
 # the only case that I know how to resolve
-# the header conaints @SQ linies with UR fields, all UR fields are the same, nad contain the path to
+# the header conaints @SQ lines with UR fields, all UR fields are the same, and contain the path to
 # a human assembly that I already have stored
 my @lines = split "\n", `$samtools view -H $cramfile`;
 my @assemblies;
@@ -37,9 +37,14 @@ my $ref_fullpath = join("/",$ref_assembly_dir, $reference_assembly);
 (-e $ref_fullpath) || die "$reference_assembly not found in $ref_assembly_dir\n";
 (-z $ref_fullpath) && die "$ref_fullpath is empty\n";
 
-# we have found the assembly, is it indexed?
+# we have found the assembly, is it indexed?  if not, index
 my $ref_assembly_index = $ref_fullpath.".fai";
 (-e $ref_assembly_index  && ! -z $ref_assembly_index )  || `$samtools faidx $ref_fullpath`;
 (-e $ref_assembly_index  && ! -z $ref_assembly_index )  || die "failed to index $ref_fullpath\n";
-# if not, index
 
+# finally, make the cramfile
+my $bamfile = $cramfile;
+$bamfile =~ s/cram$/bam/;
+$bamfile!=$cramfile || die "failed to create bamfile name (does cramfile have the extenion \"cram\"?)\n";
+my $cmd = "$samtools view $cramfile -T $ref_assembly_index -b -o $bamfile";
+print "running $cmd \n";
