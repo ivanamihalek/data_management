@@ -15,10 +15,8 @@ my $samtools = "/usr/local/bin/samtools";
 my @lines = split "\n", `$samtools view -H $cramfile`;
 for my $line (@lines) {
     $line =~  /\sUR\:(\S+)(\s|$)/|| next;
-    print $1;
-    print "\n";
-    #my $assembly = (split "\/", $line).pop();
-    #print $assembly , "\n";
+    my $assembly = (split "\/", $1).pop();
+    print $assembly , "\n";
 }
 
 # we have found the assembly, is it indexed?
