@@ -48,3 +48,4 @@ $bamfile =~ s/cram$/bam/;
 $bamfile ne $cramfile || die "failed to create bamfile name (does cramfile have the extenion \"cram\"?)\n";
 my $cmd = "$samtools view $cramfile -T $ref_assembly_index -b -o $bamfile";
 print "running $cmd \n";
+(system $cmd) && die "Error running $cmd: $!\n";
