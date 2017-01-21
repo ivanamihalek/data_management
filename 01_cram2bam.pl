@@ -14,7 +14,7 @@ my $samtools = "/usr/local/bin/samtools";
 # a human assembly that I already have stored
 my @lines = split "\n", `$samtools view -H $cramfile`;
 for my $line (@lines) {
-    $line =~ /\"UR:"(\S+)\s|$/ || next;
+    $line =~ /"UR:"(\S+)\s|$/ || next;
     print $1;
     print "\n";
     #my $assembly = (split "\/", $line).pop();
