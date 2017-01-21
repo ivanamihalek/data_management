@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-@ARGV==1 || die "Usage: $0 <cramfile>. Bmfile will be written to the same directory.\n";
+@ARGV==1 || die "Usage: $0 <cramfile>. Bamfile will be written to the same directory.\n";
 my $cramfile = $ARGV[0];
 
 # the tools we need
@@ -14,6 +14,7 @@ my $samtools = "/usr/local/bin/samtools";
 # a human assembly that I already have stored
 my @lines = split "\n", `$samtools view -H $cramfile`;
 for my $line (@lines) {
+    print $line,"\n";
     $line =~ /\"UR:"(\S+)\s/ || next;
     my $assembly = (split "\/", $line).pop();
     print $assembly , "\n";
