@@ -15,7 +15,7 @@ my $samtools = "/usr/local/bin/samtools";
 my @lines = split "\n", `$samtools view -H $cramfile`;
 for my $line (@lines) {
     print $line,"\n";
-    $line =~ /\"UR:"(\S+)\s/ || next;
+    $line =~ /\"UR:"(\S+)\s|$/ || next;
     my $assembly = (split "\/", $line).pop();
     print $assembly , "\n";
 }
