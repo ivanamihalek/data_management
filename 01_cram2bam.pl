@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+# note: after doing the checksum, this script will delet the original cramfile
+
 use strict;
 use warnings;
 
@@ -49,3 +51,5 @@ $bamfile ne $cramfile || die "failed to create bamfile name (does cramfile have 
 my $cmd = "$samtools view $cramfile -T $ref_assembly_index -b -o $bamfile";
 print "running $cmd \n";
 (system $cmd) && die "Error running $cmd: $!\n";
+
+
