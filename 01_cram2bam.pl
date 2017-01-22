@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# note: after doing the checksum, this script will delet the original cramfile
+# note: cram - bam - cram does not recover the original file because samtools change the header
 
 use strict;
 use warnings;
@@ -48,7 +48,7 @@ my $ref_assembly_index = $ref_fullpath.".fai";
 my $bamfile = $cramfile;
 $bamfile =~ s/cram$/bam/;
 $bamfile ne $cramfile || die "failed to create bamfile name (does cramfile have the extenion \"cram\"?)\n";
-my $cmd = "$samtools view $cramfile -T $ref_assembly_index -b -o $bamfile";
+my $cmd = "$samtools view $cramfile -T $ref_fullpath -b -o $bamfile";
 print "running $cmd \n";
 (system $cmd) && die "Error running $cmd: $!\n";
 
