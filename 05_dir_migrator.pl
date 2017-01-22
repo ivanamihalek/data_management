@@ -1,4 +1,10 @@
 #!/usr/bin/perl
+
+# this is a hack, written originally in attempt to sort through the mess
+# of semi-organized legacy data
+# it expects to be given a directory path, in which case (family) subdirs can be found
+# after that, the script attempts to guess the file type and sort it accordingly
+# in the local archive
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 use strict;
 
@@ -78,8 +84,8 @@ for my $case (@cases) {
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
 
     if ( defined $project) {
-	$project =~ s/201402006.ACE/FilaminC/g;
-	$project =~ s/\-GeneDx//g;
+        $project =~ s/201402006.ACE/FilaminC/g;
+        $project =~ s/\-GeneDx//g;
     }
 
     my $casedir = "$todir/20$year/$caseno";
@@ -137,9 +143,9 @@ sub parse_case_id (@_){
     if (length ($caseno) == 3) { 
 	
     }  elsif (length ($caseno) == 2) { 
-	$caseno = "0".$caseno;
+    	$caseno = "0".$caseno;
     }  else {
-	die  "Unexpected BOid format: $case_id (case number $caseno ?)\n";
+    	die  "Unexpected BOid format: $case_id (case number $caseno ?)\n";
     }	
 
     return ($bo, $year, $caseno) ;
