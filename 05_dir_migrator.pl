@@ -2,7 +2,8 @@
 
 # this is a hack, written originally in attempt to sort through the mess
 # of semi-organized legacy data
-# it expects to be given a directory path, in which case (family) subdirs can be found
+# it expects to be given a directory path, in which the case (family) subdirs can be found
+# the names of the individual files should contain the individual (family member id)
 # after that, the script attempts to guess the file type and sort it accordingly
 # in the local archive
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
@@ -17,7 +18,7 @@ my $fromdir = $ARGV[0];
 
 
 my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center",
-		   "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
+    "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
 
 #my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignments/by_seqmule_pipeline",
 #		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
@@ -47,11 +48,11 @@ sub check_for_leftovers (@_);
 my @listing_level_1 = split "\n", `ls $fromdir`;
 
 my @cases  = ();
- 
+
 foreach ( @listing_level_1 ) {
     if( -d "$fromdir/$_") {
         chomp ;
-       /^BO/  && push @cases, $_;
+        /^BO/  && push @cases, $_;
     }
 }
 @cases || die "No cases labeled BO* found in $fromdir\n";
@@ -62,7 +63,7 @@ my %resolved  = {};
 
 ####################################################
 for my $case (@cases) {
-    
+
     print "\n$case\n";
     my @listing_level_2 = split "\n", `ls $fromdir/$case`;
 
@@ -89,11 +90,11 @@ for my $case (@cases) {
     }
 
     my $casedir = "$todir/20$year/$caseno";
-    
+
     if (defined $seen{$casedir}) {
-	    die "$casedir seen twice\n";
+        die "$casedir seen twice\n";
     } else {
-	    $seen{$casedir} = 1;
+        $seen{$casedir} = 1;
     }
     (-e $casedir) || `mkdir -p $casedir`;
 
@@ -140,13 +141,13 @@ sub parse_case_id (@_){
         die  "Unexpected BOid format: $case_id\n";
     }
 
-    if (length ($caseno) == 3) { 
-	
-    }  elsif (length ($caseno) == 2) { 
-    	$caseno = "0".$caseno;
+    if (length ($caseno) == 3) {
+
+    }  elsif (length ($caseno) == 2) {
+        $caseno = "0".$caseno;
     }  else {
-    	die  "Unexpected BOid format: $case_id (case number $caseno ?)\n";
-    }	
+        die  "Unexpected BOid format: $case_id (case number $caseno ?)\n";
+    }
 
     return ($bo, $year, $caseno) ;
 }
@@ -181,7 +182,7 @@ sub check_for_leftovers (@_) {
         my @subs = split "\n", `ls $thing_no_space`;
         foreach my $subdir (@subs) {
             check_for_leftovers ("$thing/$subdir", "$target_dir/$subdir");
-    	}
+        }
     }
 
     return;
@@ -193,7 +194,7 @@ sub process_extension (@_) {
 
     printf "processing extension @_ \n";
     my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
-    
+
     my @ext_files = `find $fromdir/$case  -name "*.$ext*"`;
 
     my $incomplete = 0;
@@ -228,21 +229,21 @@ sub process_extension (@_) {
 
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
             $year2 = substr $1, 0, 2;
-	    if ($caseno ==  substr $1, 2, 3)  {
-		$caseno2 = substr $1, 2, 3;
-	    } else {
-		$caseno2 = substr $1, 2, 2; # Christina is adding in an extra 0 on the right
- 	    } 	
-            $individual2 = substr $1, 5, 2; 	     
+            if ($caseno ==  substr $1, 2, 3)  {
+                $caseno2 = substr $1, 2, 3;
+            } else {
+                $caseno2 = substr $1, 2, 2; # Christina is adding in an extra 0 on the right
+            }
+            $individual2 = substr $1, 5, 2;
         }
 
-	while ( length($caseno2)<3 ) {
-	    $caseno2 = "0". $caseno2;
-	}
+        while ( length($caseno2)<3 ) {
+            $caseno2 = "0". $caseno2;
+        }
         ($year== $year2 &&   $caseno==$caseno2) ||
-	    die ">> label mismatch for $case:\n$ext_file\n yr:$year  yr2:$year2  caseno:$caseno  caseno2:$caseno2 \n";
+            die ">> label mismatch for $case:\n$ext_file\n yr:$year  yr2:$year2  caseno:$caseno  caseno2:$caseno2 \n";
 
-         my $boid = "BO".$year.$caseno.$individual2;
+        my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $2;
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
@@ -275,7 +276,7 @@ sub process_extension (@_) {
             }
             $is_fastq || next;
         }
-	
+
         my $boiddir = "$casedir/$boid";
         (-e $boiddir) || `mkdir $boiddir`;
 
@@ -286,7 +287,7 @@ sub process_extension (@_) {
 
         my $new_extension = $orig_file;
 
-	
+
         if ($ext eq  "txt") {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
@@ -295,7 +296,7 @@ sub process_extension (@_) {
 
         if ($TEST_DRIVE) {
             `touch $newfile`;
-	    
+
         } else {
 
             my $need_to_copy = 1;
