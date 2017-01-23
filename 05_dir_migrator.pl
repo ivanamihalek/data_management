@@ -6,8 +6,10 @@
 # the names of the individual files should contain the individual (family member id)
 # after that, the script attempts to guess the file type and sort it accordingly
 # in the local archive
-use data_mgmt_utils_pl::md5 qw(get_md5sum);
+use warnings;
 use strict;
+
+use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
 my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
