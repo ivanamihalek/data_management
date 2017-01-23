@@ -1,3 +1,4 @@
+source /home/ivana/.bashrc
 20 15  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
 25 15  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
 30 15  * * *  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
