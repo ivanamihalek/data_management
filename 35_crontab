@@ -1,7 +1,7 @@
-20 15  * * *  source /home/ivana/.bashrc; /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
-25 15  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
-30 15  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
-35 15  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
-45 15  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
-20 15 19 * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   monthly >> /tmp/blimps_backup.log 2>&1
-30 15 19 1 *    source /home/ivana/.bashrc; /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   annual >> /tmp/blimps_backup.log 2>&1
+20 16  * * *  source /home/ivana/.bashrc; /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
+25 16  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
+30 16  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
+35 16  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
+45 16  * * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
+20 3 24 * *   source /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   monthly >> /tmp/blimps_backup.log 2>&1
+20 3 25 1 *    source /home/ivana/.bashrc; /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   annual >> /tmp/blimps_backup.log 2>&1
