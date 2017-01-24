@@ -1,4 +1,4 @@
 SHELL=/bin/bash
 20 1  * * *  . /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   daily >> /tmp/blimps_backup.log 2>&1
-20 3 24 * *  . /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   monthly >> /tmp/blimps_backup.log 2>&1
-20 5 24 1 *  . /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   annual >> /tmp/blimps_backup.log 2>&1
+20 3 25 * *  . /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   monthly >> /tmp/blimps_backup.log 2>&1
+20 5 25 1 *  . /home/ivana/.bashrc;  /home/ivana/pypeworks/data_management/30_blimps_dropbox_bkp_cronjob.py   annual >> /tmp/blimps_backup.log 2>&1
