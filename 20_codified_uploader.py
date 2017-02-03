@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os,sys
+import sys
 import pysftp
 from os import listdir
 import  subprocess 
