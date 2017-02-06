@@ -37,7 +37,7 @@ def upload(dbx, local_file_path, dbx_path):
 
     if file_size <= CHUNK_SIZE:
         print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
-        print dbx.files_upload(f, dbx_path)
+        print dbx.files_upload(f.read(), dbx_path)
 
     else:
         approx_number_of_chunks =  file_size/CHUNK_SIZE
