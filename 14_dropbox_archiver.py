@@ -90,7 +90,6 @@ def main():
 
             # delete the original and the file in the scratch
             exit(1)
-        exit(1)
 
 ####################################
 if __name__ == '__main__':
