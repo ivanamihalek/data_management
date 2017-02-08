@@ -72,7 +72,7 @@ def main():
                 exit(1)
             # if found in dropbox, download to scratch
             scratch_path = "%s/%s" % (scratch_dir, file)
-            if testing and (not os.exists(scratch_path) or os.stat(scratch_path).st_size==0):
+            if testing and (not os.path.exists(scratch_path) or os.stat(scratch_path).st_size==0):
                 time_start = time()
                 print local_file_path
                 print dbx_path
