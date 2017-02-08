@@ -61,7 +61,7 @@ def main():
             print local_md5_path
             md5sum_local = os.popen("cat %s | cut -d' ' -f 1" % local_md5_path).read().rstrip()
             print "md5sum_local: ", md5sum_local
-            continue
+            exit(1)
             # try finding in Dropbox
             dbx_path = "/".join([dropbox_folder, subfolder, file])
             # if not found sound alarm and exit
