@@ -12,6 +12,7 @@
 # store the name of the file to ARCHIVED
 # delete the original and the file in the scratch
 
+testing = True
 
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
@@ -50,6 +51,7 @@ def main():
         for file_fullpath in files:
             # for bams, fastqs, and tarballs
             # (bams are binaries and compression does not further reduce their size)
+            #if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
             if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
             # local version of the file and its checksum
             local_file_path = "/".join([local_dir, subfolder, file_fullpath])
@@ -70,15 +72,16 @@ def main():
                 exit(1)
             # if found in dropbox, download to scratch
             scratch_path = "%s/%s" % (scratch_dir, file)
-            time_start = time()
-            print local_file_path
-            print dbx_path
-            print scratch_path
-            print " ... "
-            download (dbx, scratch_path, dbx_path)
-            print "done in %.1fs" % (time() - time_start)
+            if testing and not os.exists(scratch_path):
+                time_start = time()
+                print local_file_path
+                print dbx_path
+                print scratch_path
+                print " ... downloading ... "
+                download (dbx, scratch_path, dbx_path)
+                print "done in %.1fs" % (time() - time_start)
             # check if the md5sum is the same as the original
-            md5sum_scratch = os.popen("md5sum %s | cut -d' ' -f 1" % scratch_path).read()
+            md5sum_scratch = os.popen("md5sum %s | cut -d' ' -f 1" % scratch_path).read().strip()
             print "md5sum_scratch: ", md5sum_scratch
             # if the sums are not ok:  sound alarm and exit
             if md5sum_scratch != md5sum_local:
