@@ -27,10 +27,9 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 ####################################
 def note_archived (local_dir, subfolder, filename):
-    list_of_archived_files = "/".join([local_dir, subfolder, "ARCHIVED"])
-    archived = open(list_of_archived_files, 'a')
-    archived.write(filename+"\n")
-    archived.close()
+    archived_files = "/".join([local_dir, subfolder, "archived"])
+    if not os.path.exists(archived_files): os.makedirs(archived_files)
+    open(archived_files+"/"+filename, 'a').archived.close()
 
 ####################################
 def main():
@@ -86,7 +85,7 @@ def main():
             if md5sum_scratch != md5sum_local:
                 print "md5sum mismatch"
                 exit(1)
-            # store the name of the file to ARCHIVED
+            # make empty file in the archived subdir
             note_archived (local_dir, subfolder, file)
 
             # delete the original and the file in the scratch
