@@ -87,7 +87,9 @@ def main():
             note_archived (local_dir, subfolder, file)
             files_written += 1
             # delete the original and the file in the scratch
+            print "removing ", scratch_path
             os.remove(scratch_path)
+            print "removing ", local_file_path
             os.remove(local_file_path)
         if files_written>0: exit(1)
 
