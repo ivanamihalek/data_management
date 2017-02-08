@@ -28,8 +28,9 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 def store_archived (local_dir, subfolder):
     archived_file = "/".join([local_dir, subfolder, "ARCHIVED"])
     if not os.path.exists(archived_file):  # read and append this name if not present
+        pass
     else:  # create new file and write the name to it
-
+        pass
 
 ####################################
 def main():
