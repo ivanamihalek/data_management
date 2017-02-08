@@ -46,6 +46,7 @@ def main():
 
     for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
         subfolder = dirpath[len(local_dir):].strip(os.path.sep)
+        print dirpath, dirs, files
         for file in files:
             # for bams, fastqs, and tarballs
             # (bams are binaries and compression does not further reduce their size)
