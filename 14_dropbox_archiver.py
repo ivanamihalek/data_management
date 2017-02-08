@@ -29,7 +29,7 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 def note_archived (local_dir, subfolder, filename):
     archived_files = "/".join([local_dir, subfolder, "archived"])
     if not os.path.exists(archived_files): os.makedirs(archived_files)
-    open(archived_files+"/"+filename, 'a').archived.close()
+    open(archived_files+"/"+filename, 'a').close()
 
 ####################################
 def main():
