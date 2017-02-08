@@ -42,10 +42,9 @@ def main():
     if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
     subdir = ""
-
+    files_written = 0
     for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
         subfolder = dirpath[len(local_dir):].strip(os.path.sep)
-        print dirpath, dirs, files
         for file_fullpath in files:
             # for bams, fastqs, and tarballs
             # (bams are binaries and compression does not further reduce their size)
@@ -87,9 +86,9 @@ def main():
                 exit(1)
             # make empty file in the archived subdir
             note_archived (local_dir, subfolder, file)
-
+            files_written += 1
             # delete the original and the file in the scratch
-            exit(1)
+        if files_written>0: exit(1)
 
 ####################################
 if __name__ == '__main__':
