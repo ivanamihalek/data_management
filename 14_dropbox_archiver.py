@@ -48,7 +48,6 @@ def main():
         for file_fullpath in files:
             # for bams, fastqs, and tarballs
             # (bams are binaries and compression does not further reduce their size)
-            #if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
             if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
             # local version of the file and its checksum
             local_file_path = "/".join([local_dir, subfolder, file_fullpath])
@@ -88,6 +87,8 @@ def main():
             note_archived (local_dir, subfolder, file)
             files_written += 1
             # delete the original and the file in the scratch
+            os.remove(scratch_path)
+            os.remove(local_file_path)
         if files_written>0: exit(1)
 
 ####################################
