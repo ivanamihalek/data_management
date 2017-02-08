@@ -2,7 +2,7 @@
 
 # for mafs, fastqs, and tarballs:
 
-# try find ing in Dropbox
+# try finding in Dropbox
 # if not found sound alarm and exit
 # if found in dropbox, download to scratch
 
@@ -36,7 +36,7 @@ def main():
 
     local_dir      = "/data01"
     dropbox_folder = "/raw_data"
-    scratch_dir   = "/home/ivana/scratch"
+    scratch_dir    = "/home/ivana/scratch"
 
     if not check_local_path(local_dir): exit(1)
     if not check_dbx_path (dbx, dropbox_folder): exit(1)
@@ -47,14 +47,16 @@ def main():
         subfolder = dirpath[len(local_dir):].strip(os.path.sep)
         for file in files:
             # for bams, fastqs, and tarballs
-            # #bams are binaries and compression does not further reduce ther size
-            if not file[-3:] in ["bz2", ".bam"]: continue
-            # local version of the file and ints checksum
+            # (bams are binaries and compression does not further reduce their size)
+            if not file.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
+            # local version of the file and its checksum
             local_file_path = "/".join([local_dir, subfolder, file])
             local_md5_path  = "/".join([local_dir, subfolder, "md5sums", file+".md5"])
+            print local_file_path
+            print local_md5_path
             md5sum_local = os.popen("cat %s | cut -d' ' -f 1" % local_md5_path).read().rstrip()
             print "md5sum_local: ", md5sum_local
-
+            continue
             # try finding in Dropbox
             dbx_path = "/".join([dropbox_folder, subfolder, file])
             # if not found sound alarm and exit
@@ -83,7 +85,7 @@ def main():
 
             # delete the original and the file in the scratch
             exit(1)
-
+        exit(1)
 
 ####################################
 if __name__ == '__main__':
