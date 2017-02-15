@@ -19,7 +19,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
 
     # check file exists locally already
     if check_local_path(local_file_path):
-        #print local_file_path + "   found"
+        print local_file_path + "   found"
         pass
     elif "fastq" in dbx_path or ".bam" in dbx_path or ".gatk.vcf" in dbx_path:
         print dbx_path + "   skipping"
@@ -46,7 +46,7 @@ def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
     try:
         response = dbx.files_list_folder(dbx_path, recursive = True)
     except dropbox.exceptions.ApiError as err:
-        print('Folder listing failed for', path, '-- assumped empty:', err)
+        print('Folder listing failed for', dbx_path, '-- assumped empty:', err)
         exit(1)
     else:
         for entry in response.entries:

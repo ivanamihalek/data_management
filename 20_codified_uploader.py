@@ -133,8 +133,8 @@ def main():
         print sftp.pwd
         #for each bmfile
         for boid, info in family_info.iteritems():
-            bamfile_path =  info[-1]
-            bamfile_name =  bamfile_path.split("/")[-1]
+            bamfile_path = info[-1]
+            bamfile_name = bamfile_path.split("/")[-1]
             # check exists
             if sftp.exists(bamfile_name):
                 print "\t %s found" % bamfile_name
