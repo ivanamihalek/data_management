@@ -12,7 +12,6 @@
 # store the name of the file to ARCHIVED
 # delete the original and the file in the scratch
 
-testing = False
 
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
@@ -69,14 +68,14 @@ def main():
 				exit(1)
 			# if found in dropbox, download to scratch
 			scratch_path = "%s/%s" % (scratch_dir, file)
-			if testing and (not os.path.exists(scratch_path) or os.stat(scratch_path).st_size == 0):
-				time_start = time()
-				print local_file_path
-				print dbx_path
-				print scratch_path
-				print " ... downloading ... "
-				download(dbx, scratch_path, dbx_path)
-				print "done in %.1fs" % (time() - time_start)
+			time_start = time()
+			print local_file_path
+			print dbx_path
+			print scratch_path
+			print " ... downloading ... "
+			download(dbx, scratch_path, dbx_path)
+			print "done in %.1fs" % (time() - time_start)
+			
 			# check if the md5sum is the same as the original
 			md5sum_scratch = os.popen("md5sum %s | cut -d' ' -f 1" % scratch_path).read().strip()
 			print "md5sum_scratch: ", md5sum_scratch
