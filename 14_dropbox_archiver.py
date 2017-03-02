@@ -12,7 +12,7 @@
 # store the name of the file to ARCHIVED
 # delete the original and the file in the scratch
 
-testing = True
+testing = False
 
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
@@ -91,9 +91,9 @@ def main():
 			print "removing ", scratch_path
 			os.remove(scratch_path)
 			print "removing ", local_file_path
+			print
 			os.remove(local_file_path)
 
-		if files_written>0: exit(1)
 
 ####################################
 if __name__ == '__main__':
