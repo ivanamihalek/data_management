@@ -1,0 +1,43 @@
+			
+            # local version of the file and its checksum
+            local_file_path = "/".join([local_dir, subfolder, file_fullpath])
+            local_md5_path  = "/".join([local_dir, subfolder, "md5sums", file_fullpath+".md5"])
+            file = file_fullpath.split('/')[-1]
+            print file
+            print local_file_path
+            print local_md5_path
+            md5sum_local = os.popen("cat %s | cut -d' ' -f 1" % local_md5_path).read().rstrip()
+            print "md5sum_local: ", md5sum_local
+
+            # try finding in Dropbox
+            dbx_path = "/".join([dropbox_folder, subfolder, file_fullpath])
+            # if not found sound alarm and exit
+            if not check_dbx_path(dbx, dbx_path):
+                print local_file_path, "not found in Dropbox"
+                print "(I checked in %s)" % dbx_path
+                exit(1)
+            # if found in dropbox, download to scratch
+            scratch_path = "%s/%s" % (scratch_dir, file)
+            if testing and (not os.path.exists(scratch_path) or os.stat(scratch_path).st_size==0):
+                time_start = time()
+                print local_file_path
+                print dbx_path
+                print scratch_path
+                print " ... downloading ... "
+                download (dbx, scratch_path, dbx_path)
+                print "done in %.1fs" % (time() - time_start)
+            # check if the md5sum is the same as the original
+            md5sum_scratch = os.popen("md5sum %s | cut -d' ' -f 1" % scratch_path).read().strip()
+            print "md5sum_scratch: ", md5sum_scratch
+            # if the sums are not ok:  sound alarm and exit
+            if md5sum_scratch != md5sum_local:
+                print "md5sum mismatch"
+                exit(1)
+            # make empty file in the archived subdir
+            note_archived (local_dir, subfolder, file)
+            files_written += 1
+            # delete the original and the file in the scratch
+            print "removing ", scratch_path
+            os.remove(scratch_path)
+            print "removing ", local_file_path
+            os.remove(local_file_path)
