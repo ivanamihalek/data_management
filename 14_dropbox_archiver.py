@@ -48,6 +48,7 @@ def main():
         for file_fullpath in files:
             # for bams, fastqs, and tarballs
             # (bams are binaries and compression does not further reduce their size)
+			if 'archived' in file_fullpath: continue
             if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
             # local version of the file and its checksum
             local_file_path = "/".join([local_dir, subfolder, file_fullpath])
