@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+use strict;
+use warnings;
 @ARGV==1 || die "Usage: $0 <source_md5sum_file>\n";
 my $source_md5sum_file = $ARGV[0];
 
