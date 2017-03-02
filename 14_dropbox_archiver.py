@@ -45,18 +45,15 @@ def main():
 	files_written = 0
 	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
-		for file_fullpath in files:
-			if 'archived' in file_fullpath: continue # this directory contains empty files
-			print file_fullpath
-			print 'archived' in file_fullpath
-			exit()
+		for filename in files:
 			# for bams, fastqs, and tarballs
 			# (bams are binaries and compression does not further reduce their size)
-			if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
+			if not filename.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
 			# local version of the file and its checksum
-			local_file_path = "/".join([local_dir, subfolder, file_fullpath])
-			local_md5_path = "/".join([local_dir, subfolder, "md5sums", file_fullpath + ".md5"])
-			file = file_fullpath.split('/')[-1]
+			local_file_path = "/".join([local_dir, subfolder, filename])
+			if 'archived' in local_file_path: continue # this directory contains empty files
+			local_md5_path = "/".join([local_dir, subfolder, "md5sums", filename + ".md5"])
+			file = filename.split('/')[-1]
 			print file
 			print local_file_path
 			print local_md5_path
@@ -64,7 +61,7 @@ def main():
 			print "md5sum_local: ", md5sum_local
 
 			# try finding in Dropbox
-			dbx_path = "/".join([dropbox_folder, subfolder, file_fullpath])
+			dbx_path = "/".join([dropbox_folder, subfolder, filename])
 			# if not found sound alarm and exit
 			if not check_dbx_path(dbx, dbx_path):
 				print local_file_path, "not found in Dropbox"
