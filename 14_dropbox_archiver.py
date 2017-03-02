@@ -46,7 +46,10 @@ def main():
 	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
 		for file_fullpath in files:
-			if 'archived' in file_fullpath: continue # this derctory contains empty files
+			if 'archived' in file_fullpath: continue # this directory contains empty files
+			print file_fullpath
+			print 'archived' in file_fullpath
+			exit()
 			# for bams, fastqs, and tarballs
 			# (bams are binaries and compression does not further reduce their size)
 			if not file_fullpath.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
