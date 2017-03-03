@@ -15,7 +15,7 @@
 
 from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
-
+import commands
 
 
 ####################################
@@ -25,10 +25,25 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 
 ####################################
+# can't believe there is no better way to do this ...
 def note_archived (local_dir, subfolder, filename):
-	archived_files = "/".join([local_dir, subfolder, "archived"])
-	if not os.path.exists(archived_files): os.makedirs(archived_files)
-	open(archived_files+"/"+filename, 'a').close()
+	archived_files = "/".join([local_dir, subfolder, "ARCHIVED"])
+	if not os.path.exists(archived_files):
+		outf = open(archived_files, 'w')
+		outf.write(filename+"\n")
+		outf.close()
+	else:
+		outf = open(archived_files, 'r')
+		found = False
+		for line in outf:
+			found = filename in line
+			if found: break
+		outf.close()
+		if not found:
+			outf = open(archived_files, 'a')
+			outf.write(filename+"\n")
+			outf.close()
+
 
 ####################################
 def main():
@@ -75,7 +90,7 @@ def main():
 			print " ... downloading ... "
 			download(dbx, scratch_path, dbx_path)
 			print "done in %.1fs" % (time() - time_start)
-			
+
 			# check if the md5sum is the same as the original
 			md5sum_scratch = os.popen("md5sum %s | cut -d' ' -f 1" % scratch_path).read().strip()
 			print "md5sum_scratch: ", md5sum_scratch
