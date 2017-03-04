@@ -65,7 +65,7 @@ def main():
 			if not filename.split('.')[-1] in ["gz", "bz2", "bam", "tar", "fastq"]: continue
 			# local version of the file and its checksum
 			local_file_path = "/".join([local_dir, subfolder, filename])
-			if 'archived' in local_file_path: continue # this directory contains empty files
+			if 'archived' in local_file_path.lower(): continue # this directory or file contains names of archived files
 			local_md5_path = "/".join([local_dir, subfolder, "md5sums", filename + ".md5"])
 			file = filename.split('/')[-1]
 			print file
