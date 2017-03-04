@@ -9,9 +9,10 @@ def main():
 	local_dir = "/data01"
 
 	for dirpath, dirs, files in os.walk(local_dir):
-		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
 		if not 'archived' in dirs: continue
-		print dirpath, 'archived', subfolder
+		print dirpath, 'archived'
+		os.system("ls %s/archived > %s/RCHIVED " % (dirpath, dirpath))
+		exit()
 
 ####################################
 if __name__ == '__main__':
