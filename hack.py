@@ -8,7 +8,7 @@ def main():
 
 	local_dir = "/data01"
 
-	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
+	for dirpath, dirs, files in os.walk(local_dir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
 		if not 'archived' in dirs: continue
 		print dirpath, 'archived', subfolder
