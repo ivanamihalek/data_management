@@ -107,6 +107,7 @@ def main():
 			print "removing ", local_file_path
 			print
 			os.remove(local_file_path)
+			exit()
 
 
 ####################################

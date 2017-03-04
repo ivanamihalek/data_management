@@ -6,7 +6,7 @@ import os
 ####################################
 def main():
 
-	local_dir = "/data02"
+	local_dir = "/data01"
 
 	for dirpath, dirs, files in os.walk(local_dir):
 		if not 'archived' in dirs: continue
