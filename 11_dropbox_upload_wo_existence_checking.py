@@ -16,8 +16,7 @@ def upload_no_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file
     subdir = subfolder
     local_file_path = "/".join([local_dir, subdir, file_to_move])
     dbx_path =  "/".join([dropbox_folder, subfolder, file_to_move])
-    print dbx_path + "uploading without existence check"
-    exit()
+    print dbx_path,  "uploading without existence check"
     upload (dbx, local_file_path, dbx_path)
 
 ####################################
