@@ -37,13 +37,13 @@ def upload(dbx, local_file_path, dbx_path, overwrite=False):
 
     # https://dropbox.github.io/dropbox-sdk-dotnet/html/T_Dropbox_Api_Files_WriteMode.htm
     if overwrite:
-        # note the capital O
-        mode = dropbox.files.WriteMode.Overwrite
+        # not working?
+        mode = dropbox.files.WriteMode.overwrite
     else:
         # Do not overwrite an existing file if there is a conflict.
         # The autorename strategy is to append a number to the file name.
         # For example, "document.txt" might become "document (2).txt"
-        mode = dropbox.files.WriteMode.Add
+        mode = dropbox.files.WriteMode.add
 
     if file_size <= CHUNK_SIZE:
 		print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
@@ -63,7 +63,7 @@ def upload(dbx, local_file_path, dbx_path, overwrite=False):
             print "Failed to obtain cursor: %s. Exiting." % err
             exit(1)
         try:
-            commit = dropbox.files.CommitInfo(path=dbx_path, mode=dropbox.files.WriteMode.overwrite)
+            commit = dropbox.files.CommitInfo(path=dbx_path, mode=mode)
         except dropbox.exceptions.ApiError as err:
             print "Commit failure: %s. Exiting." % err
             exit(1)
