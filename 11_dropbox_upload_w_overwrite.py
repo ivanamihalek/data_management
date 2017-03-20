@@ -30,7 +30,7 @@ def main():
 	if not check_local_path(local_dir): exit(1)
 	if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
-	subdir = "2016"
+	subdir = "2016/022"
 
 	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
