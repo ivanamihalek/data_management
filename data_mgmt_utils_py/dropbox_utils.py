@@ -28,7 +28,7 @@ def download(dbx, scratch_path, dbx_path):
     f.close()
 
 ####################################
-def upload(dbx, local_file_path, dbx_path):
+def upload(dbx, local_file_path, dbx_path, overwrite=False):
     f = open(local_file_path)
     file_size = os.path.getsize(local_file_path)
 
@@ -37,7 +37,10 @@ def upload(dbx, local_file_path, dbx_path):
 
     if file_size <= CHUNK_SIZE:
         print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
-        print dbx.files_upload(f.read(), dbx_path)
+        if overwrite:
+            print dbx.files_upload(f.read(), dbx_path, mode=dropbox.files.WriteMode.overwrite)
+        else:
+            print dbx.files_upload(f.read(), dbx_path)
 
     else:
         approx_number_of_chunks =  file_size/CHUNK_SIZE
