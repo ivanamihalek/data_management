@@ -38,6 +38,7 @@ def upload(dbx, local_file_path, dbx_path, overwrite=False):
     if file_size <= CHUNK_SIZE:
         print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
         if overwrite:
+			print " ... overwriting ..."
             print dbx.files_upload(f.read(), dbx_path, mode=dropbox.files.WriteMode.overwrite)
         else:
             print dbx.files_upload(f.read(), dbx_path)
