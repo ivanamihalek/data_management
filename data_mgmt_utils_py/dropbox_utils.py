@@ -35,13 +35,19 @@ def upload(dbx, local_file_path, dbx_path, overwrite=False):
     print
     print "#"*20
 
+    # https://dropbox.github.io/dropbox-sdk-dotnet/html/T_Dropbox_Api_Files_WriteMode.htm
+    if overwrite:
+        # note the capital O
+        mode = dropbox.files.WriteMode.Overwrite
+    else:
+        # Do not overwrite an existing file if there is a conflict.
+        # The autorename strategy is to append a number to the file name.
+        # For example, "document.txt" might become "document (2).txt"
+        mode = dropbox.files.WriteMode.Add
+
     if file_size <= CHUNK_SIZE:
 		print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
-		if overwrite:
-			print " ... overwriting ..."
-			print dbx.files_upload(f.read(), dbx_path, mode=dropbox.files.WriteMode.overwrite)
-		else:
-			print dbx.files_upload(f.read(), dbx_path)
+		print dbx.files_upload(f.read(), dbx_path, mode=mode)
     else:
         approx_number_of_chunks =  file_size/CHUNK_SIZE
         print "file size = %d, CHUNK_SIZE = %d  ==> approx %d chunks to upload" % (file_size, CHUNK_SIZE, approx_number_of_chunks)
@@ -57,7 +63,7 @@ def upload(dbx, local_file_path, dbx_path, overwrite=False):
             print "Failed to obtain cursor: %s. Exiting." % err
             exit(1)
         try:
-            commit = dropbox.files.CommitInfo(path=dbx_path)
+            commit = dropbox.files.CommitInfo(path=dbx_path, mode=dropbox.files.WriteMode.overwrite)
         except dropbox.exceptions.ApiError as err:
             print "Commit failure: %s. Exiting." % err
             exit(1)

@@ -11,13 +11,14 @@ dbx = dropbox.Dropbox(DROPBOX_TOKEN)
 
 
 ####################################
-def upload_no_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
+def upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
 
 	subdir = subfolder
 	local_file_path = "/".join([local_dir, subdir, file_to_move])
 	dbx_path =  "/".join([dropbox_folder, subfolder, file_to_move])
-	print dbx_path,  "uploading without existence check"
-	dbx.files_delete(dbx_path) # I cannot get the overwrite mode to work
+	print dbx_path,  "uploading with overwrite"
+	#if check_dbx_path(dbx, dbx_path):
+	#	dbx.files_delete(dbx_path) # I cannot get the overwrite mode to work
 	upload (dbx, local_file_path, dbx_path, overwrite=True)
 
 ####################################
@@ -29,7 +30,7 @@ def main():
 	if not check_local_path(local_dir): exit(1)
 	if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
-	subdir = "2016/022"
+	subdir = "2016"
 
 	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
@@ -37,7 +38,7 @@ def main():
 			if file[-10:] != "bedcov.csv": continue
 			if file=='ARCHIVED': continue
 			print subfolder, file
-			upload_no_existence_checking(dbx, dropbox_folder, local_dir, subfolder, file)
+			upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file)
 
 
 ####################################
