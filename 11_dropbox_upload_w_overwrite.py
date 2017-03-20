@@ -17,8 +17,8 @@ def upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
 	local_file_path = "/".join([local_dir, subdir, file_to_move])
 	dbx_path =  "/".join([dropbox_folder, subfolder, file_to_move])
 	print dbx_path,  "uploading with overwrite"
-	#if check_dbx_path(dbx, dbx_path):
-	#	dbx.files_delete(dbx_path) # I cannot get the overwrite mode to work
+	if check_dbx_path(dbx, dbx_path):
+		dbx.files_delete(dbx_path) # I cannot get the overwrite mode to work
 	upload (dbx, local_file_path, dbx_path, overwrite=True)
 
 ####################################
