@@ -36,13 +36,12 @@ def upload(dbx, local_file_path, dbx_path, overwrite=False):
     print "#"*20
 
     if file_size <= CHUNK_SIZE:
-        print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
-        if overwrite:
+		print "file size %d smaller than CHUNK_SIZE %d " % (file_size, CHUNK_SIZE)
+		if overwrite:
 			print " ... overwriting ..."
-            print dbx.files_upload(f.read(), dbx_path, mode=dropbox.files.WriteMode.overwrite)
-        else:
-            print dbx.files_upload(f.read(), dbx_path)
-
+			print dbx.files_upload(f.read(), dbx_path, mode=dropbox.files.WriteMode.overwrite)
+		else:
+			print dbx.files_upload(f.read(), dbx_path)
     else:
         approx_number_of_chunks =  file_size/CHUNK_SIZE
         print "file size = %d, CHUNK_SIZE = %d  ==> approx %d chunks to upload" % (file_size, CHUNK_SIZE, approx_number_of_chunks)
