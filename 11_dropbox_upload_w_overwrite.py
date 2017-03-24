@@ -33,6 +33,8 @@ def main():
 	subdir     = sys.argv[2]
 	extensions = [x.rstrip() for x in sys.argv[3:]]
 
+	print local_dir, subdir, extensions
+		
 	dropbox_folder = "/raw_data"
 
 	if not check_local_path(local_dir): exit(1)
