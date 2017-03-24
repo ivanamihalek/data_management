@@ -35,7 +35,9 @@ def main():
 	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
 		for file in files:
-			if file[-10:] != "bedcov.csv": continue
+			if (file[-len ("annotated.vcf"):] != "annotated.vcf") \
+					and (file[-len ("annotated.vcf.md5"):] != "annotated.vcf.md5"):
+				continue
 			if file=='ARCHIVED': continue
 			print subfolder, file
 			upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file)
