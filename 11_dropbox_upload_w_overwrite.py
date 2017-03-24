@@ -31,7 +31,7 @@ def main():
         exit(1)
 	local_dir  = sys.argv[1]
 	subdir     = sys.argv[2]
-	extensions = sys.argv[3:]
+	extensions = [x.rstrip() for x in sys.argv[3:]]
 
 	dropbox_folder = "/raw_data"
 
@@ -43,6 +43,7 @@ def main():
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
 		for file in files:
 			if file=='ARCHIVED': continue
+			print file
 			for extension in extensions:
 				if file[-len (extension):] == extension:
 					print subfolder, file
