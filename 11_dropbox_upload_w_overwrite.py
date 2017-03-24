@@ -21,26 +21,32 @@ def upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
 		dbx.files_delete(dbx_path) # I cannot get the overwrite mode to work
 	upload (dbx, local_file_path, dbx_path, overwrite=True)
 
+
+
 ####################################
 def main():
 
-	local_dir      = "/data02"
+    if len(sys.argv) < 4:
+        print  "usage: %s <local dir (ex /data01)> <subdir (ex: 2016/022)>  <extensions> ..." % sys.argv[0]
+        exit(1)
+	local_dir  = sys.argv[1]
+	subdir     = sys.argv[2]
+	extensions = sys.argv[3:]
+
 	dropbox_folder = "/raw_data"
 
 	if not check_local_path(local_dir): exit(1)
 	if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
-	subdir = "2016/022"
 
 	for dirpath, dirs, files in os.walk(local_dir + "/" + subdir):
 		subfolder = dirpath[len(local_dir):].strip(os.path.sep)
 		for file in files:
-			if (file[-len ("annotated.vcf"):] != "annotated.vcf") \
-					and (file[-len ("annotated.vcf.md5"):] != "annotated.vcf.md5"):
-				continue
 			if file=='ARCHIVED': continue
-			print subfolder, file
-			upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file)
+			for extension in extensions:
+				if file[-len (extension):] == extension:
+					print subfolder, file
+					upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file)
 
 
 ####################################
