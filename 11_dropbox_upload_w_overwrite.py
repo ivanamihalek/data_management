@@ -26,9 +26,10 @@ def upload_w_overwrite(dbx, dropbox_folder, local_dir, subfolder, file_to_move):
 ####################################
 def main():
 
-    if len(sys.argv) < 4:
-        print  "usage: %s <local dir (ex /data01)> <subdir (ex: 2016/022)>  <extensions> ..." % sys.argv[0]
-        exit(1)
+	if len(sys.argv) < 4:
+		print  "usage: %s <local dir (ex /data01)> <subdir (ex: 2016/022)>  <extensions> ..." % sys.argv[0]
+		exit(1)
+
 	local_dir  = sys.argv[1]
 	print local_dir
 	subdir = sys.argv[2]
