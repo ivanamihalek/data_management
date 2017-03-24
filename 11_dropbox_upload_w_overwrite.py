@@ -30,11 +30,13 @@ def main():
         print  "usage: %s <local dir (ex /data01)> <subdir (ex: 2016/022)>  <extensions> ..." % sys.argv[0]
         exit(1)
 	local_dir  = sys.argv[1]
-	subdir     = sys.argv[2]
+	print local_dir
+	subdir = sys.argv[2]
+	print subdir
 	extensions = [x.rstrip() for x in sys.argv[3:]]
 
 	print local_dir, subdir, extensions
-		
+
 	dropbox_folder = "/raw_data"
 
 	if not check_local_path(local_dir): exit(1)
