@@ -68,8 +68,8 @@ for my $case_id (@cases) {
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fastq");
 
      # turn to indicator hash:
-    %resolved = map { $_ =>  1 } @resolved_files;
-    check_for_leftovers ("$fromdir","$case", "$casedir/other/from_seq_center");
+     %resolved = map { $_ =>  1 } @resolved_files;
+     check_for_leftovers ($fromdir, $case_id, "$casedir/other/from_seq_center");
 }
 
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
@@ -159,7 +159,7 @@ sub process_extension (@_) {
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
-        next if
+        #next if
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
