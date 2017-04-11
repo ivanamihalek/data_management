@@ -241,7 +241,6 @@ sub process_extension (@_) {
 
         my $new_extension = $orig_file;
 
-
         if ($ext eq  "txt") {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
@@ -249,11 +248,9 @@ sub process_extension (@_) {
         my $newfile = "$extdir/$boid"."$new_extension";
 
         if ($TEST_DRIVE) {
+            print "$extdir\n";
+            print "$newfile\n";
             `touch $newfile`;
-
-        print $newfile,"\n";
-        exit;
-
 
         } else {
 
