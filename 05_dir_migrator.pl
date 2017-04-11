@@ -115,6 +115,7 @@ sub parse_case_id (@_){
 sub check_for_leftovers (@_) {
 
     my ($from_dir,  $case, $target_dir) = @_;
+    (-e $target_dir) || `mkdir -p $target_dir`;
 
     my @files =  `find $fromdir  -type f`; # grab all files
 
@@ -126,20 +127,12 @@ sub check_for_leftovers (@_) {
          $thing_no_space =~ s/([\s\(\)])/\\$1/g;
 
         if (not defined $resolved{$thing_no_space} ) {
-
-            my @path = split "/", $target_dir;
-            my $name = pop @path;
-            $name =~ s/([\(\)])/\\$1/g;
-            my $path = join "/", @path;
-            $path =~ s/ /_/g;
-            $path =~ s/([\(\)])/\\$1/g;
-            (-e $path) || `mkdir -p $path`;
             my @aux = split "/", $thing_no_space;
             my $filename = pop @aux;
             if ($TEST_DRIVE) {
-                `touch $path/$name/$filename`;
+                `touch $target_dir/$filename`;
             } else {
-                `cp $thing_no_space $path/$name`;
+                `cp $thing_no_space $target_dir/$filename`;
             }
         }
 
