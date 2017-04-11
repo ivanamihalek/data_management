@@ -23,7 +23,7 @@ my @cases  = ('BO16046', 'BO16049', 'BO17006');
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
 
 my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center",
-    "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
+    "bai"=> "alignments/by_seq_center", "fastq" => "reads", "fq" => "reads", "txt" => "reads");
 
 #my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignments/by_seqmule_pipeline",
 #		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
@@ -59,7 +59,7 @@ for my $case_id (@cases) {
     (-e $casedir) || `mkdir -p $casedir`;
 
      print " $fromdir, $case_id,  $year, $caseno, $casedir, \n";
-     #process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "txt");
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fq");
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bam");
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bai");
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fastq");
@@ -121,7 +121,7 @@ sub check_for_leftovers (@_) {
 
     foreach my $thing (@files){
 
-         $thing =~ $case;
+         ($thing =~ $case) || next;
 
          my $thing_no_space = $thing;
          $thing_no_space =~ s/([\s\(\)])/\\$1/g;
