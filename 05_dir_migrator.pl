@@ -32,9 +32,9 @@ my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/b
 ####################################################
 
 
-sub parse_case_id (@_);
-sub process_extension   (@_);
-sub check_for_leftovers (@_);
+sub parse_case_id (@);
+sub process_extension   (@);
+sub check_for_leftovers (@);
 
 my %seen = ();
 
@@ -43,39 +43,39 @@ my %resolved  = ();
 
 
 ####################################################
-for my $case (@cases) {
+for my $case_id (@cases) {
 
-    print "\n$case\n;
+    print "\n$case_id\n";
     my ($bo, $year, $caseno) = parse_case_id($case_id);
-    my $case_boid = $bo.$year.$caseno;
-    print " $year   $caseno   $case_boid    $project \n";
+    my $case_boid = $bo.$year.$caseno ;
+    print " $year   $caseno   $case_boid  \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
     continue;
-    my $todir  = "/data01";
-    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
-    -e $todir || die "$todir not found.\n";
-
-    my $casedir = "$todir/20$year/$caseno";
-
-    if (defined $seen{$casedir}) {
-        die "$casedir seen twice\n";
-    } else {
-        $seen{$casedir} = 1;
-    }
-    (-e $casedir) || `mkdir -p $casedir`;
-
-    (defined $project) && `echo $project > $casedir/PROJECT`;
-
-
-    process_extension($fromdir, $case,  $year, $caseno, $casedir, "txt");
-    process_extension($fromdir, $case,  $year, $caseno, $casedir, "vcf");
-    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bam");
-    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bai");
-    process_extension($fromdir, $case,  $year, $caseno, $casedir, "fastq");
-
-    # turn to indicator hash:
-    %resolved = map { $_ =>  1 } @resolved_files;
-    check_for_leftovers ("$fromdir/$case", "$casedir/other/from_seq_center");
+#    my $todir  = "/data01";
+#    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
+#    -e $todir || die "$todir not found.\n";
+#
+#    my $casedir = "$todir/20$year/$caseno";
+#
+#    if (defined $seen{$casedir}) {
+#        die "$casedir seen twice\n";
+#    } else {
+#        $seen{$casedir} = 1;
+#    }
+#    (-e $casedir) || `mkdir -p $casedir`;
+#
+#    (defined $project) && `echo $project > $casedir/PROJECT`;
+#
+#
+#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "txt");
+#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "vcf");
+#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bam");
+#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bai");
+#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "fastq");
+#
+#    # turn to indicator hash:
+#    %resolved = map { $_ =>  1 } @resolved_files;
+#    check_for_leftovers ("$fromdir/$case", "$casedir/other/from_seq_center");
 }
 
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
