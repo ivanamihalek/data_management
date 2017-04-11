@@ -50,7 +50,7 @@ for my $case_id (@cases) {
     my $case_boid = $bo.$year.$caseno ;
     print " $year   $caseno   $case_boid  \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
-    continue;
+    next;
 #    my $todir  = "/data01";
 #    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
 #    -e $todir || die "$todir not found.\n";
