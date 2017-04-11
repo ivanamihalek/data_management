@@ -11,17 +11,13 @@ use strict;
 
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
-my $TEST_DRIVE = 1;  # test drive will only create the target directory structure
+my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
-#@ARGV==1 || die "Usage: $0 <fromdir>\n";
-my $fromdir = "/mnt/usb"
-my @cases  = ('BO16046', 'BO16049', 'BO17006');
-my $todir  = "/data02"
+@ARGV==1 || die "Usage: $0 <fromdir>\n";
+my $fromdir = $ARGV[0];
 
--e $fromdir || die "$fromdir not found.\n";
--d $fromdir || die "$fromdir does not seem to be a directory.\n";
 
 my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center",
     "bai"=> "alignments/by_seq_center", "fastq" => "reads", "txt" => "reads");
@@ -29,27 +25,43 @@ my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/b
 #my %ext2dirname = ("vcf"=> "variants/called_by_seqmule_pipeline", "bam"=>"alignments/by_seqmule_pipeline",
 #		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
 
+my $todir;
+if ($fromdir eq  "/home/ivana/tray/to_sort_out") {
+    $todir = "/data02";
+} elsif ($fromdir eq  "/mnt/bodamer01"){
+    $todir = "/data02";
+} else {
+    die "Unexpected fromdir: $fromdir\n";
+}
+
+
+-e $fromdir || die "$fromdir not found.\n";
+-d $fromdir || die "$fromdir does not seem to be a directory.\n";
 
 -e $todir || `mkdir $todir`;
-####################################################
+-d $fromdir || die "$todir does not seem to be a directory.\n";
 
 
 sub parse_case_id (@_);
 sub process_extension   (@_);
 sub check_for_leftovers (@_);
 
+
+my @listing_level_1 = split "\n", `ls $fromdir`;
+
+my @cases  = ();
+
+foreach ( @listing_level_1 ) {
+    if( -d "$fromdir/$_") {
+        chomp ;
+        /^BO/  && push @cases, $_;
+    }
+}
+@cases || die "No cases labeled BO* found in $fromdir\n";
 my %seen = {};
 
 my @resolved_files = ();
 my %resolved  = {};
-
-for my $case (@cases) {
-
-    print "\n$case\n";
-}
-exit;
-
-
 
 ####################################################
 for my $case (@cases) {
