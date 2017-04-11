@@ -237,6 +237,10 @@ sub process_extension (@_) {
         my $extdir = "$boiddir/wes/$ext2dirname{$ext}";
         (-e $extdir) || `mkdir -p  $extdir`;
 
+        print $extdir,"\n";
+        exit;
+
+
         $incomplete && `echo some $ext files might be incomplete >> $extdir/NOTES`;
 
         my $new_extension = $orig_file;
