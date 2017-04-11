@@ -158,8 +158,7 @@ sub process_extension (@_) {
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
         ($ext_file  =~ $caseno) || next;
-         print  $ext_file, "\n";
-        exit;
+        print  $ext_file, "\n";
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
@@ -197,6 +196,9 @@ sub process_extension (@_) {
             }
             $individual2 = substr $1, 5, 2;
         }
+
+        print " $year2, $caseno2, $individual2  \n";
+        exit;
 
         while ( length($caseno2)<3 ) {
             $caseno2 = "0". $caseno2;
