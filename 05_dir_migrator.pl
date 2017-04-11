@@ -121,7 +121,7 @@ sub check_for_leftovers (@_) {
     foreach my $thing (@files){
 
          $thing =~ $case;
-         
+
          my $thing_no_space = $thing;
          $thing_no_space =~ s/([\s\(\)])/\\$1/g;
 
@@ -134,8 +134,10 @@ sub check_for_leftovers (@_) {
             $path =~ s/ /_/g;
             $path =~ s/([\(\)])/\\$1/g;
             (-e $path) || `mkdir -p $path`;
+            my @aux = split "/", $thing_no_space;
+            my $filename = pop @aux;
             if ($TEST_DRIVE) {
-                `touch $path/$name/$thing_no_space`;
+                `touch $path/$name/$filename`;
             } else {
                 `cp $thing_no_space $path/$name`;
             }
