@@ -58,14 +58,12 @@ for my $case_id (@cases) {
 
     (-e $casedir) || `mkdir -p $casedir`;
 
-    print " $fromdir, $case_id,  $year, $caseno, $casedir, \n";
-    exit;
-
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "txt");
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "vcf");
+     print " $fromdir, $case_id,  $year, $caseno, $casedir, \n";
+     #process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "txt");
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bam");
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bai");
      process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fastq");
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "vcf");
 
      # turn to indicator hash:
      %resolved = map { $_ =>  1 } @resolved_files;
@@ -159,7 +157,9 @@ sub process_extension (@_) {
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
-        #next if
+        ($ext_file  =~ $caseno) || next;
+         print  $ext_file, "\n";
+        exit;
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
