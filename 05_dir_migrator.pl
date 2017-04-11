@@ -245,9 +245,10 @@ sub process_extension (@_) {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
 
-        my $newfile = "$extdir/$boid"."$new_extension";
+        my $newfile = "$extdir/"."$new_extension";
 
         if ($TEST_DRIVE) {
+            print "$boid\n";
             print "$extdir\n";
             print "$newfile\n";
             `touch $newfile`;
