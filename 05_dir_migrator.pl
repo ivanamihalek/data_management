@@ -48,34 +48,28 @@ for my $case_id (@cases) {
     print "\n$case_id\n";
     my ($bo, $year, $caseno) = parse_case_id($case_id);
     my $case_boid = $bo.$year.$caseno ;
-    print " $year   $caseno   $case_boid  \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
-    next;
-#    my $todir  = "/data01";
-#    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
-#    -e $todir || die "$todir not found.\n";
-#
-#    my $casedir = "$todir/20$year/$caseno";
-#
-#    if (defined $seen{$casedir}) {
-#        die "$casedir seen twice\n";
-#    } else {
-#        $seen{$casedir} = 1;
-#    }
-#    (-e $casedir) || `mkdir -p $casedir`;
-#
-#    (defined $project) && `echo $project > $casedir/PROJECT`;
-#
-#
-#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "txt");
-#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "vcf");
-#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bam");
-#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "bai");
-#    process_extension($fromdir, $case,  $year, $caseno, $casedir, "fastq");
-#
-#    # turn to indicator hash:
-#    %resolved = map { $_ =>  1 } @resolved_files;
-#    check_for_leftovers ("$fromdir/$case", "$casedir/other/from_seq_center");
+
+    my $todir  = "/data01";
+    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
+    -e $todir || die "$todir not found.\n";
+
+    my $casedir = "$todir/20$year/$caseno";
+
+    (-e $casedir) || `mkdir -p $casedir`;
+
+    print " $fromdir, $case_id,  $year, $caseno, $casedir, \n";
+    exit;
+
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "txt");
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "vcf");
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bam");
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bai");
+     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fastq");
+
+     # turn to indicator hash:
+    %resolved = map { $_ =>  1 } @resolved_files;
+    check_for_leftovers ("$fromdir","$case", "$casedir/other/from_seq_center");
 }
 
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
@@ -122,7 +116,7 @@ sub parse_case_id (@_){
 ##################################################################################################
 sub check_for_leftovers (@_) {
 
-    my ($thing, $target_dir) = @_;
+    my ($thing,  $case, $target_dir) = @_;
     my $thing_no_space = $thing;
     $thing_no_space =~ s/([\s\(\)])/\\$1/g;
 
@@ -161,10 +155,11 @@ sub process_extension (@_) {
     printf "processing extension @_ \n";
     my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
 
-    my @ext_files = `find $fromdir/$case  -name "*.$ext*"`;
+    my @ext_files = `find $fromdir  -name "*.$ext*"`;
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
+        next if
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
