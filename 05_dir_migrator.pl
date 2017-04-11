@@ -18,7 +18,6 @@ my $TEST_DRIVE = 1;  # test drive will only create the target directory structur
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
 my $fromdir = "/mnt/usb";
 my @cases  = ('BO16046', 'BO16049', 'BO17006');
-my $todir  = "/data02";
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
@@ -30,7 +29,6 @@ my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/b
 #		   "bai"=> "alignments/by_seqmule_pipeline", "fastq" => "reads", "txt" => "reads");
 
 
--e $todir || `mkdir $todir`;
 ####################################################
 
 
@@ -38,46 +36,24 @@ sub parse_case_id (@_);
 sub process_extension   (@_);
 sub check_for_leftovers (@_);
 
-my %seen = {};
+my %seen = ();
 
 my @resolved_files = ();
-my %resolved  = {};
-
-for my $case (@cases) {
-
-    print "\n$case\n";
-}
-exit;
-
+my %resolved  = ();
 
 
 ####################################################
 for my $case (@cases) {
 
-    print "\n$case\n";
-    my @listing_level_2 = split "\n", `ls $fromdir/$case`;
-
-    my @dirs = ();
-    my @files = ();
-    foreach ( @listing_level_2 ) {
-        if( -d "$fromdir/$case/$_") {
-            push @dirs, $_;
-            #print "\t  dir: $_\n";
-        } else {
-            push @files, $_;
-            #print "\t file: $_\n";
-        }
-    }
-    my ($case_id, $project) = split "_", $case;
+    print "\n$case\n;
     my ($bo, $year, $caseno) = parse_case_id($case_id);
     my $case_boid = $bo.$year.$caseno;
     print " $year   $caseno   $case_boid    $project \n";
     length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
-
-    if ( defined $project) {
-        $project =~ s/201402006.ACE/FilaminC/g;
-        $project =~ s/\-GeneDx//g;
-    }
+    continue;
+    my $todir  = "/data01";
+    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
+    -e $todir || die "$todir not found.\n";
 
     my $casedir = "$todir/20$year/$caseno";
 
