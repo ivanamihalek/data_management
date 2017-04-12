@@ -313,7 +313,7 @@ sub process_extension (@_) {
                 my  ($md5new, $dummy) = get_md5sum ($check_old_md5, $newfile);
                 print "\t $md5orig\n";
                 print "\t $md5new\n";
-                $md5orig == $md5new && ($need_to_copy = 0);
+                $md5orig eq $md5new && ($need_to_copy = 0);
             }
             if ($need_to_copy) {
                 print "\t copying to $newfile \n";
@@ -324,7 +324,7 @@ sub process_extension (@_) {
                 my ($md5new, $dummy) = get_md5sum ($check_old_md5, $newfile);
                 print "\t $md5orig\n";
                 print "\t $md5new\n";
-                $md5orig == $md5new || die "md5 sum mismatch\n";
+                $md5orig eq $md5new || die "md5 sum mismatch\n";
             }
         }
         push @resolved_files, $ext_file;

@@ -48,7 +48,7 @@ def note_archived (local_dir, subfolder, filename):
 ####################################
 def main():
 
-	local_dir      = "/data01"
+	local_dir      = "/data02"
 	dropbox_folder = "/raw_data"
 	scratch_dir    = "/home/ivana/scratch"
 
