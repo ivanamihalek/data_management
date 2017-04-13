@@ -69,7 +69,7 @@ def main():
     if not check_local_path(local_dir): exit(1)
     if not check_dbx_path (dbx, dropbox_folder): exit(1)
 
-    subfolder = "2012/007"
+    subfolder = "2012/011"
 
     scan_through_folder(dbx, dropbox_folder, subfolder, local_dir)
 
