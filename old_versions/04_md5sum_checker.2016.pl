@@ -2,19 +2,11 @@
 
 use strict;
 use warnings;
-@ARGV==1 || die "Usage: $0  <target dir>  <source_md5sum_file>\n";
-my $target_dir         = $ARGV[0];
-my $source_md5sum_file = $ARGV[1];
+@ARGV==1 || die "Usage: $0 <source_md5sum_file>\n";
+my $source_md5sum_file = $ARGV[0];
 
-my @md5_files  = split "\n", `find $target_dir -name '*md5'`;
+@files  = split "\n", `ls`;
 
-foreach my $md5_file (@md5_files)  {
-    print "$md5_file\n";
-}
-
-exit;
-
-=pod
 `touch md5sums`;
 
 foreach my $file (@files)  { 
@@ -26,4 +18,3 @@ foreach my $file (@files)  {
 print "md5sums difference: \n";
 print `diff $source_md5sum_file  md5sums`;
 print "********************* \n";
-=cut
