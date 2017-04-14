@@ -63,7 +63,7 @@ for my $case_boid (@cases) {
 
     print join ("\n", @resolved_files);
     print "\n";
-    exit;
+  
     # turn @resolved_files array into indicator hash:
     %resolved = map { $_ =>  1 } @resolved_files;
     check_for_leftovers ($fromdir, $case_boid, "$casedir/other/from_seq_center");
@@ -86,7 +86,8 @@ sub check_for_leftovers (@) {
 
          my $thing_no_space = $thing;
          $thing_no_space =~ s/([\s\(\)])/\\$1/g;
-
+        print " * \n";
+        print $thing_no_space, " * \n";
         if (not defined $resolved{$thing_no_space} ) {
             print " ** \n";
             print $thing_no_space, " ** \n";
