@@ -31,8 +31,6 @@ my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/b
 
 ####################################################
 
-
-sub parse_case_id (@);
 sub process_extension   (@);
 sub check_for_leftovers (@);
 
@@ -43,78 +41,38 @@ my %resolved  = ();
 
 
 ####################################################
-for my $case_id (@cases) {
+for my $case_boid (@cases) {
 
-    print "\n$case_id\n";
-    my ($bo, $year, $caseno) = parse_case_id($case_id);
-    my $case_boid = $bo.$year.$caseno ;
-    length $case_boid == 7 || die "bad BOID:  $case_boid   ($year $caseno) \n";
+    print "\n$case_boid\n";
 
-    my $todir  = "/data01";
-    if ($year eq "16" or  $year eq "17") {$todir  = "/data02";}
+    my $todir = "/data01";
+    my $year = substr ($case_boid, 2, 2);
+    my $caseno = substr ($case_boid, 4, 3);
+    if ($year eq "16" or $year eq "17") {$todir = "/data02";}
     -e $todir || die "$todir not found.\n";
 
     my $casedir = "$todir/20$year/$caseno";
 
     (-e $casedir) || `mkdir -p $casedir`;
 
-     print " $fromdir, $case_id,  $year, $caseno, $casedir, \n";
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fq");
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bam");
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "bai");
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "fastq");
-     process_extension($fromdir, $case_id,  $year, $caseno, $casedir, "vcf");
+    print " $fromdir, $case_boid,  $year, $caseno, $casedir, \n";
 
-     # turn to indicator hash:
-     %resolved = map { $_ =>  1 } @resolved_files;
-     check_for_leftovers ($fromdir, $case_id, "$casedir/other/from_seq_center");
+    for my $extension ([ "bam", "bai", "fastq", "fq", "vcf" ]) {
+        process_extension($fromdir, $case_boid, $year, $caseno, $casedir, $extension);
+    }
+
+    # turn to indicator hash:
+    %resolved = map { $_ =>  1 } @resolved_files;
+    check_for_leftovers ($fromdir, $case_id, "$casedir/other/from_seq_center");
 }
 
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
 
 
 ##################################################################################################
-sub parse_case_id (@_){
-    my $case_id = $_[0];
-    my ($bo, $year, $caseno) = ();
-    my $len = length($case_id);
-
-    # old case id format
-    if ($case_id =~ "-" ) {
-        ($bo, $year, $caseno) = split "-", $case_id;
-        (length($year)==4)  && ($year = substr $year, 2,2);
-        (length($caseno) ==2)  || die  "Unexpected BOid format: $case_id\n";
-
-    } elsif ($len==6) { # the new BOid format
-        $bo         = substr $case_id, 0, 2;
-        $year       = substr $case_id, 2, 2;
-        $caseno     = substr $case_id, 4, 2;
-
-    } elsif ($len==7) { # the new new BOid format
-        $bo         = substr $case_id, 0, 2;
-        $year       = substr $case_id, 2, 2;
-        $caseno     = substr $case_id, 4, 3;
-
-    } else {
-        die  "Unexpected BOid format: $case_id\n";
-    }
-
-    if (length ($caseno) == 3) {
-
-    }  elsif (length ($caseno) == 2) {
-        $caseno = "0".$caseno;
-    }  else {
-        die  "Unexpected BOid format: $case_id (case number $caseno ?)\n";
-    }
-
-    return ($bo, $year, $caseno) ;
-}
-
-
-##################################################################################################
 sub check_for_leftovers (@_) {
 
-    my ($from_dir,  $case, $target_dir) = @_;
+    my ($fromdir,  $case, $target_dir) = @_;
     (-e $target_dir) || `mkdir -p $target_dir`;
 
     my @files =  `find $fromdir  -type f`; # grab all files
@@ -135,7 +93,6 @@ sub check_for_leftovers (@_) {
                 `cp $thing_no_space $target_dir/$filename`;
             }
         }
-
     }
 
     return;

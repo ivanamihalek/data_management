@@ -67,14 +67,14 @@ def md5check (bamfile, md5file):
     # check the md5sum
     p = subprocess.Popen(['md5sum', bamfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
-    checkmdd5 =  out.split(' ')[0]
-    if md5sum==checkmdd5:
+    checkmd5 =  out.split(' ')[0]
+    if md5sum==checkmd5:
         print "md5sum checks"
         return md5sum
     else:
         print "md5sum check failed: "
         print "in", md5file, md5sum
-        print "recalculated:", chckmd5
+        print "recalculated:", checkmd5
         exit(1)
     return None
 
