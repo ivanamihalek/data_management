@@ -160,7 +160,7 @@ sub process_extension (@) {
         my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $extension;
-        ($orig_file=~ /^\./) && ($orig_file = "$base.$extension");
+        ($orig_file=~ /^\./) && ($orig_file = "$base$extension");
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
 
