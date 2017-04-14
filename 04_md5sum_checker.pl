@@ -11,7 +11,7 @@ my @md5_files  = split "\n", `find $target_dir -name '*md5'`;
 foreach my $md5_file_path (@md5_files)  {
     my @aux = split "/", $md5_file_path;
     my $md5_file = pop @aux;
-    my $file = $md5_file ; $file =~ s/\.md5$//;
+    my $file = $md5_file; $file =~ s/\.md5$//;
     print "$md5_file\n";
     print "$file\n";
 
