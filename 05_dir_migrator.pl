@@ -17,7 +17,7 @@ my $TEST_DRIVE = 1;  # test drive will only create the target directory structur
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
 my $fromdir = "/mnt/usb";
-my @cases  = ('BO16046', 'BO16049', 'BO17006');
+my @cases  = ( 'BO17006');
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
