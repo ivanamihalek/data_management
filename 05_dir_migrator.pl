@@ -88,6 +88,9 @@ sub check_for_leftovers (@) {
          $thing_no_space =~ s/([\s\(\)])/\\$1/g;
 
         if (not defined $resolved{$thing_no_space} ) {
+            print " ** \n";
+            print $thing_no_space, " ** \n";
+            print $resolved{$thing_no_space} , " ** \n";
             my @aux = split "/", $thing_no_space;
             my $filename = pop @aux;
             if ($TEST_DRIVE) {
