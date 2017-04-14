@@ -14,6 +14,7 @@ foreach my $md5_file_path (@md5_files)  {
     my $file = $md5_file; $file =~ s/\.md5$//;
     print "$md5_file\n";
     print "$file\n";
+    print `grep $file $target_dir`;
 
 }
 
