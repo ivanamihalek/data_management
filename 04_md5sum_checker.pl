@@ -19,7 +19,7 @@ foreach my $md5_file_path (@md5_files)  {
     my $source_md5 = $aux[0];
     my $target_md5 = `cat $md5_file_path`; chomp $target_md5;
     print "src: $source_md5\ntgt: $target_md5\n";
-
+    $source_md5 eq $target_md5 || die "md5 mismatch.\n";
 }
 
 exit;
