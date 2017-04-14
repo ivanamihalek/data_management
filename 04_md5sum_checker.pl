@@ -4,7 +4,7 @@ use strict;
 use warnings;
 @ARGV==2|| die "Usage: $0  <target dir>  <source_md5sum_file>\n";
 my $target_dir         = $ARGV[0];
-my $source_md5sum_file = $ARGV[1];
+my $source_md5sum_file = $ARGV[1]; # format: <md5sum> <filepath>
 
 my @md5_files  = split "\n", `find $target_dir -name '*md5'`;
 
@@ -21,19 +21,3 @@ foreach my $md5_file_path (@md5_files)  {
     print "src: $source_md5\ntgt: $target_md5\n";
     $source_md5 eq $target_md5 || die "md5 mismatch.\n";
 }
-
-exit;
-
-=pod
-`touch md5sums`;
-
-foreach my $file (@files)  { 
-    $file eq $source_md5sum_file && next;
-    print "$file\n";
-    `md5sum $file >> md5sums`;
-} 
-
-print "md5sums difference: \n";
-print `diff $source_md5sum_file  md5sums`;
-print "********************* \n";
-=cut
