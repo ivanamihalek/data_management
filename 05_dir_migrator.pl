@@ -61,6 +61,9 @@ for my $case_boid (@cases) {
         process_extension($fromdir, $case_boid, $year, $caseno, $casedir, $extension);
     }
 
+    print join ("\n", @resolved_files);
+    print "\n";
+
     # turn @resolved_files array into indicator hash:
     %resolved = map { $_ =>  1 } @resolved_files;
     check_for_leftovers ($fromdir, $case_boid, "$casedir/other/from_seq_center");
