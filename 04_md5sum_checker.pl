@@ -8,8 +8,11 @@ my $source_md5sum_file = $ARGV[1];
 
 my @md5_files  = split "\n", `find $target_dir -name '*md5'`;
 
-foreach my $md5_file (@md5_files)  {
+foreach my $md5_file_path (@md5_files)  {
+    my @aux = split "/", $md5_file_path;
+    my $md5_file = pop @aux;
     print "$md5_file\n";
+
 }
 
 exit;
