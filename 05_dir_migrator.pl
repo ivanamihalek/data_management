@@ -61,8 +61,6 @@ for my $case_boid (@cases) {
         process_extension($fromdir, $case_boid, $year, $caseno, $casedir, $extension);
     }
 
-    print join ("\n", @resolved_files);
-    print "\n";
 
     # turn @resolved_files array into indicator hash:
     %resolved = map { $_ =>  1 } @resolved_files;
@@ -86,21 +84,15 @@ sub check_for_leftovers (@) {
 
         my $thing_no_space = $thing;
         $thing_no_space =~ s/([\s\(\)])/\\$1/g;
-        print " * \n";
-        print $thing_no_space, " * \n";
 
         if (not defined $resolved{$thing_no_space} ) {
-            #my @aux = split "/", $thing_no_space;
-            #my $filename = pop @aux;
-            #if ($TEST_DRIVE) {
-            #    `touch $target_dir/$filename`;
-            #} else {
-            #    `cp $thing_no_space $target_dir/$filename`;
-            #}
-
-        } else {
-            print " ** \n";
-            print $thing_no_space, "  processed ** \n";
+            my @aux = split "/", $thing_no_space;
+            my $filename = pop @aux;
+            if ($TEST_DRIVE) {
+                `touch $target_dir/$filename`;
+            } else {
+                `cp $thing_no_space $target_dir/$filename`;
+            }
         }
     }
 
