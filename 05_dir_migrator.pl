@@ -208,8 +208,6 @@ sub process_extension (@) {
         }
 
         my $newfile = "$extdir/BO$new_extension";
-        print "$newfile\n";
-        exit;
 
         if ($TEST_DRIVE) {
             print "$boid\n";
