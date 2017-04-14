@@ -11,13 +11,13 @@ use strict;
 
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
-my $TEST_DRIVE = 1;  # test drive will only create the target directory structure
+my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
 my $fromdir = "/mnt/usb";
-my @cases  = ( 'BO16046', 'BO17006', 'BO17009');
+my @cases  = ('BO16046', 'BO17006', 'BO17009');
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
@@ -60,7 +60,6 @@ for my $case_boid (@cases) {
     for my $extension ( "bam", "bai", "fastq", "fq", "vcf" ) {
         process_extension($fromdir, $case_boid, $year, $caseno, $casedir, $extension);
     }
-
 
     # turn @resolved_files array into indicator hash:
     %resolved = map { $_ =>  1 } @resolved_files;
