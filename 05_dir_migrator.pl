@@ -61,16 +61,16 @@ for my $case_boid (@cases) {
         process_extension($fromdir, $case_boid, $year, $caseno, $casedir, $extension);
     }
 
-    # turn to indicator hash:
+    # turn @resolved_files array into indicator hash:
     %resolved = map { $_ =>  1 } @resolved_files;
-    check_for_leftovers ($fromdir, $case_id, "$casedir/other/from_seq_center");
+    check_for_leftovers ($fromdir, $case_boid, "$casedir/other/from_seq_center");
 }
 
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
 
 
 ##################################################################################################
-sub check_for_leftovers (@_) {
+sub check_for_leftovers (@) {
 
     my ($fromdir,  $case, $target_dir) = @_;
     (-e $target_dir) || `mkdir -p $target_dir`;
@@ -100,7 +100,7 @@ sub check_for_leftovers (@_) {
 
 
 ##################################################################################################
-sub process_extension (@_) {
+sub process_extension (@) {
 
     printf "processing extension @_ \n";
     my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
@@ -202,7 +202,7 @@ sub process_extension (@_) {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
 
-        my $newfile = "$extdir/"."$new_extension";
+        my $newfile = "$extdir/$new_extension";
 
         if ($TEST_DRIVE) {
             print "$boid\n";
