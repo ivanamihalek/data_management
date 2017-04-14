@@ -157,7 +157,7 @@ sub process_extension (@) {
         my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $2;
-        ($orig_file[0]==".") && ($orig_file = "$1.$2");
+        ($orig_file=~ /^\./) && ($orig_file = "$1.$2");
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
 
@@ -198,7 +198,7 @@ sub process_extension (@) {
         $incomplete && `echo some $ext files might be incomplete >> $extdir/NOTES`;
 
         my $new_extension = $orig_file;
-       print "$orig_filee\n";
+
 
         if ($ext eq  "txt") {
             $new_extension =~ s/(.*)txt/$1fastq/;
