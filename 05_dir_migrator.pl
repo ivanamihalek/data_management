@@ -160,7 +160,7 @@ sub process_extension (@) {
         my $boid = "BO".$year.$caseno.$individual2;
 
         my $orig_file = $extension;
-        ($orig_file=~ /^\./) && ($orig_file = "$base$extension");
+        ($orig_file=~ /^\./) && ($orig_file = "BO$base$extension");
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
 
@@ -207,7 +207,7 @@ sub process_extension (@) {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
 
-        my $newfile = "$extdir/BO$new_extension";
+        my $newfile = "$extdir/$new_extension";
 
         if ($TEST_DRIVE) {
             print "$boid\n";
