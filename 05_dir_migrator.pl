@@ -113,8 +113,9 @@ sub process_extension (@) {
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
         my ($year2, $caseno2, $individual2);
-
+        my ($base, $extension);
         if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})(_*.*\.$ext.*)/ ) {
+            $base = $1; $extension = $2;
             #defined $1 or die "boid could not be extracted:\n$ext_file\n";
             if ( ! defined $1) {
                 #print "boid could not be extracted:\n$ext_file\n";
@@ -134,11 +135,13 @@ sub process_extension (@) {
 
 
         } elsif  ( $ext_file =~ /.*BO(\d{5}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
+            $base = $1; $extension = $2;
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
 
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
+            $base = $1; $extension = $2;
             $year2 = substr $1, 0, 2;
             if ($caseno ==  substr $1, 2, 3)  {
                 $caseno2 = substr $1, 2, 3;
@@ -156,8 +159,8 @@ sub process_extension (@) {
 
         my $boid = "BO".$year.$caseno.$individual2;
 
-        my $orig_file = $2;
-        ($orig_file=~ /^\./) && ($orig_file = "$1.$2");
+        my $orig_file = $extension;
+        ($orig_file=~ /^\./) && ($orig_file = "$base.$extension");
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
 
