@@ -207,7 +207,7 @@ sub process_extension (@) {
             $new_extension =~ s/(.*)txt/$1fastq/;
         }
 
-        my $newfile = "$extdir/$new_extension";
+        my $newfile = "$extdir/BO$new_extension";
         print "$newfile\n";
         exit;
 
