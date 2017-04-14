@@ -81,7 +81,7 @@ sub check_for_leftovers (@) {
     my @files =  `find $fromdir  -type f`; # grab all files
 
     foreach my $thing (@files){
-
+        chomp $thing;
         ($thing =~ $case) || next;
 
         my $thing_no_space = $thing;
