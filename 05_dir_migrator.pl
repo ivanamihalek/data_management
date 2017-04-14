@@ -57,7 +57,7 @@ for my $case_boid (@cases) {
 
     print " $fromdir, $case_boid,  $year, $caseno, $casedir, \n";
 
-    for my $extension ([ "bam", "bai", "fastq", "fq", "vcf" ]) {
+    for my $extension ( "bam", "bai", "fastq", "fq", "vcf" ) {
         process_extension($fromdir, $case_boid, $year, $caseno, $casedir, $extension);
     }
 
