@@ -75,6 +75,9 @@ def find_fqfiles (topdir, year, boid):
 def  output_csv(case_boid, family_info):
     csv_name = case_boid + ".csv"
     outf = open (case_boid + ".csv","w")
+    # first value in the hash is an info list, we want its length, - first three elements
+    header_names = ["case id","relationship", "affected"] + \
+        [ "md5 checksum","file name"]*( len(family_info.itervalues().next()) - 3)
     print >>outf, "\t".join(["case id","relationship", "affected", "md5 checksum","file name"])
     for boid, info in family_info.iteritems():
         print >>outf, "\t".join( [case_boid] + [str(d) for d in info[1:-1]] + [info[-1].split("/")[-1]] )
