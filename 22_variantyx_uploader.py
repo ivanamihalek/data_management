@@ -60,6 +60,7 @@ def find_fqfiles (topdir, year, boid):
             name_field = name.split(".")
             print name
             print name_field
+            if len(name_field)<2: continue
             if  (name_field[-1]  in ["fq", "fastq"])\
                     or (name_field[-2]  in ["fq", "fastq"] and name_field[-1] in ["gz", "zip", "bz2"] ):
                 fqfile  =  "/".join([root,name])
