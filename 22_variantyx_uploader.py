@@ -10,9 +10,9 @@ from  data_mgmt_utils_py.mysqldb import *
 
 
 ###################################
-CODIFED_HOSTNAME  = "216.230.226.115"
-CODIFIED_ID    = os.environ['CODIFIED_ID']
-CODIFIED_PASS  = os.environ['CODIFIED_PASS']
+VARIANTYX_HOSTNAME = "variantyxinc.sharefileftp.com"
+VARIANTYX_TOKEN    = os.environ['VARIANTYX_TOKEN']
+VARAINTYX_PASS     = os.environ['VARIANTYX_PASS']
 
 ####################################
 def get_family_info (case_boid):
@@ -51,22 +51,24 @@ def find_bamfile (topdir, year, boid, alignment_preference):
 ####################################
 def find_fqfiles (topdir, year, boid):
    fqfiles  = []
-   md5file = None
+   md5files = []
    caseno = boid[4:7]
    path   = "/".join([topdir, year, caseno, boid])
    for root, dirs, files in os.walk(path):
        if not "reads" in root: continue
        for name in files:
             name_field = name.split(".")
-            if  (name_field[-1]  in ["fq", "fastq"]) or (name_field[-2]  in ["fq", "fastq"] and name_field[-1] in ["gz", "zip", "bz2"] ):
+            if  (name_field[-1]  in ["fq", "fastq"])\
+                    or (name_field[-2]  in ["fq", "fastq"] and name_field[-1] in ["gz", "zip", "bz2"] ):
                 fqfile  =  "/".join([root,name])
                 md5file =  "/".join([root+"/md5sums", name+".md5"])
                 fqfiles.append(fqfile)
                 if  os.path.isfile(md5file): md5files.append(md5file)
 
-       if bamfile: break
-   return [bamfile, md5file]
+   if len(fqfiles)>0:
+     return [fqfiles, md5files]
 
+   return [None, None]
 
 ####################################
 def  output_csv(case_boid, family_info):
@@ -74,7 +76,7 @@ def  output_csv(case_boid, family_info):
     outf = open (case_boid + ".csv","w")
     print >>outf, "\t".join(["case id","relationship", "affected", "md5 checksum","file name"])
     for boid, info in family_info.iteritems():
-        print >>outf, "\t".join( [case_boid] +  [str(d) for d in info[1:-1] ] + [ info[-1].split("/")[-1] ] )
+        print >>outf, "\t".join( [case_boid] + [str(d) for d in info[1:-1]] + [info[-1].split("/")[-1]] )
     outf.close()
     return csv_name
 
@@ -140,7 +142,6 @@ def main():
                 family_info[boid].append(md5sum)
                 family_info[boid].append(fqfiles[i])
 
-
         elif bamfile:
             if not md5file:
                 print "md5file not found for mdfile for", boid
@@ -157,8 +158,24 @@ def main():
     csv_name = output_csv(case_boid, family_info)
     exit()
 
+	# output script
+	# the script itself contains credentials
+	# then pipe the script inot lftp
+	# example test.script
+	#
+	# open -u <token>,<pass> variantyxinc.sharefileftp.com
+	# cd Boston_Childrens_Dr_Bodamer
+	# mkdir testdir
+	# cd testdir
+	# put /home/ivana/scratch/hello.txt
+	#
+	# to be run with
+	# lftp -f  test.script
+
+
+
     # establish sftp connection
-    with pysftp.Connection(CODIFED_HOSTNAME, username=CODIFIED_ID, password=CODIFIED_PASS) as sftp:
+    with pysftp.Connection(VARIANTYX_HOSTNAME, username=VARIANTYX_ID, password=VARIANTYX_PASS) as sftp:
         print sftp.pwd
         # check family folder exists
         if sftp.exists(case_boid):
