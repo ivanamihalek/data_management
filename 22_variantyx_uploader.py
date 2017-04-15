@@ -58,8 +58,6 @@ def find_fqfiles (topdir, year, boid):
        if not "reads" in root: continue
        for name in files:
             name_field = name.split(".")
-            print name
-            print name_field
             if len(name_field)<2: continue
             if  (name_field[-1]  in ["fq", "fastq"])\
                     or (name_field[-2]  in ["fq", "fastq"] and name_field[-1] in ["gz", "zip", "bz2"] ):
@@ -67,9 +65,9 @@ def find_fqfiles (topdir, year, boid):
                 md5file =  "/".join([root+"/md5sums", name+".md5"])
                 fqfiles.append(fqfile)
                 if  os.path.isfile(md5file): md5files.append(md5file)
-
+   print fqfiles
    if len(fqfiles)>0:
-     return [fqfiles, md5files]
+        return [fqfiles, md5files]
 
    return [None, None]
 
@@ -137,7 +135,7 @@ def main():
             if not md5files or not len(fqfiles)==len(md5files):
                 print "not all md5files found for fqfiles for", boid
                 exit(1)
-            for i in range(fqfiles):
+            for i in range(len(fqfiles)):
                 print fqfiles[i]
                 print md5files[i]
                 md5sum = md5check (fqfiles[i], md5files[i]) # will die here if it doesn't check
