@@ -120,7 +120,7 @@ def output_upload_script(case_boid, family_info):
 	# meta file
 	outf.write("put %s.csv\n" % case_boid)
 	for boid, info in family_info.iteritems():
-		for i in range(4,len(info)):
+		for i in range(4,len(info),2):
 			fqfile_path = info[i]
 			fqfile_name = fqfile_path.split("/")[-1]
 			outf.write("put %s\n" % fqfile_name)
