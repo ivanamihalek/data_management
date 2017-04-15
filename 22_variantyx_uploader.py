@@ -65,7 +65,6 @@ def find_fqfiles(topdir, year, boid):
 				md5file = "/".join([root + "/md5sums", name + ".md5"])
 				fqfiles.append(fqfile)
 				if os.path.isfile(md5file): md5files.append(md5file)
-	print fqfiles
 	if len(fqfiles) > 0:
 		return [fqfiles, md5files]
 
@@ -81,7 +80,7 @@ def output_csv(case_boid, family_info):
 				   ["md5_checksum", "file_name"] * (len(family_info.itervalues().next()) - 3)
 	print >> outf, "\t".join(header_names)
 	for boid, info in family_info.iteritems():
-		print >> outf, "\t".join([case_boid] + [str(d.split("/")[-1]) for d in info])
+		print >> outf, "\t".join([case_boid] + [str(d).split("/")[-1] for d in info])
 	outf.close()
 	return csv_name
 
