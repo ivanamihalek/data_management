@@ -24,6 +24,7 @@ def get_family_info(case_boid):
 	rows = search_db(cursor, qry)
 	for row in rows:
 		[boid, gender, relationship, affected] = row
+		if not affected: affected = 0
 		info[boid] = [gender, relationship, affected]
 	cursor.close()
 	db.close()
@@ -184,8 +185,8 @@ def main():
 	csv_name = output_csv(case_boid, family_info)
 	# run lftp through script that we are going to prepare here
 	script_name = output_upload_script(case_boid, family_info)
-	# run with
-	# lftp -f script_name
+	# run lftp
+	subprocess.call("lftp", "-f", script_name)
 
 	print "to login and check, see the top of %s" % script_name
 
