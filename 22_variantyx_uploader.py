@@ -186,7 +186,7 @@ def main():
 	# run lftp through script that we are going to prepare here
 	script_name = output_upload_script(case_boid, family_info)
 	# run lftp
-	subprocess.call("lftp", "-f", script_name)
+	subprocess.call(["lftp", "-f", script_name])
 
 	print "to login and check, see the top of %s" % script_name
 
