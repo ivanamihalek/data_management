@@ -9,8 +9,8 @@ from  data_mgmt_utils_py.mysqldb import *
 
 ###################################
 VARIANTYX_HOSTNAME = "variantyxinc.sharefileftp.com"
-VARIANTYX_TOKEN = os.environ['VARIANTYX_TOKEN']
-VARAINTYX_PASS = os.environ['VARIANTYX_PASS']
+VARIANTYX_TOKEN    = os.environ['VARIANTYX_TOKEN']
+VARAINTYX_PASS     = os.environ['VARIANTYX_PASS']
 
 
 ####################################
