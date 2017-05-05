@@ -18,7 +18,7 @@ def download_with_existence_checking(dbx, dbx_path, local_file_path):
     print 'Local file path:', local_file_path
 
     # check file exists locally already
-    if not os.path.exists(local_file_path):
+    if  os.path.exists(local_file_path):
         print local_file_path + "   found"
         pass
     elif  ".bam" in dbx_path or ".gatk.vcf" in dbx_path:
