@@ -63,7 +63,7 @@ def scan_through_folder (dbx, dropbox_folder, subfolder, local_dir):
 ####################################
 def main():
 
-    local_dir      = "/data01"
+    local_dir      = "/data02"
     dropbox_folder = "/raw_data"
 
     if not check_local_path(local_dir): exit(1)

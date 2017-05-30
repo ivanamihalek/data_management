@@ -9,8 +9,8 @@ from  data_mgmt_utils_py.mysqldb import *
 
 ###################################
 VARIANTYX_HOSTNAME = "variantyxinc.sharefileftp.com"
-VARIANTYX_TOKEN    = os.environ['VARIANTYX_TOKEN']
-VARAINTYX_PASS     = os.environ['VARIANTYX_PASS']
+VARIANTYX_TOKEN = os.environ['VARIANTYX_TOKEN']
+VARAINTYX_PASS = os.environ['VARIANTYX_PASS']
 
 
 ####################################
@@ -108,7 +108,6 @@ def md5check(bamfile, md5file):
 
 ####################################
 def output_upload_script(case_boid, family_info):
-
 	script_name = case_boid + ".upload.lftp"
 	outf = open(script_name, "w")
 	# to be run with
@@ -121,12 +120,13 @@ def output_upload_script(case_boid, family_info):
 	# meta file
 	outf.write("put %s.csv\n" % case_boid)
 	for boid, info in family_info.iteritems():
-		for i in range(4,len(info),2):
+		for i in range(4, len(info), 2):
 			fqfile_path = info[i]
 			outf.write("put %s\n" % fqfile_path)
 	outf.close()
 
 	return script_name
+
 
 ####################################
 def main():
