@@ -17,7 +17,7 @@ my $TEST_DRIVE = 0;  # test drive will only create the target directory structur
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
 my $fromdir = "/home/ivana/scratch";
-my @cases  = ('BO16054');
+my @cases  = ('BO17025');
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
