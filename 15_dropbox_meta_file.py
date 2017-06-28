@@ -64,12 +64,12 @@ def main():
 
     headers = ["sample number", "source name", "consent version", "gender", "family number", "family structure", "affected"]
     print "\t".join(headers)
-    #for subfolder in ["2011","2012","2013","2014","2015","2016","2017"]:
     line_count = 0
     family_number = 0
     old_family_id = ""
-    for subfolder in ["2015"]:
-        print " *************** ", subfolder, " ****************** "
+    for subfolder in ["2011","2012","2013","2014","2015","2016","2017"]:
+    #for subfolder in ["2015"]:
+        #print " *************** ", subfolder, " ****************** "
         boids, fastqs, bams = scan_through_folder(dbx, dropbox_folder, subfolder)
         for boid in sorted(boids):
             if not fastqs.has_key(boid) and not bams.has_key(boid): continue
