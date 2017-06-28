@@ -78,8 +78,12 @@ def main():
             rows  = search_db (cursor, qry)
             for row in rows:
                 [boid, gender, relationship, affected, xrefs]  = row
-                print boid, gender, relationship, affected, xrefs
-                exit()
+                mants = ""
+                if xrefs:
+                     allx = xrefs.split(";")
+                     mants = ";".join([x for x in allx if 'manton' in x.lower()])
+                print boid, gender, relationship, affected, mants
+                
 
 
             if fastqs.has_key(boid): out_list += fastqs[boid]
