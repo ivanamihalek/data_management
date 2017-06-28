@@ -98,7 +98,7 @@ def main():
             out_list.append(boid)
             out_list.append(mants)
             out_list.append(gender)
-            out_list.append(family_number)
+            out_list.append(str(family_number))
             out_list.append(relationship)
             if affected == 1:
                 out_list.append("affected")
