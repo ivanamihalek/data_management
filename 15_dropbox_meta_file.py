@@ -72,12 +72,12 @@ def main():
             out_list = []
             out_list.append(boid)
 
-            qry = 'select i.boid, i.gender, i.relationship, c.affected  from individuals as i, clinical_data as c '
-            qry += 'where i.boid="%s" and i.id=c.individual_id ' % boid
+            qry = 'select i.boid, i.gender, i.relationship, c.affected, x.xref from individuals as i, clinical_data as c, identifiers as x'
+            qry += 'where i.boid="%s" and i.id="%s" and x.name="%s" ' % (boid, boid, boid)
             rows  = search_db (cursor, qry)
             for row in rows:
-                [boid, gender, relationship, affected]  = row
-                print boid, gender, relationship, affected
+                [boid, gender, relationship, affected, xrefs]  = row
+                print boid, gender, relationship, affected, xrefs
                 exit()
 
 
