@@ -75,9 +75,9 @@ def main():
             qry = 'select i.boid, i.gender, i.relationship, c.affected, x.xref from individuals as i, clinical_data as c, identifiers as x '
             qry += 'where i.boid="%s" and c.individual_id=i.id and x.name="%s" ' % (boid, boid)
             rows  = search_db (cursor, qry)
-            if not rows:
-                print qry
-                exit(1)
+            if not rows: continue
+                #print qry
+                #exit(1)
             for row in rows:
                 [boid, gender, relationship, affected, xrefs]  = row
                 mants = ""
