@@ -6,6 +6,9 @@ from  data_mgmt_utils_py.generic_utils import *
 from  data_mgmt_utils_py.dropbox_utils import *
 
 
+from  data_mgmt_utils_py.generic_utils import *
+from  data_mgmt_utils_py.mysqldb import *
+
 ####################################
 DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
 
@@ -53,8 +56,12 @@ def scan_through_folder (dbx, dropbox_folder, subfolder):
 def main():
 
     dropbox_folder = "/raw_data"
-
     if not check_dbx_path (dbx, dropbox_folder): exit(1)
+
+    db     = connect_to_mysql()
+    cursor = db.cursor()
+    switch_to_db (cursor, 'blimps_production')
+
 
     #for subfolder in ["2011","2012","2013","2014","2015","2016","2017"]:
     for subfolder in ["2011"]:
@@ -64,6 +71,16 @@ def main():
             if not fastqs.has_key(boid) and not bams.has_key(): continue
             out_list = []
             out_list.append(boid)
+
+            qry = 'select i.boid, i.gender, i.relationship, c.affected  from individuals as i, clinical_data as c '
+            qry += 'where i.boid="%s" and i.id=c.individual_id ' % boid
+            rows  = search_db (cursor, qry)
+            for row in rows:
+                [boid, gender, relationship, affected]  = row
+                print boid, gender, relationship, affected
+                exit()
+
+
             if fastqs.has_key(boid): out_list += fastqs[boid]
             if bams.has_key(boid): out_list += bams[boid]
 
