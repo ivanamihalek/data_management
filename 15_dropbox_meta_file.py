@@ -94,7 +94,7 @@ def main():
                 old_family_id = family_id
                 family_number += 1
             out_list = []
-            out_list.append(line_count)
+            out_list.append(str(line_count))
             out_list.append(boid)
             out_list.append(mants)
             out_list.append(gender)
