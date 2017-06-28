@@ -64,7 +64,7 @@ def main():
 
 
     #for subfolder in ["2011","2012","2013","2014","2015","2016","2017"]:
-    for subfolder in ["2011"]:
+    for subfolder in ["2015"]:
         print " *************** ", subfolder, " ****************** "
         boids, fastqs, bams = scan_through_folder(dbx, dropbox_folder, subfolder)
         for boid in sorted(boids):
@@ -74,7 +74,6 @@ def main():
 
             qry = 'select i.boid, i.gender, i.relationship, c.affected, x.xref from individuals as i, clinical_data as c, identifiers as x '
             qry += 'where i.boid="%s" and c.individual_id=i.id and x.name="%s" ' % (boid, boid)
-            print qry
             rows  = search_db (cursor, qry)
             for row in rows:
                 [boid, gender, relationship, affected, xrefs]  = row
@@ -83,13 +82,13 @@ def main():
                      allx = xrefs.split(";")
                      mants = ";".join([x for x in allx if 'manton' in x.lower()])
                 print boid, gender, relationship, affected, mants
-                
+
 
 
             if fastqs.has_key(boid): out_list += fastqs[boid]
             if bams.has_key(boid): out_list += bams[boid]
 
-            print "\t".join(out_list)
+            #print "\t".join(out_list)
 
 ####################################
 if __name__ == '__main__':
