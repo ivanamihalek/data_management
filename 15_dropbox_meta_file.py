@@ -25,7 +25,6 @@ def scan_through_folder (dbx, dropbox_folder, subfolder):
     fastqs = {}
     bams   = {}
     dbx_path = "/".join([dropbox_folder, subfolder])
-    print dbx_path
     try:
         response = dbx.files_list_folder(dbx_path, recursive = True)
     except dropbox.exceptions.ApiError as err:
