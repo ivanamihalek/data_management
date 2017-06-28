@@ -62,15 +62,17 @@ def main():
     cursor = db.cursor()
     switch_to_db (cursor, 'blimps_production')
 
-
+    headers = ["sample number", "source name", "consent version", "gender", "family number", "family structure", "affected"]
+    print "\t".join(headers)
     #for subfolder in ["2011","2012","2013","2014","2015","2016","2017"]:
+    line_count = 0
+    family_number = 0
+    old_family_id = ""
     for subfolder in ["2015"]:
         print " *************** ", subfolder, " ****************** "
         boids, fastqs, bams = scan_through_folder(dbx, dropbox_folder, subfolder)
         for boid in sorted(boids):
             if not fastqs.has_key(boid) and not bams.has_key(boid): continue
-            out_list = []
-            out_list.append(boid)
 
             qry = 'select i.boid, i.gender, i.relationship, c.affected, x.xref from individuals as i, clinical_data as c, identifiers as x '
             qry += 'where i.boid="%s" and c.individual_id=i.id and x.name="%s" ' % (boid, boid)
@@ -78,20 +80,34 @@ def main():
             if not rows: continue
                 #print qry
                 #exit(1)
+            [boid, gender, relationship, affected, xrefs] = [""]*5
             for row in rows:
                 [boid, gender, relationship, affected, xrefs]  = row
                 mants = ""
                 if xrefs:
                      allx = xrefs.split(";")
                      mants = ";".join([x for x in allx if 'manton' in x.lower()])
-                #print boid, gender, relationship, affected, mants
 
-
-
+            line_count += 1
+            family_id = boid[:-2]
+            if old_family_id != family_id:
+                old_family_id = family_id
+                family_number += 1
+            out_list = []
+            out_list.append(line_count)
+            out_list.append(boid)
+            out_list.append(mants)
+            out_list.append(gender)
+            out_list.append(family_number)
+            out_list.append(relationship)
+            if affected == 1:
+                out_list.append("affected")
+            else:
+                out_list.append("unaffected")
             if fastqs.has_key(boid): out_list += fastqs[boid]
             if bams.has_key(boid): out_list += bams[boid]
 
-            #print "\t".join(out_list)
+            print "\t".join(out_list)
 
 ####################################
 if __name__ == '__main__':
