@@ -68,7 +68,7 @@ def main():
         print " *************** ", subfolder, " ****************** "
         boids, fastqs, bams = scan_through_folder(dbx, dropbox_folder, subfolder)
         for boid in sorted(boids):
-            if not fastqs.has_key(boid) and not bams.has_key(): continue
+            if not fastqs.has_key(boid) and not bams.has_key(boid): continue
             out_list = []
             out_list.append(boid)
 
