@@ -11,7 +11,7 @@ use strict;
 
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
-my $TEST_DRIVE = 1;  # test drive will only create the target directory structure
+my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
@@ -54,12 +54,13 @@ for my $case_boid (@cases) {
     my $fromdir = `find $rootdir -name $case_boid`; chomp $fromdir;
     print "$case_boid: $fromdir\n";
  
-    my $todir = "/data01";
-    my $year = substr ($case_boid, 2, 2);
-    my $caseno = substr ($case_boid, 4, 3);
+    my $todir  = "/data01";
+    my $year   = substr ($case_boid, 2, 2);
+
     if ($year eq "16" or $year eq "17") {$todir = "/data02";}
     -e $todir || die "$todir not found.\n";
 
+    my $caseno = substr ($case_boid, 4, 3);
     my $casedir = "$todir/20$year/$caseno";
 
     (-e $casedir) || `mkdir -p $casedir`;
@@ -119,7 +120,6 @@ sub process_extension (@) {
         ($ext_file  =~ $caseno) || next;
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
-            printf " ******  $ext_file\n";
         my ($year2, $caseno2, $individual2);
         my ($base, $extension);
         if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})(_*.*\.$ext.*)/ ) {
