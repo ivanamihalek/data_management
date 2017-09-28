@@ -50,10 +50,9 @@ for my $case_boid (@cases) {
 ####################################################
 for my $case_boid (@cases) {
 
-    print "\n$case_boid\n";
-
     my $fromdir = `find $rootdir -name %case_boid`;  chomp $fromdir;
-
+    print "$fromdir\n";
+    
     my $todir = "/data01";
     my $year = substr ($case_boid, 2, 2);
     my $caseno = substr ($case_boid, 4, 3);
