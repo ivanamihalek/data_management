@@ -158,7 +158,7 @@ sub process_extension (@) {
             }
             $individual2 = substr $1, 5, 2;
        }
-    print " ****** $base   * extension \n";
+    print " ****** $base   * $extension \n";
         while ( length($caseno2)<3 ) {
             $caseno2 = "0". $caseno2;
         }
