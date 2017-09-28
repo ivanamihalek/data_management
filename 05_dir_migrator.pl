@@ -11,13 +11,14 @@ use strict;
 
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
-my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
+my $TEST_DRIVE = 1;  # test drive will only create the target directory structure
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
-my $fromdir = "/home/ivana/scratch";
-my @cases  = ('BO17025');
+my $fromdir = "/mnt/usb";
+my @cases  = ('BO17039');
+my $datatype = "wgs";
 
 -e $fromdir || die "$fromdir not found.\n";
 -d $fromdir || die "$fromdir does not seem to be a directory.\n";
@@ -195,7 +196,7 @@ sub process_extension (@) {
         my $boiddir = "$casedir/$boid";
         (-e $boiddir) || `mkdir $boiddir`;
 
-        my $extdir = "$boiddir/wes/$ext2dirname{$ext}";
+        my $extdir = "$boiddir/$datatype/$ext2dirname{$ext}";
         (-e $extdir) || `mkdir -p  $extdir`;
 
         $incomplete && `echo some $ext files might be incomplete >> $extdir/NOTES`;
