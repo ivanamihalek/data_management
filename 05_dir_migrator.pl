@@ -110,6 +110,7 @@ sub process_extension (@) {
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
+	printf "\n";
         ($ext_file  =~ $caseno) || next;
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
