@@ -110,10 +110,12 @@ sub process_extension (@) {
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
-        ($ext_file  =~ $caseno) || next;
+  	printf "$ext_file\n";
+       ($ext_file  =~ $caseno) || next;
+  	printf ">> $ext_file\n";
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
- 	printf "$ext_file\n";
+ 	printf ">> >> $ext_file\n";
         my ($year2, $caseno2, $individual2);
         my ($base, $extension);
         if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})(_*.*\.$ext.*)/ ) {
