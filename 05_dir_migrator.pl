@@ -158,7 +158,6 @@ sub process_extension (@) {
             }
             $individual2 = substr $1, 5, 2;
        }
-    print " ****** $base   * $extension \n";
         while ( length($caseno2)<3 ) {
             $caseno2 = "0". $caseno2;
         }
@@ -169,6 +168,10 @@ sub process_extension (@) {
 
         my $orig_file = $extension;
         ($orig_file=~ /^\./) && ($orig_file = "BO$base$extension");
+        if ($orig_file =~ /\// ) {
+            my @aux = split ('/', $orig_file);
+            $orig_file = pop @aux;
+        }
         $ext_file =~ s/([\s\(\)])/\\$1/g; # I do not want quotemeta here bcs slashes are meaningful
         $incomplete = ($ext_file =~  /incomplete/ );
 
