@@ -146,6 +146,7 @@ sub process_extension (@) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
+            printf "$base    $extension\n";
 
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
             $base = $1; $extension = $2;
