@@ -84,7 +84,7 @@ sub check_for_leftovers (@) {
     my ($fromdir,  $case, $target_dir) = @_;
     (-e $target_dir) || `mkdir -p $target_dir`;
 
-    my @files =  `find $fromdir  -type f`; # grab all files
+    my @files =  `find -L $fromdir  -type f`; # grab all files
 
     foreach my $thing (@files){
         chomp $thing;
@@ -113,7 +113,7 @@ sub process_extension (@) {
 
     printf "processing extension @_ \n";
     my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
-    printf "find $fromdir  -name \"*.$ext*\"\n";
+    printf "find -L $fromdir  -name \"*.$ext*\"\n";
     my @ext_files = `find $fromdir  -name "*.$ext*"`;
 
     my $incomplete = 0;
