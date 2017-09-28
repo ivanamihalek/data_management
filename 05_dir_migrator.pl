@@ -46,6 +46,7 @@ for my $case_boid (@cases) {
     my $fromdir = `find $rootdir -name $case_boid`; chomp $fromdir;
     $fromdir || die "$case_boid not found in $rootdir\n";
     -d $fromdir || die "$fromdir does not seem to be a directory.\n";
+    print "** $case_boid: $fromdir\n";
 }
 
 ####################################################
