@@ -16,12 +16,12 @@ my $TEST_DRIVE = 1;  # test drive will only create the target directory structur
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
-my $fromdir = "/mnt/usb";
+my $rootdir = "/mnt/usb";
 my @cases  = ('BO17039');
 my $datatype = "wgs";
 
--e $fromdir || die "$fromdir not found.\n";
--d $fromdir || die "$fromdir does not seem to be a directory.\n";
+-e $rootdir || die "$rootdir not found.\n";
+-d $rootdir || die "$rootdir does not seem to be a directory.\n";
 
 my %ext2dirname = ("vcf"=> "variants/called_by_seq_center", "bam"=>"alignments/by_seq_center",
     "bai"=> "alignments/by_seq_center", "fastq" => "reads", "fq" => "reads", "txt" => "reads");
@@ -40,11 +40,19 @@ my %seen = ();
 my @resolved_files = ();
 my %resolved  = ();
 
-
+####################################################
+# check all fromdirs exist
+for my $case_boid (@cases) {
+    my $fromdir = `find $rootdir -name $case_boid`; chomp $fromdir;
+    $fromdir || die "$case_boid not found in $rootdir\n";
+    -d $fromdir || die "$fromdir does not seem to be a directory.\n";
+}
 ####################################################
 for my $case_boid (@cases) {
 
     print "\n$case_boid\n";
+
+    my $fromdir = `find $rootdir -name %case_boid`;  chomp $fromdir;
 
     my $todir = "/data01";
     my $year = substr ($case_boid, 2, 2);
