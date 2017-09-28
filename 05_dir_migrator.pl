@@ -113,8 +113,7 @@ sub process_extension (@) {
 
     printf "processing extension @_ \n";
     my ($fromdir, $case, $year, $caseno, $casedir, $ext) = @_;
-    printf "find -L $fromdir  -name \"*.$ext*\"\n";
-    my @ext_files = `find $fromdir  -name "*.$ext*"`;
+    my @ext_files = `find -L $fromdir  -name "*.$ext*"`;
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
