@@ -53,7 +53,7 @@ for my $case_boid (@cases) {
 
     my $fromdir = `find $rootdir -name %case_boid`;  chomp $fromdir;
     print "$case_boid: $fromdir\n";
-    
+    next;
     my $todir = "/data01";
     my $year = substr ($case_boid, 2, 2);
     my $caseno = substr ($case_boid, 4, 3);
@@ -74,7 +74,7 @@ for my $case_boid (@cases) {
     %resolved = map { $_ =>  1 } @resolved_files;
     check_for_leftovers ($fromdir, $case_boid, "$casedir/other/from_seq_center");
 }
-
+exit;
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
 
 
