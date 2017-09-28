@@ -11,7 +11,7 @@ use strict;
 
 use data_mgmt_utils_pl::md5 qw(get_md5sum);
 
-my $TEST_DRIVE = 1;  # test drive will only create the target directory structure
+my $TEST_DRIVE = 0;  # test drive will only create the target directory structure
 
 # space handling in the path names does not work well and I have to move on, hence the 00_clean.pl
 
@@ -74,7 +74,6 @@ for my $case_boid (@cases) {
     %resolved = map { $_ =>  1 } @resolved_files;
     check_for_leftovers ($fromdir, $case_boid, "$casedir/other/from_seq_center");
 }
-exit;
 $TEST_DRIVE && printf "\n please check for BAM, FASTQ and VCF (uppercase) extensions\n\n";
 
 
@@ -117,12 +116,9 @@ sub process_extension (@) {
 
     my $incomplete = 0;
     foreach my $ext_file (@ext_files) {
-  	printf "$ext_file\n";
-       ($ext_file  =~ $caseno) || next;
-  	printf ">> $ext_file\n";
+        ($ext_file  =~ $caseno) || next;
         next if $ext_file =~ /\.md5$/;
         chomp $ext_file;
- 	printf ">> >> $ext_file\n";
         my ($year2, $caseno2, $individual2);
         my ($base, $extension);
         if ( $ext_file =~ /.*BO\-(\d{4}\-\d{2}\-I+\w{1})(_*.*\.$ext.*)/ ) {
