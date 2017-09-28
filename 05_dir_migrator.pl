@@ -146,7 +146,7 @@ sub process_extension (@) {
             $year2 = substr $1, 0, 2;
             $caseno2 = substr $1, 2, 2;
             $individual2 = substr $1, 4, 2;
-            printf "$base    $extension\n";
+            printf " 1111 $base    $extension\n";
 
         } elsif  ( $ext_file =~ /.*BO(\d{6}[ABCDE]{1})(_*.*\.$ext.*)/ ) {
             $base = $1; $extension = $2;
@@ -157,7 +157,8 @@ sub process_extension (@) {
                 $caseno2 = substr $1, 2, 2; # Christina is adding in an extra 0 on the right
             }
             $individual2 = substr $1, 5, 2;
-        }
+             printf " 2222 $base    $extension\n";
+       }
 
         while ( length($caseno2)<3 ) {
             $caseno2 = "0". $caseno2;
