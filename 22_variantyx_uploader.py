@@ -130,8 +130,10 @@ def output_upload_script(case_boid, family_info):
 
 ####################################
 def main():
+
+	print "Warning: this script does not check whether we are dealing with WES or WGS."
 	if len(sys.argv) < 3:
-		print  "usage: %s <case BOid> <seqmule/seq_center> " % sys.argv[0]
+		print  "Usage: %s <case BOid> <seqmule/seq_center> " % sys.argv[0]
 		exit(1)
 
 	[case_boid, alignment_preference] = sys.argv[1:3]
