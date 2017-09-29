@@ -17,8 +17,8 @@ my $TEST_DRIVE = 0;  # test drive will only create the target directory structur
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
 my $rootdir = "/mnt/usb";
-my @cases  = ('BO17039');
-my $datatype = "wgs";
+my @cases  = ('BO17010');
+my $datatype = "wes";
 
 -e $rootdir || die "$rootdir not found.\n";
 -d $rootdir || die "$rootdir does not seem to be a directory.\n";
