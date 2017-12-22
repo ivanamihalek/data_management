@@ -17,7 +17,7 @@ my $TEST_DRIVE = 0;  # test drive will only create the target directory structur
 
 #@ARGV==1 || die "Usage: $0 <fromdir>\n";
 my $rootdir = "/home/ivana/scratch/";
-my @cases  = ('BO17010');
+my @cases  = ('BO17014');
 my $datatype = "wes";
 
 -e $rootdir || die "$rootdir not found.\n";
