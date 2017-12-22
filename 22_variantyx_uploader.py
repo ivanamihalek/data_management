@@ -156,7 +156,7 @@ def main():
 			break
 		if not fqfiles and not bamfile:
 			print "neither fq file(s) nor bamfile not found for", boid
-			print " ... removing ..."
+			print " ... removing ... "
 			del family_info[boid]
 			continue
 		if fqfiles:
